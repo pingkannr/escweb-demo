@@ -1,0 +1,1494 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyek Kami | PT. Elsadai Servo Cons</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* --- GAYA TAMBAHAN UNTUK LIGHTBOX --- */
+
+      /* Cursor Pointer pada Kartu */
+      .project-card-modern {
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .project-card-modern:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Lightbox Container */
+      #lightbox {
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        display: none; /* Hidden default */
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        backdrop-filter: blur(5px);
+      }
+
+      /* Gambar di dalam Lightbox */
+      #lightbox img {
+        max-width: 90%;
+        max-height: 80vh;
+        border: 2px solid #fff;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        object-fit: contain;
+        animation: zoomIn 0.3s ease;
+      }
+
+      /* Tombol Navigasi (Prev/Next) */
+      #lightbox-controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5%;
+        transform: translateY(-50%);
+        pointer-events: none; /* Agar klik tembus ke background */
+      }
+      .lightbox-btn {
+        pointer-events: auto; /* Aktifkan klik tombol */
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        font-size: 2.5rem;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 50%;
+        transition: 0.3s;
+      }
+      .lightbox-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      /* Tombol Close */
+      #close-lightbox {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 3rem;
+        color: white;
+        cursor: pointer;
+        z-index: 10001;
+        transition: 0.3s;
+      }
+      #close-lightbox:hover {
+        color: var(--accent);
+        transform: rotate(90deg);
+      }
+
+      /* Caption Text */
+      #caption {
+        margin-top: 20px;
+        color: white;
+        font-size: 1.1rem;
+        text-align: center;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="index.html" class="logo">
+            <img src="assets/images/logo.png" alt="Logo ESC" />
+            PT. ELSADAI SERVO CONS
+          </a>
+          <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html" class="active">Projects</a></li>
+            <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero-mini">
+      <div class="container">
+        <h4
+          style="
+            color: var(--accent);
+            font-weight: 700;
+            animation: fadeInUp 1s ease-out;
+          "
+        >
+          OUR PORTFOLIO
+        </h4>
+        <h1 style="animation: fadeInUp 1s ease-out 0.2s backwards">
+          Jejak Langkah Kami
+        </h1>
+        <p style="animation: fadeInUp 1s ease-out 0.4s backwards">
+          Daftar pengalaman kami dalam mewujudkan infrastruktur strategis di
+          seluruh Indonesia.
+        </p>
+      </div>
+    </section>
+
+    <section style="background: #ffffff; padding: 50px 0 100px 0">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 30px">
+          <p
+            style="
+              margin-bottom: 15px;
+              font-weight: 700;
+              color: var(--text-muted);
+              letter-spacing: 1px;
+            "
+          >
+            KATEGORI
+          </p>
+          <div class="filter-container" style="margin-bottom: 40px">
+            <button
+              class="filter-btn active"
+              onclick="showCategory('construction', this)"
+            >
+              <i class="fas fa-hard-hat" style="margin-right: 8px"></i>
+              Construction Management
+            </button>
+            <button class="filter-btn" onclick="showCategory('planning', this)">
+              <i class="fas fa-drafting-compass" style="margin-right: 8px"></i>
+              Building Planning
+            </button>
+          </div>
+        </div>
+
+        <div id="cat-construction" class="visible">
+          <div class="project-gallery reveal">
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Sarana Pemerintahan IB IKN"
+              data-photos="assets/images/SaranaIKN1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/SaranaIKN1.jpg" alt="IKN Project" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">KALIMANTAN TIMUR</span>
+                <h3 class="card-title">Sarana Pemerintahan IB IKN</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kementerian PUPR</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span>
+                    <strong>Penajam Paser Utara & Kukar</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="SMA Taruna Nusantara"
+              data-photos="assets/images/SMATarunaMalang1.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/SMATarunaMalang1.jpg"
+                  alt="SMA Taruna"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAWA TIMUR</span>
+                <h3 class="card-title">SMA Taruna Nusantara</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kemhan RI (Baranahan)</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Malang</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Gedung Dinas PUPR Tahap II"
+              data-photos="assets/images/GedungPUPR1.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/GedungPUPR1.jpg"
+                  alt="Office Building"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">PAPUA TENGAH</span>
+                <h3 class="card-title">Gedung Dinas PUPR Tahap II</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas PUPR Mimika</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Area:</span> <strong>± 40.000 m²</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="RSUD Buton Tengah"
+              data-photos="assets/images/RSUDButon1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RSUDButon1.jpg" alt="Hospital" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">SULAWESI TENGGARA</span>
+                <h3 class="card-title">RSUD Buton Tengah</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>RSUD Kab. Buton Tengah</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Peningkatan Kelas</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Pusat Diagnostik RSUD Mimika"
+              data-photos="assets/images/RSUDMimika1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RSUDMimika1.jpg" alt="RSUD Mimika" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">TIMIKA, PAPUA</span>
+                <h3 class="card-title">Pusat Diagnostik RSUD</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>RSUD Mimika</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Area:</span> <strong>3.767 m² (3 Lantai)</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="RSPTN Universitas Padjadjaran"
+              data-photos="assets/images/RSPTUnpad1.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/RSPTUnpad1.jpg"
+                  alt="University Hospital"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAWA BARAT</span>
+                <h3 class="card-title">RSPTN Universitas Padjadjaran</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span>
+                    <strong>Universitas Padjadjaran</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Area:</span> <strong>10.653 m²</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun Tenaga Pendidik UGM"
+              data-photos="assets/images/RumahSusunUGM1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RumahSusunUGM1.jpg" alt="Apartment" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">YOGYAKARTA</span>
+                <h3 class="card-title">Rusun Tenaga Pendidik UGM</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kementerian PUPR</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Sleman</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun ASN PUPR (PON) Aceh"
+              data-photos="assets/images/RumahSusunAceh1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RumahSusunAceh1.jpg" alt="Building" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">ACEH</span>
+                <h3 class="card-title">Rusun ASN PUPR (PON)</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kementerian PUPR</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Dukungan PON</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Pengembangan BBPPT Kominfo"
+              data-photos="assets/images/BPPTKominfo1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/BPPTKominfo1.jpg" alt="Tech Building" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">DEPOK</span>
+                <h3 class="card-title">Pengembangan BBPPT</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kementerian KOMINFO</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Area:</span> <strong>22.723 m²</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Pusat Pemulihan Aset (PPA)"
+              data-photos="assets/images/PPAKejagung1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/PPAKejagung1.jpg" alt="Office" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA SELATAN</span>
+                <h3 class="card-title">Pusat Pemulihan Aset (PPA)</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kejaksaan Agung RI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Kebayoran Baru</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Kejaksaan Tinggi Jakarta"
+              data-photos="assets/images/KantorKejaksaan1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/KantorKejaksaan1.jpg" alt="Highrise" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA SELATAN</span>
+                <h3 class="card-title">Kejaksaan Tinggi Jakarta</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Cipta Karya DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Kuningan</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rehabilitasi Total Sekolah DKI"
+              data-photos="assets/images/RehabGedungSekolah1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RehabGedungSekolah1.jpg" alt="School" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">DKI JAKARTA</span>
+                <h3 class="card-title">Rehabilitasi Total Sekolah</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Pendidikan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Pusat, Barat, Utara, Sel</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Supervisi Taman Anggrek KRB"
+              data-photos="assets/images/KawasanTA1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/KawasanTA1.jpg" alt="Garden" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">BOGOR</span>
+                <h3 class="card-title">Supervisi Kawasan Taman Anggrek</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kementerian PUPR</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Kebun Raya Bogor</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun Nagrak Tower 6-10"
+              data-photos="assets/images/RusunNagrakTower6.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunNagrakTower6.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA UTARA</span>
+                <h3 class="card-title">Rusun Nagrak Tower 6-10</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Perumahan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Manajemen Konstruksi</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun Nagrak Tower 1-5"
+              data-photos="assets/images/RusunNagrakTower1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunNagrakTower1.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA UTARA</span>
+                <h3 class="card-title">Rusun Nagrak Tower 1-5</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Perumahan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Manajemen Konstruksi</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun Pulogebang"
+              data-photos="assets/images/RusunPulogebang1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunPulogebang1.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA TIMUR</span>
+                <h3 class="card-title">Rusun Pulogebang</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Perumahan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Penggilingan</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun Lokbin Tegal Alur"
+              data-photos="assets/images/RusunLokbin1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunLokbin1.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA BARAT</span>
+                <h3 class="card-title">Rusun Lokbin Tegal Alur</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Perumahan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Manajemen Konstruksi</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun Pengadegan"
+              data-photos="assets/images/RusunPengadegan1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunPengadegan1.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA SELATAN</span>
+                <h3 class="card-title">Rusun Pengadegan</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Perumahan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Manajemen Konstruksi</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun Rawa Bebek Tower 2"
+              data-photos="assets/images/RusunRawaBebekTower2.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunRawaBebekTower2.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA TIMUR</span>
+                <h3 class="card-title">Rusun Rawa Bebek Tower 2</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Perumahan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Manajemen Konstruksi</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="cat-planning" class="hidden">
+          <div class="project-gallery reveal">
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Innovation Center POLBAN"
+              data-photos="assets/images/GedungICPoltekBandung1.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/GedungICPoltekBandung1.jpg"
+                  alt="Innovation Center"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">BANDUNG BARAT</span>
+                <h3 class="card-title">Innovation Center POLBAN</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span>
+                    <strong>Politeknik Negeri Bandung</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Area:</span> <strong>5.000 m²</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="BLK Kupang"
+              data-photos="assets/images/BLKKupang1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/BLKKupang1.jpg" alt="Training Center" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">NUSA TENGGARA TIMUR</span>
+                <h3 class="card-title">BLK Kupang</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kementerian PUPR</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Area:</span> <strong>21.000 m²</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="DED Rusun Jagakarsa"
+              data-photos="assets/images/RusunJagakarsa1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunJagakarsa1.jpg" alt="Apartment" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA SELATAN</span>
+                <h3 class="card-title">DED Rusun Jagakarsa</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Perumahan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Area:</span> <strong>19.984 m²</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Gedung Kelas STAH Mpu Kuturan"
+              data-photos="assets/images/GedungKelasBrahma1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/GedungKelasBrahma1.jpg" alt="Campus" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">BALI</span>
+                <h3 class="card-title">Gedung Kelas STAH Mpu Kuturan</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>STAHN Mpu Kuturan</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Singaraja, Buleleng</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rehab Total Puskesmas DKI"
+              data-photos="assets/images/RehapPuskesmasDKI1.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/RehapPuskesmasDKI1.jpg"
+                  alt="Health Center"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">DKI JAKARTA</span>
+                <h3 class="card-title">Rehab Total Puskesmas</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Kesehatan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Timur, Utara, Barat</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Rusun Padat Karya"
+              data-photos="assets/images/RusunJakUt1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunJakUt1.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA UTARA</span>
+                <h3 class="card-title">Rusun Padat Karya</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Dinas Perumahan DKI</strong>
+                  </div>
+                  <div class="detail-row">
+                    <span>Area:</span> <strong>83.417 m²</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Basic Design RSKD Duren Sawit"
+              data-photos="assets/images/RSKDDurenSawit1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RSKDDurenSawit1.jpg" alt="Hospital" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA TIMUR</span>
+                <h3 class="card-title">Basic Design RSKD Duren Sawit</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Pengembangan Gedung</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Pengembangan RSUD Kembangan"
+              data-photos="assets/images/RSUDKembangan1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RSUDKembangan1.jpg" alt="Hospital" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA BARAT</span>
+                <h3 class="card-title">Pengembangan RSUD Kembangan</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Menjadi Kelas C</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="DED Rusun Pasar Jumat"
+              data-photos="assets/images/DEDRusunJaksel1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/DEDRusunJaksel1.jpg" alt="Apartment" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA SELATAN</span>
+                <h3 class="card-title">DED Rusun Pasar Jumat</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Tingkat Tinggi</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="DED Rusun Mahkamah Agung"
+              data-photos="assets/images/DEDRusunMA1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/DEDRusunMA1.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">INDONESIA</span>
+                <h3 class="card-title">DED Rusun Mahkamah Agung</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Mahkamah Agung RI</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Sarpras Rusun Nagrak"
+              data-photos="assets/images/RusunNagrak1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/RusunNagrak1.jpg" alt="Rusun" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">JAKARTA UTARA</span>
+                <h3 class="card-title">Sarpras Rusun Nagrak</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Scope:</span>
+                    <strong>Perencanaan Sarana Prasarana</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Pembangunan Gedung Gereja Toraja"
+              data-photos="assets/images/GerejaToraja1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/GerejaToraja1.jpg" alt="Church" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">TORAJA</span>
+                <h3 class="card-title">Pembangunan Gedung Gereja</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Toraja, Sulawesi Selatan</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Gedung Badan Pusat Statistik Gorontalo"
+              data-photos="assets/images/BPSGorontalo1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/BPSGorontalo1.jpg" alt="Office" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">GORONTALO</span>
+                <h3 class="card-title">Gedung Badan Pusat Statistik</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>BPS Gorontalo</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="KPP Pratama Kotamobagu"
+              data-photos="assets/images/PelayananPajakGorontalo1.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/PelayananPajakGorontalo1.jpg"
+                  alt="Office"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">KOTAMOBAGU</span>
+                <h3 class="card-title">KPP Pratama Kotamobagu</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Scope:</span> <strong>Kantor Pelayanan Pajak</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Mess Bea Cukai Manado"
+              data-photos="assets/images/MessBeaCukaiManado1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/MessBeaCukaiManado1.jpg" alt="Mess" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">MANADO</span>
+                <h3 class="card-title">Mess Bea Cukai</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Kota Manado</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Kantor Walikota Kotamobagu"
+              data-photos="assets/images/KantorWaliKotamobagu.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/KantorWaliKotamobagu.jpg"
+                  alt="Gov Office"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">SULAWESI UTARA</span>
+                <h3 class="card-title">Kantor Walikota Kotamobagu</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Loc:</span> <strong>Kotamobagu</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Kantor BPJN XI Sulut"
+              data-photos="assets/images/BPJNXISulut1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/BPJNXISulut1.jpg" alt="Office" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">SULAWESI UTARA</span>
+                <h3 class="card-title">Kantor BPJN XI</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Kementerian PUPR</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Kantor Dinas Kebudayaan & Pariwisata Sulut"
+              data-photos="assets/images/DinasKebudayaanSulut1.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/DinasKebudayaanSulut1.jpg"
+                  alt="Office"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">SULAWESI UTARA</span>
+                <h3 class="card-title">Kantor Dinas Kebudayaan & Pariwisata</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Pemprov Sulut</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="Kantor Gubernur Sulut"
+              data-photos="assets/images/KantorGubSulut1.jpg"
+            >
+              <div class="card-image-box">
+                <img src="assets/images/KantorGubSulut1.jpg" alt="Gov Office" />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">MANADO</span>
+                <h3 class="card-title">Kantor Gubernur Sulut</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span>
+                    <strong>Pemerintah Provinsi Sulut</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card-modern"
+              onclick="openGallery(this)"
+              data-title="SMA Keberbakatan Olahraga Minahasa"
+              data-photos="assets/images/SMAOlahragaMinahasa1.jpg"
+            >
+              <div class="card-image-box">
+                <img
+                  src="assets/images/SMAOlahragaMinahasa1.jpg"
+                  alt="School"
+                />
+              </div>
+              <div class="card-content-overlay">
+                <span class="card-category">MINAHASA</span>
+                <h3 class="card-title">SMA Keberbakatan Olahraga</h3>
+                <div class="card-hidden-details">
+                  <div class="detail-row">
+                    <span>Client:</span> <strong>Pemprov Sulut</strong>
+                  </div>
+                  <div
+                    class="detail-row"
+                    style="margin-top: 10px; color: var(--accent)"
+                  >
+                    <small><i class="fas fa-images"></i> Lihat Galeri</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section-padding"
+      style="
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        text-align: center;
+      "
+    >
+      <div class="container reveal">
+        <h2 style="color: #fff; margin-bottom: 20px">
+          Siap Mewujudkan Proyek Masterpiece Anda?
+        </h2>
+        <p
+          style="
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          Konsultasikan kebutuhan konstruksi dan manajemen proyek Anda bersama
+          tim ahli kami yang bersertifikasi.
+        </p>
+        <a
+          href="contact.html"
+          class="btn"
+          style="background: #d22222; color: var(--primary)"
+          >Hubungi Kami Sekarang</a
+        >
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div
+          class="services-grid"
+          style="grid-template-columns: 1.5fr 1fr 1fr; gap: 50px"
+        >
+          <div class="footer-info">
+            <a href="index.html">
+              <img
+                src="assets/images/logo.png"
+                alt="Logo ESC White"
+                class="footer-logo-img"
+              />
+            </a>
+            <p>
+              Menciptakan mahakarya melalui integritas, tanggung jawab, dan
+              profesionalisme.
+            </p>
+          </div>
+          <div class="footer-info">
+            <h4>Hubungi Kami</h4>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A,
+                Manado
+              </li>
+              <li><i class="fas fa-phone"></i> (0431) 875046</li>
+              <li>
+                <i class="fas fa-envelope"></i>ptelsadaiservocons@gmail.com
+              </li>
+            </ul>
+          </div>
+          <div class="footer-info">
+            <h4>Sertifikasi</h4>
+            <p style="color: #fff; font-weight: 600">
+              ISO 9001 • ISO 14001 • ISO 45001 • ISO 37001
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © 2026 PT. Elsadai Servo Cons. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <div id="lightbox">
+      <span id="close-lightbox" onclick="closeGallery()">&times;</span>
+      <div id="lightbox-controls">
+        <button class="lightbox-btn" onclick="changeImage(-1)">&#10094;</button>
+        <button class="lightbox-btn" onclick="changeImage(1)">&#10095;</button>
+      </div>
+      <img id="lightbox-img" src="" alt="Project Image" />
+      <div id="caption"></div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+      // === LOGIKA FILTER KATEGORI ===
+      function showCategory(category, btn) {
+        document.getElementById("cat-construction").classList.add("hidden");
+        document.getElementById("cat-construction").classList.remove("visible");
+
+        document.getElementById("cat-planning").classList.add("hidden");
+        document.getElementById("cat-planning").classList.remove("visible");
+
+        const target = document.getElementById("cat-" + category);
+        target.classList.remove("hidden");
+        target.classList.add("visible");
+
+        const buttons = document.querySelectorAll(".filter-btn");
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+      }
+
+      // === LOGIKA LIGHTBOX GALERI ===
+      let currentPhotos = [];
+      let currentIndex = 0;
+      let currentTitle = "";
+
+      function openGallery(cardElement) {
+        const photosString = cardElement.getAttribute("data-photos");
+        currentTitle = cardElement.getAttribute("data-title");
+
+        if (!photosString) return;
+
+        // Ubah string foto menjadi array dan bersihkan spasi
+        currentPhotos = photosString.split(",").map((url) => url.trim());
+        currentIndex = 0;
+
+        const lightbox = document.getElementById("lightbox");
+        lightbox.style.display = "flex";
+        updateLightboxImage();
+      }
+
+      function closeGallery() {
+        document.getElementById("lightbox").style.display = "none";
+      }
+
+      function changeImage(direction) {
+        currentIndex += direction;
+        if (currentIndex >= currentPhotos.length) {
+          currentIndex = 0;
+        } else if (currentIndex < 0) {
+          currentIndex = currentPhotos.length - 1;
+        }
+        updateLightboxImage();
+      }
+
+      function updateLightboxImage() {
+        const img = document.getElementById("lightbox-img");
+        const caption = document.getElementById("caption");
+
+        img.src = currentPhotos[currentIndex];
+        caption.innerText = `${currentTitle} (${currentIndex + 1} / ${currentPhotos.length})`;
+      }
+
+      // Tutup dengan klik di luar gambar
+      document
+        .getElementById("lightbox")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeGallery();
+          }
+        });
+
+      // Navigasi keyboard
+      document.addEventListener("keydown", function (e) {
+        if (document.getElementById("lightbox").style.display === "flex") {
+          if (e.key === "Escape") closeGallery();
+          if (e.key === "ArrowLeft") changeImage(-1);
+          if (e.key === "ArrowRight") changeImage(1);
+        }
+      });
+    </script>
+  </body>
+</html>
