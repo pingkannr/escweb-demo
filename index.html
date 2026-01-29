@@ -9,6 +9,31 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* Animasi mengambang untuk elemen dekorasi */
+      @keyframes floatUpDown {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(226, 53, 53, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(226, 53, 53, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(226, 53, 53, 0);
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -27,6 +52,17 @@
             <li><a href="services.html">Services</a></li>
             <li><a href="portfolio.html">Projects</a></li>
             <li><a href="contact.html" class="nav-btn">Contact</a></li>
+            <li>
+              <a
+                href="career.html"
+                style="
+                  font-weight: 600;
+                  margin-left: 10px;
+                  color: var(--primary);
+                "
+                >Karir</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
@@ -137,35 +173,29 @@
             <div class="why-number">01</div>
             <h3 class="why-title">Solusi Terintegrasi</h3>
             <p>
-              Kami menggabungkan keahlian
-              <strong>Jasa Konstruksi</strong> (Perencanaan & Pengawasan) dan
-              <strong>Non-Konstruksi</strong> (Riset & Manajemen Pariwisata)
-              dalam satu atap.
+              Kami menggabungkan keahlian <strong>Jasa Konstruksi</strong> dan
+              <strong>Non-Konstruksi</strong> dalam satu atap.
             </p>
           </div>
-
           <div class="why-box">
             <div class="why-number">02</div>
             <h3 class="why-title">Jangkauan Nasional</h3>
             <p>
               Sesuai misi kami untuk "Berpartisipasi melayani seluruh wilayah",
-              kami siap menghadirkan solusi konsultansi berkualitas di seluruh
-              pelosok Indonesia (Aceh - Papua).
+              kami siap menghadirkan solusi di seluruh pelosok Indonesia.
             </p>
           </div>
-
           <div class="why-box">
             <div class="why-number">03</div>
             <h3 class="why-title">Tersertifikasi ISO</h3>
             <p style="margin-bottom: 15px">
               Kualitas layanan kami dijamin oleh 4 standar internasional:
             </p>
-
             <div class="iso-grid">
-              <div class="iso-badge" title="Manajemen Mutu">ISO 9001</div>
-              <div class="iso-badge" title="Lingkungan">ISO 14001</div>
-              <div class="iso-badge" title="K3">ISO 45001</div>
-              <div class="iso-badge" title="Anti Suap">ISO 37001</div>
+              <div class="iso-badge">ISO 9001</div>
+              <div class="iso-badge">ISO 14001</div>
+              <div class="iso-badge">ISO 45001</div>
+              <div class="iso-badge">ISO 37001</div>
             </div>
           </div>
         </div>
@@ -206,7 +236,6 @@
               </p>
             </div>
           </div>
-
           <div class="project-card-visual">
             <img src="assets/images/SMATarunaMalang1.jpg" alt="SMA Taruna" />
             <div class="project-overlay">
@@ -219,7 +248,6 @@
               </p>
             </div>
           </div>
-
           <div class="project-card-visual">
             <img src="assets/images/RSUDMimika1.jpg" alt="RSUD" />
             <div class="project-overlay">
@@ -262,7 +290,6 @@
           <span class="partner-logo-item">DEKSON</span>
           <span class="partner-logo-item">PROPAN</span>
           <span class="partner-logo-item">LG ELECTRONICS</span>
-
           <span class="partner-logo-item">KEMENTERIAN PUPR</span>
           <span class="partner-logo-item">KEMHAN RI</span>
           <span class="partner-logo-item">SAMSUNG</span>
@@ -279,37 +306,309 @@
     <section
       class="section-padding"
       style="
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
+        background: linear-gradient(135deg, #0a192f 0%, #003366 100%);
         color: #fff;
         text-align: center;
+        position: relative;
+        overflow: hidden;
       "
     >
-      <div class="container reveal">
-        <h2 style="color: #fff; margin-bottom: 20px">
-          Siap Mewujudkan Proyek Masterpiece Anda?
+      <div
+        style="
+          position: absolute;
+          top: -100px;
+          left: -100px;
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0) 70%
+          );
+          border-radius: 50%;
+          pointer-events: none;
+        "
+      ></div>
+      <div
+        style="
+          position: absolute;
+          bottom: -50px;
+          right: -50px;
+          width: 250px;
+          height: 250px;
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0) 70%
+          );
+          border-radius: 50%;
+          pointer-events: none;
+        "
+      ></div>
+
+      <div class="container reveal" style="position: relative; z-index: 2">
+        <h2
+          style="
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 2.2rem;
+          "
+        >
+          Siap Mewujudkan Proyek
+          <span style="color: #ff6b6b">Masterpiece</span> Anda?
         </h2>
         <p
           style="
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
-            max-width: 600px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 35px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
           "
         >
-          Konsultasikan kebutuhan konstruksi dan manajemen proyek Anda bersama
-          tim ahli kami yang bersertifikasi.
+          Jangan biarkan visi Anda hanya menjadi rencana. Konsultasikan
+          kebutuhan konstruksi dan manajemen proyek Anda bersama tim ahli kami
+          yang berdedikasi.
         </p>
         <a
           href="contact.html"
           class="btn"
-          style="background: #e23535; color: var(--primary)"
-          >Hubungi Kami Sekarang</a
+          style="
+            background: #e23535;
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.05rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulseGlow 2s infinite;
+          "
         >
+          <i class="fas fa-paper-plane"></i> Hubungi Kami Sekarang
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="section-padding"
+      style="background: #ffffff; position: relative; overflow: hidden"
+    >
+      <div class="container reveal">
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+          "
+        >
+          <div style="flex: 1; min-width: 300px">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 20px;
+              "
+            >
+              <span
+                style="
+                  background: var(--accent);
+                  width: 40px;
+                  height: 4px;
+                  border-radius: 2px;
+                "
+              ></span>
+              <h4
+                style="
+                  color: var(--accent);
+                  font-weight: 700;
+                  letter-spacing: 1px;
+                  margin: 0;
+                  text-transform: uppercase;
+                "
+              >
+                Join Our Team
+              </h4>
+            </div>
+
+            <h2
+              style="
+                color: var(--primary);
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+                line-height: 1.2;
+              "
+            >
+              Berkarya & Bertumbuh <br />Bersama Para Ahli
+            </h2>
+
+            <p
+              style="
+                color: #555;
+                font-size: 1.1rem;
+                line-height: 1.8;
+                margin-bottom: 35px;
+              "
+            >
+              Kami mencari talenta terbaik yang memiliki integritas dan semangat
+              inovasi. Jadilah bagian dari tim yang membangun infrastruktur
+              strategis di seluruh Indonesia.
+            </p>
+
+            <div style="display: flex; gap: 15px; align-items: center">
+              <a
+                href="career.html"
+                class="btn"
+                style="
+                  background: var(--primary);
+                  color: #fff;
+                  box-shadow: 0 10px 20px rgba(0, 51, 102, 0.2);
+                "
+              >
+                Lihat Lowongan
+              </a>
+              <a
+                href="about.html"
+                style="
+                  color: var(--primary);
+                  text-decoration: none;
+                  font-weight: 600;
+                  padding: 10px 20px;
+                  display: inline-flex;
+                  align-items: center;
+                "
+              >
+                Tentang Budaya Kami
+                <i class="fas fa-arrow-right" style="margin-left: 8px"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            style="
+              flex: 1;
+              min-width: 300px;
+              position: relative;
+              display: flex;
+              justify-content: flex-end;
+            "
+          >
+            <div
+              style="
+                position: relative;
+                width: 90%;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 20px 20px 0px rgba(240, 240, 240, 1); /* Efek Depth Solid */
+              "
+            >
+              <img
+                src="assets/images/bg4.jpg"
+                alt="Team Culture"
+                style="width: 100%; display: block; object-fit: cover"
+              />
+              <div
+                style="
+                  position: absolute;
+                  inset: 0;
+                  background: linear-gradient(
+                    to top,
+                    rgba(0, 0, 0, 0.3),
+                    transparent
+                  );
+                "
+              ></div>
+            </div>
+
+            <div
+              style="
+                position: absolute;
+                bottom: 30px;
+                left: 0;
+                background: #fff;
+                padding: 15px 20px;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                border: 1px solid #f0f0f0;
+                animation: floatUpDown 4s ease-in-out infinite;
+              "
+            >
+              <div
+                style="
+                  background: #e3f2fd;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--primary);
+                "
+              >
+                <i class="fas fa-users"></i>
+              </div>
+              <div>
+                <h4 style="margin: 0; font-size: 1.2rem; color: var(--primary)">
+                  50+
+                </h4>
+                <p style="margin: 0; font-size: 0.8rem; color: #777">
+                  Tenaga Ahli
+                </p>
+              </div>
+            </div>
+
+            <div
+              style="
+                position: absolute;
+                top: 30px;
+                right: -10px;
+                background: #fff;
+                padding: 15px 20px;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                border: 1px solid #f0f0f0;
+                animation: floatUpDown 5s ease-in-out infinite 1s;
+              "
+            >
+              <div
+                style="
+                  background: #e8f5e9;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #2e7d32;
+                "
+              >
+                <i class="fas fa-map-marked-alt"></i>
+              </div>
+              <div>
+                <h4 style="margin: 0; font-size: 1.2rem; color: var(--primary)">
+                  30+
+                </h4>
+                <p style="margin: 0; font-size: 0.8rem; color: #777">
+                  Provinsi
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -344,8 +643,25 @@
           </div>
           <div class="footer-info">
             <h4>Sertifikasi</h4>
-            <p style="color: #fff; font-weight: 600">
+            <p style="color: #fff; font-weight: 600; margin-bottom: 20px">
               ISO 9001 • ISO 14001 • ISO 45001 • ISO 37001
+            </p>
+            <h4>Karir</h4>
+            <p style="margin: 0">
+              <a
+                href="career.html"
+                style="
+                  color: #fff;
+                  text-decoration: none;
+                  border-bottom: 1px dotted #fff;
+                "
+              >
+                Gabung Tim Kami
+                <i
+                  class="fas fa-arrow-right"
+                  style="font-size: 0.8rem; margin-left: 5px"
+                ></i>
+              </a>
             </p>
           </div>
         </div>
