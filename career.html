@@ -8,280 +8,363 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <style>
-      /* --- CUSTOM CSS HALAMAN KARIR --- */
 
-      /* 1. LAYOUT ATAS */
-      .top-section-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 50px;
+    <style>
+      /* --- GLOBAL STYLES FOR CAREER PAGE --- */
+      :root {
+        --primary-dark: #003366;
+        --primary-light: #004080;
+        --accent-color: #e23535;
+        --bg-color: #f8f9fa;
+        --card-bg: #ffffff;
+        --text-grey: #555;
+        --border-color: #e9ecef;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-color);
+        color: #333;
+      }
+
+      /* 1. SECTION ATAS (NEWS & INFO) */
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 40px;
+        margin-bottom: 50px;
         align-items: center;
-        margin-bottom: 60px;
-        padding-bottom: 40px;
-        border-bottom: 1px solid #eee;
       }
-      .news-content {
-        flex: 3;
-        min-width: 300px;
-      }
-      .news-label {
-        color: var(--accent);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.85rem;
-        margin-bottom: 10px;
-        display: block;
-      }
+
       .news-content h2 {
         font-size: 2rem;
-        color: var(--primary);
-        margin-bottom: 20px;
-        line-height: 1.3;
+        color: var(--primary-dark);
+        margin-bottom: 15px;
+        line-height: 1.2;
+        font-weight: 700;
       }
       .news-content p {
-        color: #555;
-        font-size: 1.05rem;
+        color: var(--text-grey);
         line-height: 1.7;
         margin-bottom: 25px;
-      }
-      .priority-tags {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-      .p-tag {
-        background: #f0f4f8;
-        color: var(--primary);
-        padding: 8px 16px;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .p-tag i {
-        color: var(--accent);
+        font-size: 1.05rem;
       }
 
       .cta-card {
-        flex: 2;
-        min-width: 280px;
-        background: var(--primary);
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark) 0%,
+          #001a33 100%
+        );
         color: #fff;
-        padding: 40px;
-        border-radius: 16px;
-        box-shadow: 0 20px 40px rgba(0, 51, 102, 0.25);
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 15px 40px rgba(0, 51, 102, 0.15);
         position: relative;
         overflow: hidden;
       }
-      .cta-card::before {
+      .cta-card::after {
         content: "";
         position: absolute;
-        top: -50px;
-        right: -50px;
-        width: 150px;
-        height: 150px;
-        background: rgba(255, 255, 255, 0.1);
+        bottom: -40px;
+        right: -40px;
+        width: 180px;
+        height: 180px;
+        background: rgba(255, 255, 255, 0.05);
         border-radius: 50%;
       }
-      .cta-card h3 {
+      .btn-glass {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         color: #fff;
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-      }
-      .cta-card p {
-        color: rgba(255, 255, 255, 0.85);
-        margin-bottom: 25px;
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-      .btn-white {
-        background: #fff;
-        color: var(--primary);
-        font-weight: 700;
-        padding: 12px 25px;
-        border-radius: 8px;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
-        transition: 0.3s;
-        cursor: pointer;
-      }
-      .btn-white:hover {
-        background: #f0f0f0;
-        transform: translateY(-3px);
-      }
-
-      /* 2. FORM SECTION */
-      .form-container {
-        background: #fff;
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        margin-bottom: 50px;
-        border: 1px solid #eee;
-        scroll-margin-top: 100px;
-      }
-      .form-group label {
-        font-weight: 600;
-        color: var(--primary);
-        font-size: 0.9rem;
-      }
-      .form-control-custom {
-        width: 100%;
-        padding: 12px 15px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        margin-top: 5px;
+        gap: 10px;
         font-size: 0.95rem;
-        transition: 0.3s;
       }
-      .form-control-custom:focus {
-        border-color: var(--primary);
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
-      }
-
-      /* Style Dropdown */
-      select.form-control-custom {
-        background-color: #fff;
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-        background-size: 1em;
+      .btn-glass:hover {
+        background: #fff;
+        color: var(--primary-dark);
+        transform: translateY(-2px);
       }
 
-      /* 3. JOB LIST SECTION */
-      .job-grid-container {
+      /* 2. DAFTAR LOWONGAN (CARD GRID) */
+      .section-header-simple {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e0e0e0;
+      }
+      .job-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
         gap: 25px;
       }
 
-      .job-card {
+      .project-card {
         background: #fff;
-        border: 1px solid #e0e0e0;
+        border: 1px solid var(--border-color);
         border-radius: 12px;
-        padding: 25px;
-        transition: 0.3s;
+        padding: 30px;
+        transition: all 0.3s ease;
         cursor: pointer;
         display: flex;
         flex-direction: column;
         height: 100%;
-        min-height: 250px;
-        justify-content: space-between;
+        min-height: 260px;
         position: relative;
-        overflow: hidden;
       }
-      .job-card:hover {
-        border-color: var(--primary);
+      .project-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+        border-color: var(--primary-dark);
       }
-      .job-card-content {
-        flex-grow: 1;
-      }
-      .job-card h3 {
-        font-size: 1.3rem;
-        color: var(--primary);
-        margin-bottom: 12px;
-        margin-top: 0;
-        padding-right: 60px;
-        line-height: 1.3;
-      }
-      .job-tags {
-        margin-bottom: 15px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .job-tags span {
-        font-size: 0.8rem;
-        background: #f4f6f8;
-        padding: 5px 10px;
-        border-radius: 6px;
-        color: #555;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .job-desc {
-        font-size: 0.95rem;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-      .status-badge {
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        padding: 4px 10px;
-        border-radius: 20px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-      .status-open {
+      .status-pill {
         background: #e6fcf5;
         color: #0ca678;
-        border: 1px solid #b2f2bb;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 6px 12px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-bottom: 15px;
+        letter-spacing: 0.5px;
       }
-      .status-closed {
-        background: #fff5f5;
-        color: #fa5252;
-        border: 1px solid #ffc9c9;
+      .project-card h3 {
+        font-size: 1.3rem;
+        color: var(--primary-dark);
+        margin: 0 0 10px 0;
+        font-weight: 700;
       }
-
-      .card-footer-action {
-        margin-top: auto;
-        border-top: 1px dashed #eee;
-        padding-top: 15px;
-        text-align: right;
+      .project-location {
+        color: #666;
         font-size: 0.9rem;
-        color: var(--primary);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .project-desc {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        flex-grow: 1;
+      }
+      .card-footer {
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px dashed #eee;
+        text-align: right;
         font-weight: 600;
+        color: var(--primary-dark);
+        font-size: 0.9rem;
         display: flex;
         align-items: center;
         justify-content: flex-end;
         gap: 8px;
       }
 
-      /* Loader */
-      .spinner {
-        border: 3px solid #f3f3f3;
-        border-top: 3px solid var(--primary);
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        animation: spin 1s linear infinite;
-        margin: 20px auto;
+      /* 3. FORM TALENT POOL (BAWAH) */
+      .form-section-wrapper {
+        margin-top: 80px;
+        background: var(--card-bg);
+        border-radius: 16px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 50px;
       }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
+      .form-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 40px auto;
+      }
+      .form-header h2 {
+        color: var(--primary-dark);
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+      }
+      .form-header p {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.6;
       }
 
-      @media (max-width: 768px) {
-        .top-section-wrapper {
-          flex-direction: column;
-          gap: 30px;
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .form-control {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        transition: 0.3s ease;
+        font-family: "Inter", sans-serif;
+        background: #fcfcfc;
+      }
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary-dark);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.05);
+      }
+      select.form-control {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23003366' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1em;
+      }
+
+      /* MODAL POPUP */
+      .modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(3px);
+        z-index: 9999;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal-backdrop.show {
+        display: flex;
+        opacity: 1;
+      }
+
+      .modal-content {
+        background: #fff;
+        width: 100%;
+        max-width: 650px;
+        max-height: 90vh;
+        border-radius: 12px;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        transform: scale(0.95);
+        transition: transform 0.3s;
+      }
+      .modal-backdrop.show .modal-content {
+        transform: scale(1);
+      }
+
+      .modal-header {
+        background: var(--primary-dark);
+        color: #fff;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .modal-body {
+        padding: 30px;
+      }
+      .close-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+      .close-btn:hover {
+        opacity: 1;
+      }
+
+      /* BUTTON & ALERTS */
+      .btn-primary-form {
+        background: var(--primary-dark);
+        color: #fff;
+        border: none;
+        padding: 14px 30px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+        box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2);
+      }
+      .btn-primary-form:hover {
+        background: var(--primary-light);
+        transform: translateY(-2px);
+      }
+      .btn-primary-form:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .alert-box {
+        padding: 15px;
+        border-radius: 6px;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: none;
+      }
+      .alert-success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .alert-error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .intro-grid {
+          grid-template-columns: 1fr;
         }
-        .news-content h2 {
-          font-size: 1.5rem;
+        .form-grid {
+          grid-template-columns: 1fr;
         }
-        .form-container {
-          padding: 25px;
+        .form-section-wrapper {
+          padding: 30px;
         }
       }
     </style>
@@ -303,6 +386,17 @@
             <li><a href="services.html">Services</a></li>
             <li><a href="portfolio.html">Projects</a></li>
             <li><a href="contact.html" class="nav-btn">Contact</a></li>
+            <li>
+              <a
+                href="career.html"
+                style="
+                  font-weight: 600;
+                  margin-left: 10px;
+                  color: var(--primary);
+                "
+                >Lowongan</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
@@ -312,332 +406,376 @@
       class="hero-mini"
       style="
         background-image:
-          linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)),
+          linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 30, 60, 0.9)),
           url(&quot;assets/images/bg4.jpg&quot;);
       "
     >
       <div class="container">
-        <h4
-          style="
-            color: var(--accent);
-            font-weight: 700;
-            animation: fadeInUp 1s ease-out;
-          "
-        >
-          KARIR
+        <h4 style="color: var(--accent); font-weight: 700; letter-spacing: 2px">
+          LOWONGAN KERJA
         </h4>
-        <h1 style="animation: fadeInUp 1s ease-out 0.2s backwards">
-          Bergabung Dengan Tim
-        </h1>
-        <p style="animation: fadeInUp 1s ease-out 0.4s backwards">
-          Jadilah bagian dari solusi infrastruktur Indonesia.
+        <h1>Bergabung Dengan Tim Ahli</h1>
+        <p>
+          Wujudkan infrastruktur masa depan Indonesia dengan integritas dan
+          profesionalisme.
         </p>
       </div>
     </section>
 
-    <section class="section-padding" style="background: #fcfcfc">
+    <section class="section-padding">
       <div class="container">
-        <div class="top-section-wrapper reveal">
+        <div class="intro-grid reveal">
           <div class="news-content">
-            <span class="news-label"
-              ><i class="fas fa-bullhorn"></i> Hiring Focus 2025</span
-            >
-            <h2>Mencari Tenaga Ahli untuk Proyek Strategis Nasional</h2>
-            <p>
-              PT. Elsadai Servo Cons saat ini memfokuskan rekrutmen untuk
-              mendukung percepatan pembangunan di wilayah
-              <strong>[LOKASI PROYEK]</strong> dan ekspansi infrastruktur di
-              [LOKASI].
-            </p>
-            <div
+            <span
               style="
-                margin-bottom: 10px;
-                font-weight: 600;
-                color: var(--text-color);
+                color: var(--accent-color);
+                font-weight: 700;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+              "
+              >INFORMASI REKRUTMEN</span
+            >
+            <h2>Fokus Pembangunan Nasional</h2>
+            <p>
+              PT. Elsadai Servo Cons saat ini sedang melakukan ekspansi untuk
+              mendukung proyek strategis nasional, khususnya di wilayah
+              <strong>[LOKASI PROYEK]</strong> dan
+              <strong>[KAWASAN PROYEK]</strong>. Kami mengundang tenaga
+              profesional untuk bergabung.
+            </p>
+          </div>
+
+          <div class="cta-card">
+            <h3 style="color: white; margin-bottom: 15px; font-size: 1.4rem">
+              Jaringan Talenta <span style="color: #ff4d4d">(Talent Pool)</span>
+            </h3>
+            <p
+              style="
+                opacity: 1.5;
+                margin-bottom: 25px;
+                line-height: 1.6;
+                font-size: 0.95rem;
               "
             >
-              Posisi Prioritas Bulan Ini:
-            </div>
-            <div class="priority-tags">
-              <span class="p-tag"
-                ><i class="fas fa-hard-hat"></i> Site Engineer</span
-              >
-              <span class="p-tag"
-                ><i class="fas fa-shield-alt"></i> Ahli K3 Konstruksi</span
-              >
-              <span class="p-tag"
-                ><i class="fas fa-drafting-compass"></i> Drafter BIM</span
-              >
-            </div>
-          </div>
-          <div class="cta-card">
-            <h3>Talent Pool</h3>
-            <p>
-              Posisi yang Anda cari belum tersedia? Jangan khawatir. Kirimkan CV
-              Anda ke database kami untuk peluang mendatang.
+              Posisi yang sesuai kualifikasi Anda belum tersedia? Bergabunglah
+              dengan jaringan talenta kami. Profil Anda akan kami simpan dan
+              tinjau saat ada kebutuhan yang relevan.
             </p>
-            <a
-              href="javascript:void(0)"
-              class="btn-white"
-              onclick="resetFormToGeneral()"
-            >
-              Isi Form Lamaran
-              <i class="fas fa-arrow-right" style="margin-left: 10px"></i>
+            <a href="#talent-pool-section" class="btn-glass">
+              Gabung Talent Pool <i class="fas fa-arrow-down"></i>
             </a>
           </div>
         </div>
 
-        <div id="form-lamaran" class="form-container reveal">
-          <div style="text-align: center; margin-bottom: 30px">
-            <h2 style="color: var(--primary); margin-bottom: 10px">
-              Formulir Lamaran
-            </h2>
-            <p style="color: #666">
-              Silakan pilih posisi dari daftar, atau "Umum / Talent Pool".
+        <div class="reveal">
+          <div class="section-header-simple">
+            <div>
+              <h2 style="color: var(--primary-dark); margin: 0">
+                Lowongan Tersedia
+              </h2>
+              <p style="margin: 5px 0 0 0; color: #666">
+                Pilih proyek di bawah ini untuk melihat detail dan melamar.
+              </p>
+            </div>
+            <div style="font-size: 0.9rem; color: #666">
+              <i class="fas fa-check-circle" style="color: #0ca678"></i> Status:
+              Aktif
+            </div>
+          </div>
+
+          <div id="project-list-container" class="job-grid">
+            <div
+              style="
+                grid-column: 1 / -1;
+                text-align: center;
+                padding: 60px;
+                color: #999;
+              "
+            >
+              <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+              <p style="margin-top: 15px">Memuat informasi lowongan...</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="talent-pool-section" class="form-section-wrapper reveal">
+          <div class="form-header">
+            <h2>Pendaftaran Kandidat Umum</h2>
+            <p>
+              Formulir ini ditujukan bagi Anda yang ingin mendaftarkan profil
+              profesional ke dalam sistem kami untuk peluang di masa mendatang
+              (Non-Proyek Spesifik).
             </p>
           </div>
 
-          <form id="careerForm" onsubmit="handleFormSubmit(event)">
-            <div
-              style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
-            >
+          <form
+            id="talentPoolForm"
+            onsubmit="submitForm(event, 'talentPoolForm')"
+          >
+            <input type="hidden" name="Project" value="Talent Pool (Umum)" />
+            <input
+              type="hidden"
+              name="Posisi_Dilamar"
+              value="Umum / Talent Pool"
+            />
+
+            <div class="form-grid">
               <div>
                 <div class="form-group">
                   <label
-                    >Posisi yang Dilamar
+                    >Nama Lengkap (Sesuai KTP)
                     <span style="color: red">*</span></label
                   >
-                  <select
-                    id="posisi-input"
-                    name="Posisi"
-                    class="form-control-custom"
+                  <input
+                    type="text"
+                    name="Nama"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label
+                    >Bidang Keahlian / Posisi
+                    <span style="color: red">*</span></label
                   >
-                    <option value="Umum / Talent Pool">
-                      Umum / Talent Pool
+                  <select name="Posisi_Harapan" class="form-control" required>
+                    <option value="" disabled selected>
+                      -- Pilih Bidang --
+                    </option>
+                    <option value="Team Leader">Team Leader</option>
+                    <option value="Tenaga Ahli">Tenaga Ahli</option>
+                    <option value="Sub Profesional/Asisten TA">
+                      Sub Profesional/Asisten TA
+                    </option>
+                    <option value="Inspektor/Surveyor">
+                      Inspektor/Surveyor
+                    </option>
+                    <option value="Administrasi">Administrasi</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label
+                    >Provinsi Domisili <span style="color: red">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="Provinsi"
+                    class="form-control"
+                    placeholder="Contoh: DKI Jakarta"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Kota Domisili <span style="color: red">*</span></label>
+                  <input
+                    type="text"
+                    name="Kota"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div class="form-group">
+                  <label
+                    >Nomor WhatsApp / Telepon
+                    <span style="color: red">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="No_WA"
+                    class="form-control"
+                    placeholder="08..."
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label
+                    >Tautan CV & Portofolio (Google Drive)
+                    <span style="color: red">*</span></label
+                  >
+                  <input
+                    type="url"
+                    name="Link_CV"
+                    class="form-control"
+                    placeholder="https://..."
+                    required
+                  />
+                  <small
+                    style="
+                      color: #777;
+                      font-size: 0.8rem;
+                      margin-top: 5px;
+                      display: block;
+                    "
+                  >
+                    *Pastikan akses tautan diatur ke "Siapa saja yang memiliki
+                    link" (Anyone with the link).
+                  </small>
+                </div>
+
+                <div class="form-group">
+                  <label
+                    >Preferensi Lokasi Penugasan
+                    <span style="color: red">*</span></label
+                  >
+                  <select name="Kesediaan_Lokasi" class="form-control" required>
+                    <option value="" disabled selected>
+                      -- Pilih Wilayah --
+                    </option>
+                    <option value="Seluruh Wilayah Indonesia">
+                      Bersedia di Seluruh Indonesia
+                    </option>
+                    <option value="Pulau Jawa">Khusus Pulau Jawa</option>
+                    <option value="Pulau Sumatra">Khusus Pulau Sumatra</option>
+                    <option value="Pulau Kalimantan">
+                      Khusus Pulau Kalimantan
+                    </option>
+                    <option value="Pulau Sulawesi">
+                      Khusus Pulau Sulawesi
+                    </option>
+                    <option value="Pulau Maluku dan Papua">
+                      Khusus Maluku & Papua
+                    </option>
+                    <option value="Bali NTT dan NTB">
+                      Khusus Bali, NTT, NTB
                     </option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label>Nama Lengkap <span style="color: red">*</span></label>
-                  <input
-                    type="text"
-                    id="nama"
-                    name="Nama"
-                    class="form-control-custom"
-                    placeholder="Sesuai KTP"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Kota Domisili <span style="color: red">*</span></label>
-                  <input
-                    type="text"
-                    id="domisili"
-                    name="Domisili"
-                    class="form-control-custom"
-                    placeholder="Contoh: Manado, Jakarta Selatan"
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <div class="form-group">
-                  <label
-                    >Nomor WhatsApp <span style="color: red">*</span></label
-                  >
-                  <input
-                    type="text"
-                    id="wa"
-                    name="No_WA"
-                    class="form-control-custom"
-                    placeholder="Contoh: 0812..."
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label
-                    >Link CV & Portofolio (Google Drive)
-                    <span style="color: red">*</span></label
-                  >
-                  <input
-                    type="url"
-                    id="link_cv"
-                    name="Link_CV"
-                    class="form-control-custom"
-                    placeholder="https://drive.google.com/..."
-                    required
-                  />
-                  <small
-                    style="
-                      color: #888;
-                      font-size: 0.75rem;
-                      display: block;
-                      margin-top: 5px;
-                    "
-                    >*Pastikan akses link "Anyone with the link" (Siapa saja yg
-                    memiliki link).</small
-                  >
-                </div>
-                <div class="form-group">
-                  <label>Pesan Singkat / Cover Letter</label>
+                  <label>Ringkasan Profil (Opsional)</label>
                   <textarea
-                    id="pesan"
                     name="Pesan"
-                    class="form-control-custom"
-                    rows="3"
-                    placeholder="Perkenalkan diri dan keahlian utama Anda..."
+                    class="form-control"
+                    rows="1"
+                    placeholder="Ceritakan singkat pengalaman utama Anda..."
                   ></textarea>
                 </div>
               </div>
             </div>
-            <div style="text-align: center; margin-top: 30px">
+
+            <div style="margin-top: 30px; text-align: center">
               <button
                 type="submit"
-                class="btn"
-                style="width: 100%; max-width: 300px; padding: 12px 20px"
+                class="btn-primary-form"
+                style="max-width: 300px"
               >
                 <i class="fas fa-paper-plane" style="margin-right: 8px"></i>
-                Kirim Lamaran
+                Kirim Profil Saya
               </button>
+
+              <div class="alert-box alert-success">
+                <i class="fas fa-check-circle"></i> Terima kasih! Profil Anda
+                telah kami terima.
+              </div>
+              <div class="alert-box alert-error">
+                <i class="fas fa-exclamation-triangle"></i> Gagal mengirim data.
+                Silakan coba lagi.
+              </div>
             </div>
           </form>
         </div>
-
-        <div class="reveal">
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-end;
-              margin-bottom: 25px;
-              border-bottom: 2px solid #eee;
-              padding-bottom: 15px;
-            "
-          >
-            <h2 style="color: var(--primary); margin: 0">Daftar Lowongan</h2>
-            <span
-              style="
-                font-size: 0.85rem;
-                color: #777;
-                background: #f0f0f0;
-                padding: 5px 10px;
-                border-radius: 4px;
-              "
-            >
-              <i class="fas fa-sync-alt"></i> Live Database
-            </span>
-          </div>
-
-          <div id="job-list-container" class="job-grid-container">
-            <div
-              style="
-                grid-column: 1 / -1;
-                text-align: center;
-                color: #888;
-                padding: 40px;
-              "
-            >
-              <div class="spinner"></div>
-              <p>Sedang memuat data lowongan terbaru...</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <section
-      class="section-padding"
-      style="background: #fff; border-top: 1px solid #eee"
-    >
-      <div class="container reveal">
-        <h3 style="color: var(--primary); margin-bottom: 30px">
-          Informasi Penting
-        </h3>
-        <div
-          class="services-grid"
-          style="grid-template-columns: repeat(3, 1fr); gap: 30px"
-        >
-          <div style="display: flex; gap: 15px">
-            <div
-              style="
-                width: 50px;
-                height: 50px;
-                background: rgba(211, 47, 47, 0.1);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
+    <div class="modal-backdrop" id="projectModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 style="margin: 0; font-size: 1.2rem">Lamar Posisi Proyek</h3>
+          <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="color: #666; margin-bottom: 20px">
+            Anda sedang melamar untuk:
+            <strong id="modalProjectName" style="color: var(--primary-dark)"
+              >Nama Proyek</strong
             >
-              <i
-                class="fas fa-exclamation-triangle"
-                style="font-size: 1.2rem; color: var(--accent)"
-              ></i>
+          </p>
+
+          <form id="projectForm" onsubmit="submitForm(event, 'projectForm')">
+            <input type="hidden" name="Project" id="inputProjectName" />
+
+            <input
+              type="hidden"
+              name="Posisi_Harapan"
+              value="Sesuai Lamaran Proyek"
+            />
+            <input
+              type="hidden"
+              name="Kesediaan_Lokasi"
+              value="Sesuai Lokasi Proyek"
+            />
+
+            <div class="form-group">
+              <label>Nama Lengkap <span style="color: red">*</span></label>
+              <input type="text" name="Nama" class="form-control" required />
             </div>
-            <div>
-              <h4 style="margin: 0 0 5px 0">Waspada Penipuan</h4>
-              <p style="font-size: 0.9rem; color: #666; line-height: 1.5">
-                Rekrutmen PT. Elsadai Servo Cons tidak pernah memungut biaya
-                apapun.
-              </p>
+
+            <div class="form-group">
+              <label
+                >Posisi yang Dilamar <span style="color: red">*</span></label
+              >
+              <select name="Posisi" class="form-control" required>
+                <option value="" disabled selected>-- Pilih Posisi --</option>
+                <option value="Team Leader">Team Leader</option>
+                <option value="Tenaga Ahli">Tenaga Ahli</option>
+                <option value="Sub Profesional/Asisten TA">
+                  Sub Profesional/Asisten TA
+                </option>
+                <option value="Inspektor/Surveyor">Inspektor/Surveyor</option>
+                <option value="Administrasi">Administrasi</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
             </div>
-          </div>
-          <div style="display: flex; gap: 15px">
-            <div
-              style="
-                width: 50px;
-                height: 50px;
-                background: rgba(0, 51, 102, 0.1);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
-            >
-              <i
-                class="fas fa-envelope-open-text"
-                style="font-size: 1.2rem; color: var(--primary)"
-              ></i>
+
+            <div class="form-grid" style="gap: 15px">
+              <div class="form-group">
+                <label>Provinsi <span style="color: red">*</span></label>
+                <input
+                  type="text"
+                  name="Provinsi"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Kota <span style="color: red">*</span></label>
+                <input type="text" name="Kota" class="form-control" required />
+              </div>
             </div>
-            <div>
-              <h4 style="margin: 0 0 5px 0">Proses Seleksi</h4>
-              <p style="font-size: 0.9rem; color: #666; line-height: 1.5">
-                Hanya kandidat yang lolos seleksi administrasi yang akan
-                dihubungi.
-              </p>
+
+            <div class="form-group">
+              <label>Nomor WhatsApp <span style="color: red">*</span></label>
+              <input type="text" name="No_WA" class="form-control" required />
             </div>
-          </div>
-          <div style="display: flex; gap: 15px">
-            <div
-              style="
-                width: 50px;
-                height: 50px;
-                background: #f0f0f0;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-              "
-            >
-              <i
-                class="fas fa-database"
-                style="font-size: 1.2rem; color: #555"
-              ></i>
+
+            <div class="form-group">
+              <label
+                >Tautan CV (GDrive) <span style="color: red">*</span></label
+              >
+              <input type="url" name="Link_CV" class="form-control" required />
             </div>
-            <div>
-              <h4 style="margin: 0 0 5px 0">Database</h4>
-              <p style="font-size: 0.9rem; color: #666; line-height: 1.5">
-                Data Anda aman dan disimpan dalam Talent Pool kami.
-              </p>
+
+            <div style="margin-top: 25px">
+              <button type="submit" class="btn-primary-form">
+                Kirim Lamaran
+              </button>
+              <div class="alert-box alert-success">
+                Berhasil! Data terkirim.
+              </div>
+              <div class="alert-box alert-error">Gagal mengirim.</div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
 
     <footer>
       <div class="container">
@@ -658,10 +796,7 @@
           <div class="footer-info">
             <h4>Hubungi Kami</h4>
             <ul>
-              <li>
-                <i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A,
-                Manado
-              </li>
+              <li><i class="fas fa-map-marker-alt"></i> Manado, Indonesia</li>
               <li><i class="fas fa-phone"></i> +62 896-1878-8227</li>
               <li>
                 <i class="fas fa-envelope"></i> ptelsadaiservocons@gmail.com
@@ -670,8 +805,8 @@
           </div>
           <div class="footer-info">
             <h4>Sertifikasi</h4>
-            <p style="color: #fff; font-weight: 600; margin-bottom: 20px">
-              ISO 9001 • ISO 14001 • ISO 45001 • ISO 37001
+            <p style="color: #fff; font-weight: 600">
+              ISO 9001 • ISO 14001 • ISO 45001
             </p>
           </div>
         </div>
@@ -681,201 +816,184 @@
       </div>
     </footer>
 
-    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
-
     <script src="assets/js/main.js"></script>
     <script>
-      // --- KONFIGURASI LINK CSV ---
-      const SHEET_CSV_URL =
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQf-1ym4edJc1CvIi3YpI2YofLAs7mWXbYxeFxEuAPxVqll7lsJXX2kHyvqoHWuzU7BoeuTRqONjUhU/pub?gid=1778386684&single=true&output=csv";
-      const EMAIL_HRD = "hrd.elsadaiservocons@gmail.com";
+      // ================= KONFIGURASI SISTEM =================
+      // 1. Link Data Lowongan (CSV)
+      const READ_CSV_URL =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsep9elL2HOd38PXNnfpyzbSyQ2trMMT4p15b_RtV2AdgjtoXjlOXpZAFTPwNppB7wo_-Z6brP8BRX/pub?gid=0&single=true&output=csv";
+
+      // 2. Link Sistem Rekrutmen (Apps Script)
+      // GANTI DENGAN LINK APPS SCRIPT ANDA
+      const SUBMIT_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbyFiHYZzaqxjQbHfvh3FWZz31d5JuAOzoR-dgXMnt4UvQ5X9ud-j5_S0RnbZQHKiOj1/exec";
+      // ======================================================
 
       document.addEventListener("DOMContentLoaded", function () {
-        fetchJobs();
+        fetchProjects();
       });
 
-      function fetchJobs() {
-        fetch(SHEET_CSV_URL)
-          .then((response) => {
-            if (!response.ok) throw new Error("Network response was not ok");
-            return response.text();
+      // --- 1. AMBIL DATA LOWONGAN ---
+      function fetchProjects() {
+        fetch(READ_CSV_URL)
+          .then((res) => res.text())
+          .then((csv) => {
+            const rows = parseCSV(csv);
+            renderProjects(rows);
           })
-          .then((csvText) => {
-            const jobs = parseCSV(csvText);
-            populateDropdown(jobs);
-            renderJobs(jobs);
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
-            document.getElementById("job-list-container").innerHTML =
-              `<p style='text-align:center; color:red'>Gagal memuat database. Cek koneksi internet atau link Sheet.</p>`;
+          .catch((err) => {
+            console.error(err);
+            document.getElementById("project-list-container").innerHTML =
+              `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#e23535; background:#fff; border-radius:12px; border:1px solid #eee;">
+                        <i class="fas fa-exclamation-circle fa-2x"></i><br><br>
+                        Gagal memuat data lowongan.<br>Mohon periksa koneksi atau coba beberapa saat lagi.
+                     </div>`;
           });
       }
 
-      // --- PARSER CSV ---
       function parseCSV(text) {
         const rows = [];
-        let currentRow = [];
-        let currentField = "";
-        let insideQuotes = false;
+        const lines = text.split(/\r?\n/);
+        for (let i = 1; i < lines.length; i++) {
+          const cols = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+          const cleanCols = cols.map((c) =>
+            c ? c.replace(/^"|"$/g, "").trim() : "",
+          );
 
-        for (let i = 0; i < text.length; i++) {
-          const char = text[i];
-          const nextChar = text[i + 1];
-
-          if (char === '"') {
-            if (insideQuotes && nextChar === '"') {
-              currentField += '"';
-              i++;
-            } else {
-              insideQuotes = !insideQuotes;
-            }
-          } else if (char === "," && !insideQuotes) {
-            currentRow.push(currentField.trim());
-            currentField = "";
-          } else if ((char === "\n" || char === "\r") && !insideQuotes) {
-            if (currentField || currentRow.length > 0) {
-              currentRow.push(currentField.trim());
-              rows.push(currentRow);
-            }
-            currentRow = [];
-            currentField = "";
-            if (char === "\r" && nextChar === "\n") i++;
-          } else {
-            currentField += char;
-          }
-        }
-        if (currentField || currentRow.length > 0) {
-          currentRow.push(currentField.trim());
-          rows.push(currentRow);
-        }
-
-        const data = [];
-        for (let i = 1; i < rows.length; i++) {
-          const row = rows[i];
-          if (row.length >= 4) {
-            data.push({
-              posisi: row[0],
-              lokasi: row[1],
-              tipe: row[2],
-              deskripsi: row[3],
-              status: row[5] || "Closed",
+          if (cleanCols.length > 6) {
+            rows.push({
+              posisi: cleanCols[0],
+              lokasi: cleanCols[1],
+              tipe: cleanCols[2],
+              deskripsi: cleanCols[3],
+              status: cleanCols[5],
+              project: cleanCols[6] || "General",
             });
           }
         }
-        return data;
+        return rows;
       }
 
-      // --- ISI DROPDOWN ---
-      function populateDropdown(jobs) {
-        const dropdown = document.getElementById("posisi-input");
-        // Jangan hapus option pertama (Umum / Talent Pool)
-        // dropdown.innerHTML = '<option value="Umum / Talent Pool">Umum / Talent Pool</option>';
-
-        jobs.forEach((job) => {
-          if (job.status && job.status.toUpperCase() === "OPEN") {
-            const option = document.createElement("option");
-            option.value = job.posisi;
-            option.textContent = job.posisi;
-            dropdown.appendChild(option);
-          }
-        });
-      }
-
-      function renderJobs(jobs) {
-        const container = document.getElementById("job-list-container");
+      function renderProjects(data) {
+        const container = document.getElementById("project-list-container");
         container.innerHTML = "";
 
-        if (jobs.length === 0) {
-          container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #888;">Belum ada lowongan aktif.<br>Silakan lamar via Talent Pool.</div>`;
+        const uniqueProjects = {};
+
+        data.forEach((item) => {
+          if (item.status && item.status.toUpperCase() === "OPEN") {
+            if (!uniqueProjects[item.project]) {
+              uniqueProjects[item.project] = {
+                name: item.project,
+                location: item.lokasi,
+                desc: item.deskripsi,
+              };
+            }
+          }
+        });
+
+        const projectsArray = Object.values(uniqueProjects);
+
+        if (projectsArray.length === 0) {
+          container.innerHTML = `
+                    <div style="grid-column:1/-1; text-align:center; padding:40px; background:#fff; border-radius:12px; border:1px solid #eee;">
+                        <i class="fas fa-info-circle fa-2x" style="color:#ccc;"></i><br><br>
+                        Saat ini belum ada lowongan proyek spesifik yang dibuka.<br>Silakan daftarkan diri Anda di <strong>Talent Pool</strong> di bawah ini.
+                    </div>`;
           return;
         }
 
-        jobs.forEach((job) => {
-          const statusClass =
-            job.status.toLowerCase() === "open"
-              ? "status-open"
-              : "status-closed";
-          const isClickable = job.status.toLowerCase() === "open";
-
+        projectsArray.forEach((proj) => {
           const card = document.createElement("div");
-          card.className = "job-card";
-
-          if (isClickable) {
-            card.onclick = function () {
-              selectJob(job.posisi);
-            };
-          } else {
-            card.style.opacity = "0.75";
-            card.style.cursor = "not-allowed";
-            card.style.background = "#fafafa";
-          }
+          card.className = "project-card";
+          card.onclick = function () {
+            openModal(proj.name);
+          };
 
           card.innerHTML = `
-                    <div class="job-card-content">
-                        <span class="status-badge ${statusClass}">${job.status}</span>
-                        <h3>${job.posisi}</h3>
-                        <div class="job-tags">
-                            <span><i class="fas fa-map-marker-alt"></i> ${job.lokasi}</span>
-                            <span><i class="fas fa-briefcase"></i> ${job.tipe}</span>
-                        </div>
-                        <p class="job-desc">${job.deskripsi}</p>
+                    <div>
+                        <span class="status-pill">REKRUTMEN DIBUKA</span>
+                        <h3>${proj.name}</h3>
+                        <div class="project-location"><i class="fas fa-map-marker-alt"></i> ${proj.location}</div>
+                        <p class="project-desc">${proj.desc}</p>
                     </div>
-                    <div class="card-footer-action">
-                        ${
-                          isClickable
-                            ? 'Pilih Posisi Ini <i class="fas fa-arrow-up"></i>'
-                            : '<span style="color: #999;">Lowongan Ditutup</span>'
-                        }
+                    <div class="card-footer">
+                        Lihat Detail & Lamar <i class="fas fa-arrow-right"></i>
                     </div>
                 `;
-
           container.appendChild(card);
         });
       }
 
-      function selectJob(positionName) {
-        const formSection = document.getElementById("form-lamaran");
-        const dropdown = document.getElementById("posisi-input");
+      // --- 2. MODAL LOGIC ---
+      function openModal(projectName) {
+        const modal = document.getElementById("projectModal");
+        document.getElementById("modalProjectName").innerText = projectName;
+        document.getElementById("inputProjectName").value = projectName;
 
-        formSection.scrollIntoView({ behavior: "smooth", block: "center" });
-        dropdown.value = positionName;
-
-        dropdown.style.backgroundColor = "#d1ecf1";
-        dropdown.style.borderColor = "var(--primary)";
-        setTimeout(() => {
-          dropdown.style.backgroundColor = "#fff";
-          dropdown.style.borderColor = "#ccc";
-        }, 1200);
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
       }
 
-      function resetFormToGeneral() {
-        selectJob("Umum / Talent Pool");
+      function closeModal() {
+        const modal = document.getElementById("projectModal");
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
       }
 
-      function handleFormSubmit(event) {
+      window.onclick = function (e) {
+        if (e.target == document.getElementById("projectModal")) closeModal();
+      };
+
+      // --- 3. SUBMIT FORM LOGIC ---
+      function submitForm(event, formId) {
         event.preventDefault();
+        const form = document.getElementById(formId);
+        const btn = form.querySelector('button[type="submit"]');
+        const successBox = form.querySelector(".alert-success");
+        const errorBox = form.querySelector(".alert-error");
 
-        const posisi = document.getElementById("posisi-input").value;
-        const nama = document.getElementById("nama").value;
-        const domisili = document.getElementById("domisili").value;
-        const wa = document.getElementById("wa").value;
-        const link_cv = document.getElementById("link_cv").value;
-        const pesan = document.getElementById("pesan").value;
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+        successBox.style.display = "none";
+        errorBox.style.display = "none";
 
-        const subject = `Lamaran Kerja: ${posisi} - ${nama}`;
-        const body =
-          `Yth. HRD PT. Elsadai Servo Cons,%0D%0A%0D%0A` +
-          `Saya bermaksud mengirimkan lamaran untuk posisi: *${posisi}*.%0D%0A%0D%0A` +
-          `Berikut adalah data diri singkat saya:%0D%0A` +
-          `- Nama Lengkap: ${nama}%0D%0A` +
-          `- Domisili: ${domisili}%0D%0A` +
-          `- No. WhatsApp: ${wa}%0D%0A%0D%0A` +
-          `Link CV & Portofolio (G-Drive):%0D%0A${link_cv}%0D%0A%0D%0A` +
-          `Pesan Tambahan:%0D%0A${pesan}%0D%0A%0D%0A` +
-          `Terima kasih atas perhatian Bapak/Ibu.`;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
 
-        window.location.href = `mailto:${EMAIL_HRD}?subject=${subject}&body=${body}`;
+        fetch(SUBMIT_SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify(data),
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+        })
+          .then(() => {
+            btn.innerHTML = '<i class="fas fa-check"></i> Terkirim';
+            successBox.style.display = "block";
+            form.reset();
+
+            if (formId === "projectForm") {
+              setTimeout(() => {
+                closeModal();
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                successBox.style.display = "none";
+              }, 3000);
+            } else {
+              setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                successBox.style.display = "none";
+              }, 5000);
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            btn.disabled = false;
+            btn.innerHTML = "Coba Lagi";
+            errorBox.style.display = "block";
+          });
       }
     </script>
   </body>
