@@ -9,8 +9,112 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* --- TOMBOL BAHASA --- */
+      .lang-switch-container {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 5px 12px;
+        border-radius: 50px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .lang-option {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #999;
+        transition: 0.3s;
+        padding: 0 4px;
+      }
+      .lang-option:hover {
+        color: var(--primary);
+      }
+      .lang-option.active {
+        color: var(--primary);
+        font-weight: 800;
+        text-decoration: underline;
+      }
+      .lang-separator {
+        margin: 0 5px;
+        color: #ccc;
+        font-size: 0.8rem;
+      }
+
+      /* --- CSS ANTI-BANNER GOOGLE (PERSIS SEPERTI INDEX.HTML) --- */
+
+      /* 1. Sembunyikan Frame Banner (Ada tapi tak terlihat) */
+      .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+      }
+
+      /* 2. Sembunyikan Body Google (Container terluar widget) - INI KUNCINYA */
+      .skiptranslate {
+        display: none !important;
+      }
+
+      /* 3. Kunci Body agar tidak bisa digeser Google */
+      body {
+        top: 0px !important;
+        position: static !important;
+      }
+
+      /* 4. Sembunyikan Tooltip & Highlight */
+      .goog-tooltip {
+        display: none !important;
+      }
+      .goog-tooltip:hover {
+        display: none !important;
+      }
+      .goog-text-highlight {
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+
+      /* 5. Pastikan Navbar Tetap di Atas */
+      header {
+        top: 0 !important;
+      }
+
+      /* Animasi */
+      @keyframes floatUpDown {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(226, 53, 53, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(226, 53, 53, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(226, 53, 53, 0);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="google_translate_element" style="display: none"></div>
+
     <header>
       <div class="container">
         <nav>
@@ -37,6 +141,24 @@
                 "
                 >Lowongan</a
               >
+            </li>
+
+            <li>
+              <div class="lang-switch-container">
+                <span
+                  class="lang-option"
+                  id="lang-id"
+                  onclick="setLanguage('id')"
+                  >ID</span
+                >
+                <span class="lang-separator">|</span>
+                <span
+                  class="lang-option"
+                  id="lang-en"
+                  onclick="setLanguage('en')"
+                  >EN</span
+                >
+              </div>
             </li>
           </ul>
         </nav>
@@ -268,7 +390,27 @@
         </div>
       </div>
     </footer>
+
     <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "id",
+            includedLanguages: "id,en",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false,
+          },
+          "google_translate_element",
+        );
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+
     <script src="assets/js/main.js"></script>
   </body>
 </html>

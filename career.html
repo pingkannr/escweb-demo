@@ -32,7 +32,88 @@
         color: #333;
       }
 
-      /* 1. SECTION ATAS (NEWS & INFO) */
+      /* ========================================= */
+      /* 1. CSS TOMBOL BAHASA                      */
+      /* ========================================= */
+      .lang-switch-container {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 5px 12px;
+        border-radius: 50px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .lang-option {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #999;
+        transition: 0.3s;
+        padding: 0 4px;
+      }
+      .lang-option:hover {
+        color: var(--primary);
+      }
+      .lang-option.active {
+        color: var(--primary);
+        font-weight: 800;
+        text-decoration: underline;
+      }
+      .lang-separator {
+        margin: 0 5px;
+        color: #ccc;
+        font-size: 0.8rem;
+      }
+
+      /* ========================================= */
+      /* 2. CSS ANTI-BANNER GOOGLE (MUTLAK)        */
+      /* ========================================= */
+      .goog-te-banner-frame.skiptranslate,
+      .goog-te-banner-frame,
+      iframe.goog-te-banner-frame {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        z-index: -9999 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      .skiptranslate {
+        display: none !important;
+      }
+
+      html,
+      body {
+        top: 0px !important;
+        margin-top: 0px !important;
+        position: static !important;
+      }
+
+      #google_translate_element,
+      .goog-te-gadget,
+      .goog-tooltip,
+      #goog-gt-tt {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      .goog-text-highlight {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      font {
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+      header {
+        top: 0 !important;
+      }
+
+      /* ========================================= */
+      /* 3. SECTION ATAS (NEWS & INFO)             */
+      /* ========================================= */
       .intro-grid {
         display: grid;
         grid-template-columns: 1.6fr 1fr;
@@ -100,7 +181,7 @@
         transform: translateY(-2px);
       }
 
-      /* 2. DAFTAR LOWONGAN (CARD GRID) */
+      /* 4. DAFTAR LOWONGAN (CARD GRID) */
       .section-header-simple {
         display: flex;
         justify-content: space-between;
@@ -111,75 +192,109 @@
       }
       .job-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-        gap: 25px;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
       }
 
       .project-card {
         background: #fff;
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
+        border: 1px solid #f0f0f0;
+        border-radius: 16px;
         padding: 30px;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         cursor: pointer;
         display: flex;
         flex-direction: column;
         height: 100%;
-        min-height: 260px;
+        min-height: 280px;
         position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       }
+
       .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
-        border-color: var(--primary-dark);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
+        border-color: rgba(0, 51, 102, 0.2);
       }
+
       .status-pill {
         background: #e6fcf5;
         color: #0ca678;
-        font-size: 0.75rem;
-        font-weight: 700;
+        font-size: 0.7rem;
+        font-weight: 800;
         padding: 6px 12px;
         border-radius: 50px;
         display: inline-block;
         margin-bottom: 15px;
         letter-spacing: 0.5px;
+        text-transform: uppercase;
       }
+
       .project-card h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         color: var(--primary-dark);
         margin: 0 0 10px 0;
         font-weight: 700;
+        line-height: 1.3;
       }
+
       .project-location {
         color: #666;
-        font-size: 0.9rem;
-        margin-bottom: 15px;
+        font-size: 0.95rem;
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
         gap: 8px;
+        font-weight: 500;
       }
-      .project-desc {
-        font-size: 0.95rem;
-        color: #555;
-        line-height: 1.6;
+
+      .positions-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #999;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+      }
+
+      .positions-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
         margin-bottom: 25px;
         flex-grow: 1;
       }
+
+      .position-badge {
+        background: #f1f5f9;
+        color: #334155;
+        border: 1px solid #cbd5e1;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
       .card-footer {
         margin-top: auto;
         padding-top: 20px;
         border-top: 1px dashed #eee;
         text-align: right;
         font-weight: 600;
-        color: var(--primary-dark);
+        color: var(--accent-color);
         font-size: 0.9rem;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
-        gap: 8px;
+        justify-content: space-between;
       }
 
-      /* 3. FORM TALENT POOL (BAWAH) */
+      .card-footer span {
+        color: #999;
+        font-size: 0.8rem;
+        font-weight: 400;
+      }
+
+      /* 5. FORM TALENT POOL (BAWAH) */
       .form-section-wrapper {
         margin-top: 80px;
         background: var(--card-bg);
@@ -244,6 +359,10 @@
         background-repeat: no-repeat;
         background-position: right 1rem center;
         background-size: 1em;
+      }
+      select.form-control:disabled {
+        background-color: #e9ecef;
+        cursor: not-allowed;
       }
 
       /* MODAL POPUP */
@@ -370,6 +489,8 @@
     </style>
   </head>
   <body>
+    <div id="google_translate_element" style="display: none"></div>
+
     <header>
       <div class="container">
         <nav>
@@ -391,11 +512,29 @@
                 href="career.html"
                 style="
                   font-weight: 600;
-                  margin-left: 10px;
+                  margin-left: 0px;
                   color: var(--primary);
                 "
                 >Lowongan</a
               >
+            </li>
+
+            <li>
+              <div class="lang-switch-container">
+                <span
+                  class="lang-option"
+                  id="lang-id"
+                  onclick="setLanguage('id')"
+                  >ID</span
+                >
+                <span class="lang-separator">|</span>
+                <span
+                  class="lang-option"
+                  id="lang-en"
+                  onclick="setLanguage('en')"
+                  >EN</span
+                >
+              </div>
             </li>
           </ul>
         </nav>
@@ -560,23 +699,33 @@
                   <label
                     >Provinsi Domisili <span style="color: red">*</span></label
                   >
-                  <input
-                    type="text"
+                  <select
                     name="Provinsi"
+                    id="provinsi-main"
                     class="form-control"
-                    placeholder="Contoh: DKI Jakarta"
                     required
-                  />
+                    onchange="loadCities(this.value, 'kota-main')"
+                  >
+                    <option value="" disabled selected>
+                      -- Pilih Provinsi --
+                    </option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
                 </div>
 
                 <div class="form-group">
                   <label>Kota Domisili <span style="color: red">*</span></label>
-                  <input
-                    type="text"
+                  <select
                     name="Kota"
+                    id="kota-main"
                     class="form-control"
                     required
-                  />
+                    disabled
+                  >
+                    <option value="" disabled selected>
+                      -- Pilih Kota/Kabupaten --
+                    </option>
+                  </select>
                 </div>
               </div>
 
@@ -724,30 +873,35 @@
               >
               <select name="Posisi" class="form-control" required>
                 <option value="" disabled selected>-- Pilih Posisi --</option>
-                <option value="Team Leader">Team Leader</option>
-                <option value="Tenaga Ahli">Tenaga Ahli</option>
-                <option value="Sub Profesional/Asisten TA">
-                  Sub Profesional/Asisten TA
-                </option>
-                <option value="Inspektor/Surveyor">Inspektor/Surveyor</option>
-                <option value="Administrasi">Administrasi</option>
-                <option value="Lainnya">Lainnya</option>
               </select>
             </div>
 
             <div class="form-grid" style="gap: 15px">
               <div class="form-group">
                 <label>Provinsi <span style="color: red">*</span></label>
-                <input
-                  type="text"
+                <select
                   name="Provinsi"
+                  id="provinsi-modal"
                   class="form-control"
                   required
-                />
+                  onchange="loadCities(this.value, 'kota-modal')"
+                >
+                  <option value="" disabled selected>-- Pilih --</option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
               </div>
+
               <div class="form-group">
                 <label>Kota <span style="color: red">*</span></label>
-                <input type="text" name="Kota" class="form-control" required />
+                <select
+                  name="Kota"
+                  id="kota-modal"
+                  class="form-control"
+                  required
+                  disabled
+                >
+                  <option value="" disabled selected>-- Pilih --</option>
+                </select>
               </div>
             </div>
 
@@ -816,22 +970,112 @@
       </div>
     </footer>
 
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "id",
+            includedLanguages: "id,en",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false,
+          },
+          "google_translate_element",
+        );
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+
     <script src="assets/js/main.js"></script>
+
     <script>
       // ================= KONFIGURASI SISTEM =================
-      // 1. Link Data Lowongan (CSV)
       const READ_CSV_URL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsep9elL2HOd38PXNnfpyzbSyQ2trMMT4p15b_RtV2AdgjtoXjlOXpZAFTPwNppB7wo_-Z6brP8BRX/pub?gid=0&single=true&output=csv";
-
-      // 2. Link Sistem Rekrutmen (Apps Script)
-      // GANTI DENGAN LINK APPS SCRIPT ANDA
       const SUBMIT_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbyFiHYZzaqxjQbHfvh3FWZz31d5JuAOzoR-dgXMnt4UvQ5X9ud-j5_S0RnbZQHKiOj1/exec";
       // ======================================================
 
+      let projectDatabase = {}; // Global variable untuk menyimpan data posisi per proyek
+
       document.addEventListener("DOMContentLoaded", function () {
         fetchProjects();
+        loadAllProvinces(); // Load Provinsi saat halaman dibuka
       });
+
+      // --- 0. WILAYAH INDONESIA API LOGIC ---
+      const API_BASE_URL = "https://www.emsifa.com/api-wilayah-indonesia/api";
+
+      function loadAllProvinces() {
+        fetch(`${API_BASE_URL}/provinces.json`)
+          .then((response) => response.json())
+          .then((provinces) => {
+            const options = provinces
+              .map(
+                (p) =>
+                  `<option value="${p.name}" data-id="${p.id}">${p.name}</option>`,
+              )
+              .join("");
+
+            // Isi Dropdown Main Form
+            const mainSelect = document.getElementById("provinsi-main");
+            if (mainSelect) {
+              mainSelect.innerHTML = `<option value="" disabled selected>-- Pilih Provinsi --</option>${options}<option value="Lainnya">Lainnya</option>`;
+            }
+
+            // Isi Dropdown Modal Form
+            const modalSelect = document.getElementById("provinsi-modal");
+            if (modalSelect) {
+              modalSelect.innerHTML = `<option value="" disabled selected>-- Pilih Provinsi --</option>${options}<option value="Lainnya">Lainnya</option>`;
+            }
+          })
+          .catch((error) => console.error("Gagal memuat provinsi:", error));
+      }
+
+      function loadCities(selectedProvinceName, targetCityId) {
+        const citySelect = document.getElementById(targetCityId);
+
+        citySelect.innerHTML =
+          '<option value="" disabled selected>Memuat...</option>';
+        citySelect.disabled = true;
+
+        if (selectedProvinceName === "Lainnya") {
+          citySelect.innerHTML =
+            '<option value="Lainnya" selected>Lainnya</option>';
+          citySelect.disabled = false;
+          return;
+        }
+
+        let provinceSelectId = "";
+        if (targetCityId === "kota-main") provinceSelectId = "provinsi-main";
+        else provinceSelectId = "provinsi-modal";
+
+        const provinceSelect = document.getElementById(provinceSelectId);
+        const selectedOption =
+          provinceSelect.options[provinceSelect.selectedIndex];
+        const provinceId = selectedOption.getAttribute("data-id");
+
+        if (provinceId) {
+          fetch(`${API_BASE_URL}/regencies/${provinceId}.json`)
+            .then((response) => response.json())
+            .then((regencies) => {
+              const options = regencies
+                .map((r) => `<option value="${r.name}">${r.name}</option>`)
+                .join("");
+              citySelect.innerHTML = `<option value="" disabled selected>-- Pilih Kota/Kabupaten --</option>${options}<option value="Lainnya">Lainnya</option>`;
+              citySelect.disabled = false;
+            })
+            .catch((error) => {
+              console.error("Gagal memuat kota:", error);
+              citySelect.innerHTML =
+                '<option value="" disabled>Gagal memuat data</option>';
+            });
+        }
+      }
 
       // --- 1. AMBIL DATA LOWONGAN ---
       function fetchProjects() {
@@ -847,7 +1091,7 @@
               `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#e23535; background:#fff; border-radius:12px; border:1px solid #eee;">
                         <i class="fas fa-exclamation-circle fa-2x"></i><br><br>
                         Gagal memuat data lowongan.<br>Mohon periksa koneksi atau coba beberapa saat lagi.
-                     </div>`;
+                      </div>`;
           });
       }
 
@@ -886,11 +1130,17 @@
               uniqueProjects[item.project] = {
                 name: item.project,
                 location: item.lokasi,
-                desc: item.deskripsi,
+                positions: [],
               };
+            }
+            if (!uniqueProjects[item.project].positions.includes(item.posisi)) {
+              uniqueProjects[item.project].positions.push(item.posisi);
             }
           }
         });
+
+        // SIMPAN DATA KE GLOBAL VARIABLE AGAR BISA DIAKSES MODAL
+        projectDatabase = uniqueProjects;
 
         const projectsArray = Object.values(uniqueProjects);
 
@@ -910,15 +1160,21 @@
             openModal(proj.name);
           };
 
+          const positionsHtml = proj.positions
+            .map((p) => `<span class="position-badge">${p}</span>`)
+            .join("");
+
           card.innerHTML = `
                     <div>
                         <span class="status-pill">REKRUTMEN DIBUKA</span>
                         <h3>${proj.name}</h3>
                         <div class="project-location"><i class="fas fa-map-marker-alt"></i> ${proj.location}</div>
-                        <p class="project-desc">${proj.desc}</p>
+                        
+                        <div class="positions-label">Posisi Dibuka:</div>
+                        <div class="positions-container">${positionsHtml}</div>
                     </div>
                     <div class="card-footer">
-                        Lihat Detail & Lamar <i class="fas fa-arrow-right"></i>
+                        <span>Klik untuk melamar</span> <i class="fas fa-arrow-right"></i>
                     </div>
                 `;
           container.appendChild(card);
@@ -930,6 +1186,27 @@
         const modal = document.getElementById("projectModal");
         document.getElementById("modalProjectName").innerText = projectName;
         document.getElementById("inputProjectName").value = projectName;
+
+        // --- LOGIKA BARU: POPULATE DROPDOWN POSISI ---
+        const positionSelect = document.querySelector(
+          '#projectForm select[name="Posisi"]',
+        );
+
+        // Ambil daftar posisi dari database global
+        const positions = projectDatabase[projectName].positions;
+
+        // Reset Dropdown
+        positionSelect.innerHTML =
+          '<option value="" disabled selected>-- Pilih Posisi --</option>';
+
+        // Masukkan Opsi Posisi
+        positions.forEach((pos) => {
+          const opt = document.createElement("option");
+          opt.value = pos;
+          opt.textContent = pos;
+          positionSelect.appendChild(opt);
+        });
+        // ----------------------------------------------
 
         modal.classList.add("show");
         document.body.style.overflow = "hidden";
@@ -995,6 +1272,18 @@
             errorBox.style.display = "block";
           });
       }
+
+      // === SCRIPT ANTI-BANNER HARDCODE (WAJIB DI SETIAP HALAMAN) ===
+      setInterval(function () {
+        var banner = document.querySelector(".goog-te-banner-frame");
+        if (banner) {
+          banner.remove();
+        }
+        if (document.body.style.top && document.body.style.top !== "0px") {
+          document.body.style.setProperty("top", "0px", "important");
+          document.body.style.setProperty("position", "static", "important");
+        }
+      }, 50);
     </script>
   </body>
 </html>

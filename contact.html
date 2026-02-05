@@ -9,8 +9,97 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* --- TOMBOL BAHASA --- */
+      .lang-switch-container {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 5px 12px;
+        border-radius: 50px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .lang-option {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #999;
+        transition: 0.3s;
+        padding: 0 4px;
+      }
+      .lang-option:hover {
+        color: var(--primary);
+      }
+      .lang-option.active {
+        color: var(--primary);
+        font-weight: 800;
+        text-decoration: underline;
+      }
+      .lang-separator {
+        margin: 0 5px;
+        color: #ccc;
+        font-size: 0.8rem;
+      }
+
+      /* --- CSS ANTI-BANNER GOOGLE (MUTLAK) --- */
+      /* 1. Sembunyikan Frame Banner */
+      .goog-te-banner-frame.skiptranslate,
+      .goog-te-banner-frame,
+      iframe.goog-te-banner-frame {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        z-index: -9999 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      /* 2. Sembunyikan Container Utama */
+      .skiptranslate {
+        display: none !important;
+      }
+
+      /* 3. Reset Body agar tidak turun */
+      html,
+      body {
+        top: 0px !important;
+        margin-top: 0px !important;
+        position: static !important;
+        height: auto !important;
+        min-height: 100%;
+      }
+
+      /* 4. Sembunyikan Elemen UI Google Lainnya */
+      #google_translate_element,
+      .goog-te-gadget,
+      .goog-tooltip,
+      #goog-gt-tt {
+        display: none !important;
+        visibility: hidden !important;
+      }
+
+      /* 5. Hapus Highlight & Font */
+      .goog-text-highlight {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      font {
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+
+      /* 6. Sticky Header Fix */
+      header {
+        top: 0 !important;
+      }
+    </style>
   </head>
   <body>
+    <div id="google_translate_element" style="display: none"></div>
+
     <header>
       <div class="container">
         <nav>
@@ -26,8 +115,8 @@
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="portfolio.html">Projects</a></li>
-            <li><a href="contact.html" class="nav-btn">Contact</a></li>
-                        <li>
+            <li><a href="contact.html" class="nav-btn active">Contact</a></li>
+            <li>
               <a
                 href="career.html"
                 style="
@@ -37,6 +126,24 @@
                 "
                 >Lowongan</a
               >
+            </li>
+
+            <li>
+              <div class="lang-switch-container">
+                <span
+                  class="lang-option"
+                  id="lang-id"
+                  onclick="setLanguage('id')"
+                  >ID</span
+                >
+                <span class="lang-separator">|</span>
+                <span
+                  class="lang-option"
+                  id="lang-en"
+                  onclick="setLanguage('en')"
+                  >EN</span
+                >
+              </div>
             </li>
           </ul>
         </nav>
@@ -111,19 +218,20 @@
               <i class="fas fa-phone-volume"></i>
             </div>
             <h3>Telepon & Email</h3>
-            <p style="margin-bottom: 5px">
+            <div style="margin-bottom: 5px">
               <p
-                style="color: rgb(119, 123, 139); text-decoration: none; font-weight: 700"
+                style="
+                  color: rgb(119, 123, 139);
+                  text-decoration: none;
+                  font-weight: 700;
+                "
               >
                 +62 896-1878-8227
-            </p>
-            </p>
+              </p>
+            </div>
             <p>ptelsadaiservocons@gmail.com</p>
             <p>elsadaiservocons@yahoo.co.id</p>
-            <p style="margin-top: 7px;">​hrd.elsadaiservocons@gmail.com</p>
-          </div>
-
-            </p>
+            <p style="margin-top: 7px">​hrd.elsadaiservocons@gmail.com</p>
           </div>
         </div>
       </div>
@@ -218,7 +326,7 @@
                   font-size: 0.9rem;
                 "
               >
-                &mdash; ATAU &mdash;
+                — ATAU —
               </div>
 
               <a
@@ -285,44 +393,84 @@
       </div>
     </section>
 
-    <section style="padding: 40px 0; padding-bottom: 40px;background: #fff; border-top: 1px solid #eee;">
+    <section
+      style="
+        padding: 40px 0;
+        padding-bottom: 40px;
+        background: #fff;
+        border-top: 1px solid #eee;
+      "
+    >
       <div class="container text-center reveal">
-        <p style="color: #777; font-size: 0.95rem;">
-          <i class="fas fa-info-circle" style="color: var(--accent);"></i> 
-          <strong>Tertarik bergabung dengan tim kami?</strong> 
-          Mohon tidak mengirimkan lamaran ke alamat email proyek di atas. 
-          Silakan kunjungi <a href="career.html" style="color: var(--primary); font-weight: 700; text-decoration: underline;">Halaman Lowongan Kerja</a> untuk prosedur rekrutmen resmi.
+        <p style="color: #777; font-size: 0.95rem">
+          <i class="fas fa-info-circle" style="color: var(--accent)"></i>
+          <strong>Tertarik bergabung dengan tim kami?</strong>
+          Mohon tidak mengirimkan lamaran ke alamat email proyek di atas.
+          Silakan kunjungi
+          <a
+            href="career.html"
+            style="
+              color: var(--primary);
+              font-weight: 700;
+              text-decoration: underline;
+            "
+            >Halaman Lowongan Kerja</a
+          >
+          untuk prosedur rekrutmen resmi.
         </p>
       </div>
     </section>
 
-  <footer>
+    <footer>
       <div class="container">
-        <div class="services-grid" style="grid-template-columns: 1.5fr 1fr 1fr; gap: 50px">
+        <div
+          class="services-grid"
+          style="grid-template-columns: 1.5fr 1fr 1fr; gap: 50px"
+        >
           <div class="footer-info">
             <a href="index.html">
-              <img src="assets/images/logo.png" alt="Logo PT. Elsadai" class="footer-logo-img" />
+              <img
+                src="assets/images/logo.png"
+                alt="Logo PT. Elsadai"
+                class="footer-logo-img"
+              />
             </a>
             <p>STUDY, PLANNING, SUPERVISION, CONSTRUCTION MANAGEMENT</p>
           </div>
           <div class="footer-info">
             <h4>Hubungi Kami</h4>
             <ul>
-              <li><i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A, Manado</li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A,
+                Manado
+              </li>
               <li><i class="fas fa-phone"></i>+62 896-1878-8227</li>
-              <li><i class="fas fa-envelope"></i>ptelsadaiservocons@gmail.com</li>
+              <li>
+                <i class="fas fa-envelope"></i>ptelsadaiservocons@gmail.com
+              </li>
             </ul>
           </div>
           <div class="footer-info">
             <h4>Sertifikasi</h4>
-            <p style="color: #fff; font-weight: 600; margin-bottom: 20px;">
+            <p style="color: #fff; font-weight: 600; margin-bottom: 20px">
               ISO 9001 • ISO 14001 • ISO 45001 • ISO 37001
             </p>
             <h4>Lowongan Pekerjaan</h4>
-            <p style="margin: 0;">
-                <a href="career.html" style="color: #fff; text-decoration: none; border-bottom: 1px dotted #fff;">
-                    Gabung Tim Kami <i class="fas fa-arrow-right" style="font-size: 0.8rem; margin-left: 5px;"></i>
-                </a>
+            <p style="margin: 0">
+              <a
+                href="career.html"
+                style="
+                  color: #fff;
+                  text-decoration: none;
+                  border-bottom: 1px dotted #fff;
+                "
+              >
+                Gabung Tim Kami
+                <i
+                  class="fas fa-arrow-right"
+                  style="font-size: 0.8rem; margin-left: 5px"
+                ></i>
+              </a>
             </p>
           </div>
         </div>
@@ -334,27 +482,49 @@
 
     <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "id",
+            includedLanguages: "id,en",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false,
+          },
+          "google_translate_element",
+        );
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+
     <script src="assets/js/main.js"></script>
 
     <script>
       function hubungiWA() {
-        // --- KONFIGURASI ---
-        // Ganti dengan nomor WhatsApp Admin (gunakan kode negara 62, tanpa +)
         const nomorWA = "6281329112308";
-
-        // Ambil nilai dari form untuk auto-fill pesan WA
         const nama =
           document.querySelector('input[name="nama"]').value || "Calon Klien";
         const subjek =
           document.querySelector('input[name="subjek"]').value ||
           "Konsultasi Proyek";
-
-        // Format Pesan
         const text = `Halo Admin PT. Elsadai,%0a%0aSaya *${nama}* ingin berdiskusi mengenai:%0a*${subjek}*%0a%0aMohon informasinya. Terima kasih.`;
-
-        // Buka Link WA
         window.open(`https://wa.me/${nomorWA}?text=${text}`, "_blank");
       }
+
+      // === SCRIPT ANTI-BANNER HARDCODE (WAJIB DI SETIAP HALAMAN) ===
+      setInterval(function () {
+        var banner = document.querySelector(".goog-te-banner-frame");
+        if (banner) {
+          banner.remove();
+        }
+        if (document.body.style.top && document.body.style.top !== "0px") {
+          document.body.style.setProperty("top", "0px", "important");
+          document.body.style.setProperty("position", "static", "important");
+        }
+      }, 50);
     </script>
   </body>
 </html>
