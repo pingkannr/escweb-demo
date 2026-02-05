@@ -1077,9 +1077,12 @@
         }
       }
 
-      // --- 1. AMBIL DATA LOWONGAN ---
+      // --- 1. AMBIL DATA LOWONGAN (DENGAN ANTI-CACHE) ---
       function fetchProjects() {
-        fetch(READ_CSV_URL)
+        // Kita tambahkan penanda waktu unik agar browser tidak mengambil data lama (cache)
+        const cacheBuster = "&t=" + new Date().getTime();
+
+        fetch(READ_CSV_URL + cacheBuster)
           .then((res) => res.text())
           .then((csv) => {
             const rows = parseCSV(csv);
