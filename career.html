@@ -660,11 +660,6 @@
             onsubmit="submitForm(event, 'talentPoolForm')"
           >
             <input type="hidden" name="Project" value="Talent Pool (Umum)" />
-            <input
-              type="hidden"
-              name="Posisi_Dilamar"
-              value="Umum / Talent Pool"
-            />
 
             <div class="form-grid">
               <div>
@@ -686,7 +681,7 @@
                     >Bidang Keahlian / Posisi
                     <span style="color: red">*</span></label
                   >
-                  <select name="Posisi_Harapan" class="form-control" required>
+                  <select name="Posisi_Dilamar" class="form-control" required>
                     <option value="" disabled selected>
                       -- Pilih Bidang --
                     </option>
@@ -879,7 +874,7 @@
               <label
                 >Posisi yang Dilamar <span style="color: red">*</span></label
               >
-              <select name="Posisi" class="form-control" required>
+              <select name="Posisi_Dilamar" class="form-control" required>
                 <option value="" disabled selected>-- Pilih Posisi --</option>
               </select>
             </div>
@@ -949,7 +944,7 @@
             <a href="index.html">
               <img
                 src="assets/images/logo.png"
-                alt="Logo ESC White"
+                alt="Logo PT. Elsadai"
                 class="footer-logo-img"
               />
             </a>
@@ -962,9 +957,9 @@
                 <i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A,
                 Manado
               </li>
-              <li><i class="fas fa-phone"></i> +62 896-1878-8227</li>
+              <li><i class="fas fa-phone"></i>+62 896-1878-8227</li>
               <li>
-                <i class="fas fa-envelope"></i> ptelsadaiservocons@gmail.com
+                <i class="fas fa-envelope"></i>ptelsadaiservocons@gmail.com
               </li>
             </ul>
           </div>
@@ -1218,7 +1213,7 @@
 
         // --- LOGIKA BARU: POPULATE DROPDOWN POSISI ---
         const positionSelect = document.querySelector(
-          '#projectForm select[name="Posisi"]',
+          '#projectForm select[name="Posisi_Dilamar"]',
         );
 
         // Ambil daftar posisi dari database global
