@@ -42,9 +42,7 @@
         font-size: 0.8rem;
       }
 
-      /* --- CSS ANTI-BANNER GOOGLE (INI YANG KURANG TADI) --- */
-
-      /* 1. Sembunyikan Frame Banner (Mutlak) */
+      /* --- CSS ANTI-BANNER GOOGLE --- */
       .goog-te-banner-frame.skiptranslate,
       .goog-te-banner-frame,
       iframe.goog-te-banner-frame {
@@ -55,20 +53,14 @@
         z-index: -9999 !important;
         opacity: 0 !important;
       }
-
-      /* 2. Sembunyikan Body Google (Container terluar widget) */
       .skiptranslate {
         display: none !important;
       }
-
-      /* 3. Kunci Body agar tidak bisa digeser Google */
       body {
         top: 0px !important;
         position: static !important;
         margin-top: 0px !important;
       }
-
-      /* 4. Sembunyikan Tooltip & Highlight */
       .goog-tooltip {
         display: none !important;
       }
@@ -79,21 +71,49 @@
         background-color: transparent !important;
         box-shadow: none !important;
       }
-
-      /* 5. Pastikan Header Tetap di Atas */
       header {
         top: 0 !important;
       }
 
-      /* Animasi */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
+      /* --- RESPONSIVE FIXES KHUSUS ABOUT --- */
+      @media (max-width: 768px) {
+        /* Timeline Mobile Fix */
+        .timeline::after {
+          left: 20px !important;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        .timeline-item {
+          width: 100% !important;
+          padding-left: 60px !important;
+          padding-right: 15px !important;
+          text-align: left !important;
+        }
+        .timeline-item::after {
+          left: 10px !important;
+          right: auto !important;
+        }
+        .timeline-item.right {
+          left: 0 !important;
+        }
+        .timeline-content h3 {
+          font-size: 1.5rem !important;
+        }
+
+        /* Corporate Card Identity */
+        .corporate-card {
+          padding: 25px !important;
+          min-height: auto !important;
+        }
+        .corporate-card div[style*="justify-content: space-between"] {
+          flex-direction: column;
+          gap: 15px;
+        }
+        .legal-badge-group {
+          flex-direction: column;
+        }
+
+        /* Values Grid */
+        .values-grid {
+          grid-template-columns: 1fr !important;
         }
       }
     </style>
@@ -112,11 +132,11 @@
             <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Projects</a></li>
-            <li><a href="contact.html" class="nav-btn">Contact</a></li>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="about.html" class="active">Tentang Kami</a></li>
+            <li><a href="services.html">Layanan</a></li>
+            <li><a href="portfolio.html">Proyek</a></li>
+            <li><a href="contact.html" class="nav-btn">Kontak</a></li>
             <li>
               <a
                 href="career.html"
@@ -509,28 +529,31 @@
                     style="font-size: 2.5rem; color: rgba(255, 255, 255, 0.1)"
                   ></i>
                 </div>
+
                 <div class="office-loc">
                   <div class="loc-icon">
                     <i class="fas fa-map-marker-alt"></i>
                   </div>
                   <div class="loc-text">
                     <h4>Kantor Pusat (Head Office)</h4>
-                    <p>
+                    <p class="notranslate">
                       Lorong Anugerah No. 9A<br />Tingkulu, Lingkungan II Manado
                     </p>
                   </div>
                 </div>
+
                 <div class="office-loc">
                   <div class="loc-icon"><i class="fas fa-building"></i></div>
                   <div class="loc-text">
                     <h4>Representative Office</h4>
-                    <p>
+                    <p class="notranslate">
                       Jl. K.H. Mas Mansyur No.98 7, RT.7/RW.17, Kb. Melati,
                       Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus
                       Ibukota Jakarta 10230
                     </p>
                   </div>
                 </div>
+
                 <div class="legal-badge-group">
                   <div class="legal-badge">
                     <span>Afiliasi Asosiasi</span>
@@ -701,48 +724,6 @@
       </div>
     </section>
 
-    <section
-      class="section-padding"
-      style="background-color: #f8fafc; border-top: 1px solid #eee"
-    >
-      <div class="container reveal">
-        <div
-          style="
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-          "
-        >
-          <div style="flex: 2; min-width: 300px">
-            <h3 style="color: var(--primary); margin-bottom: 15px">
-              Tumbuh Bersama Profesional Terbaik
-            </h3>
-            <p style="color: #555; line-height: 1.6; margin-bottom: 0">
-              Kami percaya bahwa mahakarya konstruksi lahir dari kolaborasi
-              talenta-talenta hebat. PT. Elsadai Servo Cons selalu membuka
-              peluang bagi tenaga ahli yang memiliki integritas dan dedikasi
-              tinggi.
-            </p>
-          </div>
-          <div style="flex: 1; text-align: right; min-width: 200px">
-            <a
-              href="career.html"
-              class="btn"
-              style="
-                background: var(--accent);
-                border: 2px solid var(--accent);
-                color: var(--primary);
-              "
-            >
-              <i class="fas fa-briefcase"></i> &nbsp; Lihat Peluang Pekerjaan
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <footer>
       <div class="container">
         <div
@@ -761,7 +742,7 @@
           </div>
           <div class="footer-info">
             <h4>Hubungi Kami</h4>
-            <ul>
+            <ul class="notranslate">
               <li>
                 <i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A,
                 Manado
@@ -835,6 +816,17 @@
           },
         );
       }
+      // === SCRIPT ANTI-BANNER HARDCODE ===
+      setInterval(function () {
+        var banner = document.querySelector(".goog-te-banner-frame");
+        if (banner) {
+          banner.remove();
+        }
+        if (document.body.style.top && document.body.style.top !== "0px") {
+          document.body.style.setProperty("top", "0px", "important");
+          document.body.style.setProperty("position", "static", "important");
+        }
+      }, 50);
     </script>
   </body>
 </html>
