@@ -44,12 +44,19 @@
 
       /* --- CSS ANTI-BANNER GOOGLE (MUTLAK) --- */
 
-      /* 1. Sembunyikan Frame Banner (Ada tapi tak terlihat) */
-      .goog-te-banner-frame.skiptranslate {
+      /* 1. Sembunyikan Frame Banner */
+      .goog-te-banner-frame.skiptranslate,
+      .goog-te-banner-frame,
+      iframe.goog-te-banner-frame {
         display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        z-index: -9999 !important;
+        opacity: 0 !important;
       }
 
-      /* 2. Sembunyikan Body Google (Container terluar widget) */
+      /* 2. Sembunyikan Container Utama */
       .skiptranslate {
         display: none !important;
       }
@@ -57,22 +64,31 @@
       /* 3. Kunci Body agar tidak bisa digeser Google */
       body {
         top: 0px !important;
+        margin-top: 0px !important;
         position: static !important;
       }
 
-      /* 4. Sembunyikan Tooltip & Highlight */
-      .goog-tooltip {
+      /* 4. Sembunyikan Elemen UI Google Lainnya */
+      #google_translate_element,
+      .goog-te-gadget,
+      .goog-tooltip,
+      #goog-gt-tt {
         display: none !important;
+        visibility: hidden !important;
       }
-      .goog-tooltip:hover {
-        display: none !important;
-      }
+
+      /* 5. Hapus Highlight & Font */
       .goog-text-highlight {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      font {
         background-color: transparent !important;
         box-shadow: none !important;
       }
 
-      /* 5. Pastikan Navbar Tetap di Atas */
+      /* 6. Sticky Header Fix */
       header {
         top: 0 !important;
       }
@@ -100,6 +116,28 @@
           box-shadow: 0 0 0 0 rgba(226, 53, 53, 0);
         }
       }
+
+      /* --- RESPONSIVE FIXES KHUSUS INDEX --- */
+      @media (max-width: 768px) {
+        .hero-modern h1 {
+          font-size: 2.2rem;
+          line-height: 1.3;
+        }
+        .hero-modern .container {
+          padding: 0 20px;
+        }
+        .services-grid[style*="grid-template-columns: repeat(4, 1fr)"] {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+        .hero-modern div[style*="display: flex"] {
+          flex-direction: column;
+          width: 100%;
+        }
+        .hero-modern .btn {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -116,11 +154,11 @@
             <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Projects</a></li>
-            <li><a href="contact.html" class="nav-btn">Contact</a></li>
+            <li><a href="index.html" class="active">Beranda</a></li>
+            <li><a href="about.html">Tentang Kami</a></li>
+            <li><a href="services.html">Layanan</a></li>
+            <li><a href="portfolio.html">Proyek</a></li>
+            <li><a href="contact.html" class="nav-btn">Kontak</a></li>
             <li>
               <a
                 href="career.html"
@@ -718,7 +756,7 @@
           </div>
           <div class="footer-info">
             <h4>Hubungi Kami</h4>
-            <ul>
+            <ul class="notranslate">
               <li>
                 <i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A,
                 Manado
@@ -780,5 +818,18 @@
     ></script>
 
     <script src="assets/js/main.js"></script>
+
+    <script>
+      setInterval(function () {
+        var banner = document.querySelector(".goog-te-banner-frame");
+        if (banner) {
+          banner.remove();
+        }
+        if (document.body.style.top && document.body.style.top !== "0px") {
+          document.body.style.setProperty("top", "0px", "important");
+          document.body.style.setProperty("position", "static", "important");
+        }
+      }, 50);
+    </script>
   </body>
 </html>

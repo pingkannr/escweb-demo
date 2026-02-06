@@ -10,7 +10,36 @@
     />
     <link rel="stylesheet" href="assets/css/style.css" />
     <style>
-      /* --- TOMBOL BAHASA --- */
+      @media (max-width: 992px) {
+        .contact-wrapper {
+          grid-template-columns: 1fr !important;
+          gap: 40px !important;
+        }
+        .map-container {
+          height: 350px !important;
+        }
+      }
+      /* CSS Anti-Banner & Lang */
+      .goog-te-banner-frame.skiptranslate,
+      .goog-te-banner-frame,
+      iframe.goog-te-banner-frame {
+        display: none !important;
+      }
+      .skiptranslate {
+        display: none !important;
+      }
+      body {
+        top: 0px !important;
+        margin-top: 0px !important;
+        position: static !important;
+      }
+      #google_translate_element,
+      .goog-te-gadget {
+        display: none !important;
+      }
+      header {
+        top: 0 !important;
+      }
       .lang-switch-container {
         display: flex;
         align-items: center;
@@ -41,59 +70,78 @@
         color: #ccc;
         font-size: 0.8rem;
       }
-
-      /* --- CSS ANTI-BANNER GOOGLE (MUTLAK) --- */
-      /* 1. Sembunyikan Frame Banner */
-      .goog-te-banner-frame.skiptranslate,
-      .goog-te-banner-frame,
-      iframe.goog-te-banner-frame {
-        display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        width: 0 !important;
-        z-index: -9999 !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
+      /* Contact Specific */
+      .contact-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 51, 102, 0.1);
+        color: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin: 0 auto 20px;
+        transition: 0.3s;
       }
-
-      /* 2. Sembunyikan Container Utama */
-      .skiptranslate {
-        display: none !important;
+      .service-card:hover .contact-icon {
+        background: var(--accent);
+        color: #fff;
       }
-
-      /* 3. Reset Body agar tidak turun */
-      html,
-      body {
-        top: 0px !important;
-        margin-top: 0px !important;
-        position: static !important;
-        height: auto !important;
-        min-height: 100%;
+      .contact-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
       }
-
-      /* 4. Sembunyikan Elemen UI Google Lainnya */
-      #google_translate_element,
-      .goog-te-gadget,
-      .goog-tooltip,
-      #goog-gt-tt {
-        display: none !important;
-        visibility: hidden !important;
+      .contact-form {
+        background: #fff;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid var(--border-light);
       }
-
-      /* 5. Hapus Highlight & Font */
-      .goog-text-highlight {
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
+      .form-group {
+        margin-bottom: 20px;
       }
-      font {
-        background-color: transparent !important;
-        box-shadow: none !important;
+      .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--primary);
       }
-
-      /* 6. Sticky Header Fix */
-      header {
-        top: 0 !important;
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: var(--font-main);
+        font-size: 1rem;
+        transition: 0.3s;
+        background: #f9f9f9;
+      }
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.1);
+      }
+      textarea.form-control {
+        resize: vertical;
+        min-height: 120px;
+      }
+      .map-container {
+        border-radius: 16px;
+        overflow: hidden;
+        height: 100%;
+        min-height: 400px;
+        box-shadow: var(--shadow-soft);
+        border: 5px solid #fff;
+      }
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
     </style>
   </head>
@@ -111,11 +159,11 @@
             <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Projects</a></li>
-            <li><a href="contact.html" class="nav-btn active">Contact</a></li>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="about.html">Tentang Kami</a></li>
+            <li><a href="services.html">Layanan</a></li>
+            <li><a href="portfolio.html">Proyek</a></li>
+            <li><a href="contact.html" class="nav-btn active">Kontak</a></li>
             <li>
               <a
                 href="career.html"
@@ -127,7 +175,6 @@
                 >Lowongan</a
               >
             </li>
-
             <li>
               <div class="lang-switch-container">
                 <span
@@ -152,21 +199,9 @@
 
     <section class="hero-mini">
       <div class="container">
-        <h4
-          style="
-            color: var(--accent);
-            font-weight: 700;
-            animation: fadeInUp 1s ease-out;
-          "
-        >
-          GET IN TOUCH
-        </h4>
-        <h1 style="animation: fadeInUp 1s ease-out 0.2s backwards">
-          Hubungi Kami
-        </h1>
-        <p style="animation: fadeInUp 1s ease-out 0.4s backwards">
-          Diskusikan kebutuhan proyek Anda bersama tim kami.
-        </p>
+        <h4 style="color: var(--accent); font-weight: 700">GET IN TOUCH</h4>
+        <h1>Hubungi Kami</h1>
+        <p>Diskusikan kebutuhan proyek Anda bersama tim kami.</p>
       </div>
     </section>
 
@@ -187,8 +222,10 @@
             <div class="contact-icon" style="margin: 0 auto 20px">
               <i class="fas fa-map-marker-alt"></i>
             </div>
-            <h3>Kantor Pusat (Head Office) - Manado</h3>
-            <p>Lorong Anugerah No. 9A<br />Tingkulu, Lingkungan II Manado</p>
+            <h3>Kantor Pusat (Head Office)</h3>
+            <p class="notranslate">
+              Lorong Anugerah No. 9A<br />Tingkulu, Lingkungan II Manado
+            </p>
           </a>
 
           <a
@@ -206,7 +243,7 @@
               <i class="fas fa-building"></i>
             </div>
             <h3>Representative Office - Jakarta</h3>
-            <p>
+            <p class="notranslate">
               Jl. K.H. Mas Mansyur No.98, RT.7/RW.17, Kb. Melati, Kecamatan
               Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta
               10230
@@ -218,20 +255,21 @@
               <i class="fas fa-phone-volume"></i>
             </div>
             <h3>Telepon & Email</h3>
-            <div style="margin-bottom: 5px">
+            <div class="notranslate">
               <p
                 style="
                   color: rgb(119, 123, 139);
                   text-decoration: none;
                   font-weight: 700;
+                  margin-bottom: 5px;
                 "
               >
                 +62 896-1878-8227
               </p>
+              <p>ptelsadaiservocons@gmail.com</p>
+              <p>elsadaiservocons@yahoo.co.id</p>
+              <p style="margin-top: 7px">hrd.elsadaiservocons@gmail.com</p>
             </div>
-            <p>ptelsadaiservocons@gmail.com</p>
-            <p>elsadaiservocons@yahoo.co.id</p>
-            <p style="margin-top: 7px">​hrd.elsadaiservocons@gmail.com</p>
           </div>
         </div>
       </div>
@@ -258,8 +296,8 @@
               method="POST"
             >
               <div class="form-group">
-                <label class="form-label">Nama Lengkap</label>
-                <input
+                <label class="form-label">Nama Lengkap</label
+                ><input
                   type="text"
                   name="nama"
                   class="form-control"
@@ -271,8 +309,8 @@
                 style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
               >
                 <div class="form-group">
-                  <label class="form-label">Email</label>
-                  <input
+                  <label class="form-label">Email</label
+                  ><input
                     type="email"
                     name="email"
                     class="form-control"
@@ -281,8 +319,8 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label class="form-label">No. Telepon</label>
-                  <input
+                  <label class="form-label">No. Telepon</label
+                  ><input
                     type="tel"
                     name="telepon"
                     class="form-control"
@@ -292,8 +330,8 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-label">Subjek</label>
-                <input
+                <label class="form-label">Subjek</label
+                ><input
                   type="text"
                   name="subjek"
                   class="form-control"
@@ -301,14 +339,13 @@
                 />
               </div>
               <div class="form-group">
-                <label class="form-label">Pesan Anda</label>
-                <textarea
+                <label class="form-label">Pesan Anda</label
+                ><textarea
                   name="pesan"
                   class="form-control"
                   placeholder="Ceritakan kebutuhan proyek Anda..."
                 ></textarea>
               </div>
-
               <button
                 type="submit"
                 class="btn"
@@ -317,7 +354,6 @@
                 Kirim via Email
                 <i class="fas fa-envelope" style="margin-left: 10px"></i>
               </button>
-
               <div
                 style="
                   text-align: center;
@@ -328,7 +364,6 @@
               >
                 — ATAU —
               </div>
-
               <a
                 href="javascript:void(0)"
                 onclick="hubungiWA()"
@@ -339,13 +374,12 @@
                   text-align: center;
                   color: #fff;
                 "
-              >
-                <i
+                ><i
                   class="fab fa-whatsapp"
                   style="margin-right: 10px; font-size: 1.1rem"
                 ></i>
-                Chat Langsung via WhatsApp
-              </a>
+                Chat Langsung via WhatsApp</a
+              >
             </form>
           </div>
 
@@ -358,10 +392,8 @@
                 style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-
             <div
               style="
                 margin-top: 30px;
@@ -428,25 +460,24 @@
           style="grid-template-columns: 1.5fr 1fr 1fr; gap: 50px"
         >
           <div class="footer-info">
-            <a href="index.html">
-              <img
+            <a href="index.html"
+              ><img
                 src="assets/images/logo.png"
                 alt="Logo PT. Elsadai"
                 class="footer-logo-img"
-              />
-            </a>
+            /></a>
             <p>STUDY, PLANNING, SUPERVISION, CONSTRUCTION MANAGEMENT</p>
           </div>
           <div class="footer-info">
             <h4>Hubungi Kami</h4>
-            <ul>
+            <ul class="notranslate">
               <li>
                 <i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A,
                 Manado
               </li>
-              <li><i class="fas fa-phone"></i>+62 896-1878-8227</li>
+              <li><i class="fas fa-phone"></i> +62 896-1878-8227</li>
               <li>
-                <i class="fas fa-envelope"></i>ptelsadaiservocons@gmail.com
+                <i class="fas fa-envelope"></i> ptelsadaiservocons@gmail.com
               </li>
             </ul>
           </div>
@@ -464,24 +495,22 @@
                   text-decoration: none;
                   border-bottom: 1px dotted #fff;
                 "
-              >
-                Gabung Tim Kami
+                >Gabung Tim Kami
                 <i
                   class="fas fa-arrow-right"
                   style="font-size: 0.8rem; margin-left: 5px"
-                ></i>
-              </a>
+                ></i
+              ></a>
             </p>
           </div>
         </div>
         <div class="footer-bottom">
-          &copy; 2026 PT. Elsadai Servo Cons. All Rights Reserved.
+          © 2026 PT. Elsadai Servo Cons. All Rights Reserved.
         </div>
       </div>
     </footer>
 
     <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
-
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement(
@@ -499,9 +528,7 @@
       type="text/javascript"
       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
     ></script>
-
     <script src="assets/js/main.js"></script>
-
     <script>
       function hubungiWA() {
         const nomorWA = "6281329112308";
@@ -513,8 +540,6 @@
         const text = `Halo Admin PT. Elsadai,%0a%0aSaya *${nama}* ingin berdiskusi mengenai:%0a*${subjek}*%0a%0aMohon informasinya. Terima kasih.`;
         window.open(`https://wa.me/${nomorWA}?text=${text}`, "_blank");
       }
-
-      // === SCRIPT ANTI-BANNER HARDCODE (WAJIB DI SETIAP HALAMAN) ===
       setInterval(function () {
         var banner = document.querySelector(".goog-te-banner-frame");
         if (banner) {
