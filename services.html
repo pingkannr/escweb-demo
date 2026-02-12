@@ -3,13 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services | PT. Elsadai Servo Cons</title>
+    <title>Layanan & Klien | PT. Elsadai Servo Cons</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
       /* --- TOMBOL BAHASA --- */
       .lang-switch-container {
         display: flex;
@@ -42,9 +50,7 @@
         font-size: 0.8rem;
       }
 
-      /* --- CSS ANTI-BANNER GOOGLE (MUTLAK) --- */
-
-      /* 1. Sembunyikan Frame Banner */
+      /* --- CSS ANTI-BANNER GOOGLE --- */
       .goog-te-banner-frame.skiptranslate,
       .goog-te-banner-frame,
       iframe.goog-te-banner-frame {
@@ -55,20 +61,14 @@
         z-index: -9999 !important;
         opacity: 0 !important;
       }
-
-      /* 2. Sembunyikan Container Utama */
       .skiptranslate {
         display: none !important;
       }
-
-      /* 3. Kunci Body agar tidak bisa digeser Google */
       body {
         top: 0px !important;
         margin-top: 0px !important;
         position: static !important;
       }
-
-      /* 4. Sembunyikan Elemen UI Google Lainnya */
       #google_translate_element,
       .goog-te-gadget,
       .goog-tooltip,
@@ -76,8 +76,6 @@
         display: none !important;
         visibility: hidden !important;
       }
-
-      /* 5. Hapus Highlight & Font */
       .goog-text-highlight {
         background-color: transparent !important;
         box-shadow: none !important;
@@ -87,24 +85,175 @@
         background-color: transparent !important;
         box-shadow: none !important;
       }
-
-      /* 6. Sticky Header Fix */
       header {
         top: 0 !important;
       }
 
-      /* --- RESPONSIVE FIXES KHUSUS SERVICES --- */
+      /* --- RESPONSIVE FIXES --- */
       @media (max-width: 992px) {
         .hero-wrapper {
           grid-template-columns: 1fr !important;
           text-align: center;
         }
         .hero-image {
-          display: none; /* Sembunyikan gambar di mobile agar fokus ke teks */
+          display: none;
         }
         .hero-content ul {
           text-align: left;
           display: inline-block;
+        }
+      }
+
+      /* ========================================= */
+      /* MODERN CLIENT CAROUSEL (MANUAL)           */
+      /* ========================================= */
+      .modern-client-section {
+        padding: 100px 0;
+        /* Background Biru Tua */
+        background: linear-gradient(135deg, var(--primary) 0%, #001a33 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Pattern Background (Opsional) */
+      .modern-client-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.1;
+        pointer-events: none;
+      }
+
+      .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+        z-index: 2;
+      }
+
+      /* Container Scroll */
+      .card-track {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 30px 10px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+      }
+      .card-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* KARTU KLIEN */
+      .client-modern-card {
+        flex: 0 0 280px;
+        height: 360px;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: none;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        scroll-snap-align: center;
+        position: relative;
+      }
+
+      .client-modern-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Lingkaran Logo */
+      .logo-circle {
+        width: 120px;
+        height: 120px;
+        background: #f0f7ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 25px;
+        transition: 0.3s;
+        overflow: hidden; /* Agar gambar tidak keluar lingkaran */
+        padding: 15px; /* Padding agar logo tidak terlalu mepet */
+      }
+
+      .client-modern-card:hover .logo-circle {
+        background: #e6f0ff;
+        transform: scale(1.05);
+      }
+
+      /* Pengaturan Gambar Logo */
+      .logo-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Memastikan logo proporsional */
+      }
+
+      /* Nama Klien */
+      .client-modern-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        line-height: 1.5;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* TOMBOL NAVIGASI */
+      .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: #fff;
+        border: none;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        color: var(--primary);
+        font-size: 1.3rem;
+        cursor: pointer;
+        z-index: 10;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-btn:hover {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(226, 53, 53, 0.4);
+      }
+      .nav-btn.prev {
+        left: -30px;
+      }
+      .nav-btn.next {
+        right: -30px;
+      }
+
+      @media (max-width: 768px) {
+        .carousel-wrapper {
+          padding: 0 20px;
+        }
+        .client-modern-card {
+          flex: 0 0 240px;
+          height: 320px;
+        }
+        .nav-btn {
+          display: none;
         }
       }
     </style>
@@ -136,10 +285,9 @@
                   margin-left: 0px;
                   color: var(--primary);
                 "
-                >Lowongan</a
+                >Karir</a
               >
             </li>
-
             <li>
               <div class="lang-switch-container">
                 <span
@@ -174,7 +322,7 @@
           WHAT WE DO
         </h4>
         <h1 style="animation: fadeInUp 1s ease-out 0.2s backwards">
-          Our Services
+          Layanan Kami
         </h1>
         <p style="animation: fadeInUp 1s ease-out 0.4s backwards">
           Solusi komprehensif mulai dari Konstruksi hingga Manajemen & Riset.
@@ -250,7 +398,7 @@
       </div>
     </section>
 
-    <section class="section-padding" style="background: #fff">
+    <section class="section-padding" style="background: #f8fafc">
       <div class="container">
         <div class="hero-wrapper" style="direction: rtl">
           <div class="hero-content reveal" style="direction: ltr">
@@ -324,6 +472,436 @@
               src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070"
               alt="Planning & Research"
             />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="modern-client-section">
+      <div class="container" style="position: relative; z-index: 2">
+        <div class="text-center reveal" style="margin-bottom: 50px">
+          <h4
+            style="color: var(--accent); font-weight: 700; letter-spacing: 1px"
+          >
+            KLIEN KAMI
+          </h4>
+          <h2 style="color: #ffffff">Dipercaya Oleh Berbagai Instansi</h2>
+          <div
+            style="
+              width: 60px;
+              height: 4px;
+              background: var(--accent);
+              margin: 10px auto;
+            "
+          ></div>
+        </div>
+
+        <div class="carousel-wrapper reveal">
+          <button class="nav-btn prev" onclick="scrollClients(-320)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="nav-btn next" onclick="scrollClients(320)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <div class="card-track" id="cardTrack">
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pupr.png"
+                  alt="Logo Kementerian PUPR"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian PUPR</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kejaksaan.png"
+                  alt="Logo Kejaksaan Agung"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kejaksaan Agung RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kemhan.png"
+                  alt="Logo Kemhan"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian Pertahanan RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kominfo.png"
+                  alt="Logo Kominfo"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian Kominfo RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kemendikbud.png"
+                  alt="Logo Kemendikbud"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kemendikbud RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kkp.png"
+                  alt="Logo KKP"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian KKP RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kemenag.png"
+                  alt="Logo Kemenag"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian Agama RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kemenkeu.png"
+                  alt="Logo Kemenkeu"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian Keuangan RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kemenkes.png"
+                  alt="Logo Kemenkes"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian Kesehatan RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kemenperin.png"
+                  alt="Logo Kemenperin"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian Perindustrian RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-kementan.png"
+                  alt="Logo Kementan"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Kementerian Pertanian RI</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-polda-sulut.png"
+                  alt="Logo Polda Sulut"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">
+                Kepolisian Daerah Sulawesi Utara
+              </div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-iain-pontianak.png"
+                  alt="Logo IAIN Pontianak"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">IAIN Pontianak</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-iain-palopo.png"
+                  alt="Logo IAIN Palopo"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">IAIN Palopo</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-ipb.png"
+                  alt="Logo IPB"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Institut Pertanian Bogor</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-rsj-soeharto.png"
+                  alt="Logo RSJ Soeharto"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">RSJ Dr. Soeharto Heerdjan</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-rskd-durensawit.png"
+                  alt="Logo RSKD Duren Sawit"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">RSKD Duren Sawit</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-rsud-mimika.png"
+                  alt="Logo RSUD Mimika"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">RSUD Mimika</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemkot-manado.png"
+                  alt="Logo Pemkot Manado"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemerintah Kota Manado</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-dki.png"
+                  alt="Logo Pemprov DKI"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov DKI Jakarta</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-sulut.png"
+                  alt="Logo Pemprov Sulut"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Sulawesi Utara</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-sulteng.png"
+                  alt="Logo Pemprov Sulteng"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Sulawesi Tengah</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-sultra.png"
+                  alt="Logo Pemprov Sultra"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Sulawesi Tenggara</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-sulsel.png"
+                  alt="Logo Pemprov Sulsel"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Sulawesi Selatan</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-jabar.png"
+                  alt="Logo Pemprov Jabar"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Jawa Barat</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-jateng.png"
+                  alt="Logo Pemprov Jateng"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Jawa Tengah</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-jatim.png"
+                  alt="Logo Pemprov Jatim"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Jawa Timur</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-gorontalo.png"
+                  alt="Logo Pemprov Gorontalo"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Gorontalo</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-ntt.png"
+                  alt="Logo Pemprov NTT"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Nusa Tenggara Timur</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-papua.png"
+                  alt="Logo Pemprov Papua"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Papua</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-malut.png"
+                  alt="Logo Pemprov Malut"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Maluku Utara</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-kaltara.png"
+                  alt="Logo Pemprov Kaltara"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Kalimantan Utara</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-kalsel.png"
+                  alt="Logo Pemprov Kalsel"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Kalimantan Selatan</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-kalbar.png"
+                  alt="Logo Pemprov Kalbar"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Kalimantan Barat</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-kaltim.png"
+                  alt="Logo Pemprov Kaltim"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Kalimantan Timur</div>
+            </div>
+
+            <div class="client-modern-card">
+              <div class="logo-circle">
+                <img
+                  src="assets/images/logo-pemprov-bali.png"
+                  alt="Logo Pemprov Bali"
+                  loading="lazy"
+                />
+              </div>
+              <div class="client-modern-name">Pemprov Bali</div>
+            </div>
           </div>
         </div>
       </div>
@@ -405,12 +983,20 @@
     </script>
     <script
       type="text/javascript"
-      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
     ></script>
 
     <script src="assets/js/main.js"></script>
 
     <script>
+      function scrollClients(distance) {
+        const container = document.getElementById("cardTrack");
+        container.scrollBy({
+          left: distance,
+          behavior: "smooth",
+        });
+      }
+
       setInterval(function () {
         var banner = document.querySelector(".goog-te-banner-frame");
         if (banner) {
