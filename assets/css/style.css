@@ -431,7 +431,7 @@ nav {
 }
 .marquee-content {
   display: inline-block;
-  animation: marquee 25s linear infinite;
+  animation: marquee 60s linear infinite;
 }
 .partner-logo-item {
   display: inline-block;
