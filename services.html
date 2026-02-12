@@ -18,6 +18,45 @@
         font-family: "Inter", sans-serif;
       }
 
+      /* ========================================= */
+      /* CSS ANTI-BANNER GOOGLE (DIPERKUAT)        */
+      /* ========================================= */
+      .goog-te-banner-frame.skiptranslate,
+      .goog-te-banner-frame,
+      iframe.goog-te-banner-frame {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        z-index: -9999 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      .skiptranslate {
+        display: none !important;
+      }
+      body {
+        top: 0px !important;
+        margin-top: 0px !important;
+        position: static !important;
+      }
+      #google_translate_element,
+      .goog-te-gadget,
+      .goog-tooltip,
+      #goog-gt-tt {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      .goog-text-highlight {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      font {
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+
       /* --- TOMBOL BAHASA --- */
       .lang-switch-container {
         display: flex;
@@ -50,41 +89,6 @@
         font-size: 0.8rem;
       }
 
-      /* --- CSS ANTI-BANNER GOOGLE --- */
-      .goog-te-banner-frame.skiptranslate,
-      .goog-te-banner-frame,
-      iframe.goog-te-banner-frame {
-        display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        width: 0 !important;
-        z-index: -9999 !important;
-        opacity: 0 !important;
-      }
-      .skiptranslate {
-        display: none !important;
-      }
-      body {
-        top: 0px !important;
-        margin-top: 0px !important;
-        position: static !important;
-      }
-      #google_translate_element,
-      .goog-te-gadget,
-      .goog-tooltip,
-      #goog-gt-tt {
-        display: none !important;
-        visibility: hidden !important;
-      }
-      .goog-text-highlight {
-        background-color: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-      }
-      font {
-        background-color: transparent !important;
-        box-shadow: none !important;
-      }
       header {
         top: 0 !important;
       }
@@ -105,17 +109,17 @@
       }
 
       /* ========================================= */
-      /* MODERN CLIENT CAROUSEL (MANUAL)           */
+      /* MODERN CLIENT CAROUSEL (REVISED UI)       */
       /* ========================================= */
       .modern-client-section {
         padding: 100px 0;
-        /* Background Biru Tua */
-        background: linear-gradient(135deg, var(--primary) 0%, #001a33 100%);
+        /* Background Biru Tua Elegan */
+        background: linear-gradient(135deg, #021a30 0%, #003366 100%);
         position: relative;
         overflow: hidden;
       }
 
-      /* Pattern Background (Opsional) */
+      /* Pattern Dot Halus */
       .modern-client-section::before {
         content: "";
         position: absolute;
@@ -123,8 +127,12 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        opacity: 0.1;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 30px 30px;
+        opacity: 0.5;
         pointer-events: none;
       }
 
@@ -137,13 +145,12 @@
         z-index: 2;
       }
 
-      /* Container Scroll */
       .card-track {
         display: flex;
-        gap: 30px;
+        gap: 25px;
         overflow-x: auto;
         scroll-behavior: smooth;
-        padding: 30px 10px;
+        padding: 40px 10px;
         -ms-overflow-style: none;
         scrollbar-width: none;
         scroll-snap-type: x mandatory;
@@ -152,79 +159,83 @@
         display: none;
       }
 
-      /* KARTU KLIEN */
+      /* KARTU KLIEN - GAYA MODERN */
       .client-modern-card {
-        flex: 0 0 280px;
-        height: 360px;
+        flex: 0 0 240px; /* Sedikit lebih ramping */
+        height: 300px;
         background: #ffffff;
-        border-radius: 24px;
-        padding: 30px 20px;
+        border-radius: 16px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: center; /* Center Vertikal */
         text-align: center;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: none;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         scroll-snap-align: center;
         position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .client-modern-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       }
 
-      /* Lingkaran Logo */
-      .logo-circle {
-        width: 120px;
-        height: 120px;
-        background: #f0f7ff;
-        border-radius: 50%;
+      /* Logo Container (Tanpa Lingkaran/Kotak) */
+      .logo-container {
+        width: 100%;
+        height: 140px; /* Area khusus gambar */
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 25px;
-        transition: 0.3s;
-        overflow: hidden; /* Agar gambar tidak keluar lingkaran */
-        padding: 15px; /* Padding agar logo tidak terlalu mepet */
+        margin-bottom: 20px;
+        /* Hapus background dan border radius lingkaran */
       }
 
-      .client-modern-card:hover .logo-circle {
-        background: #e6f0ff;
+      /* Gambar Logo - Grayscale Effect */
+      .logo-container img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        filter: grayscale(100%) opacity(0.7); /* Hitam putih & agak transparan */
+        transition: all 0.4s ease;
+        transform: scale(0.95);
+      }
+
+      /* Hover Effect: Logo jadi berwarna & membesar dikit */
+      .client-modern-card:hover .logo-container img {
+        filter: grayscale(0%) opacity(1);
         transform: scale(1.05);
-      }
-
-      /* Pengaturan Gambar Logo */
-      .logo-circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Memastikan logo proporsional */
       }
 
       /* Nama Klien */
       .client-modern-name {
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 700;
-        color: var(--primary-dark);
-        line-height: 1.5;
+        color: #333;
+        line-height: 1.4;
         font-family: "Inter", sans-serif;
+        min-height: 40px; /* Menjaga tinggi kartu rata meski teks 2 baris */
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      /* TOMBOL NAVIGASI */
-      .nav-btn {
+      /* TOMBOL NAVIGASI KLIEN (PERBAIKAN CLASS AGAR TIDAK BENTROK HEADER) */
+      .client-nav-btn {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        background: #fff;
+        background: #fff; /* Background Putih */
         border: none;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        color: var(--primary);
-        font-size: 1.3rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        color: #e23535; /* Icon Merah Langsung (Tanpa Hover) */
+        font-size: 1.2rem;
         cursor: pointer;
         z-index: 10;
         transition: 0.3s;
@@ -232,27 +243,27 @@
         align-items: center;
         justify-content: center;
       }
-      .nav-btn:hover {
-        background: var(--accent);
-        color: #fff;
-        box-shadow: 0 8px 25px rgba(226, 53, 53, 0.4);
+      .client-nav-btn:hover {
+        background: #f8f8f8; /* Sedikit abu saat hover, icon tetap merah */
+        transform: translateY(-50%) scale(1.1); /* Efek membesar dikit */
+        box-shadow: 0 8px 25px rgba(226, 53, 53, 0.3);
       }
-      .nav-btn.prev {
-        left: -30px;
+      .client-nav-btn.prev {
+        left: -25px;
       }
-      .nav-btn.next {
-        right: -30px;
+      .client-nav-btn.next {
+        right: -25px;
       }
 
       @media (max-width: 768px) {
         .carousel-wrapper {
-          padding: 0 20px;
+          padding: 0 10px;
         }
         .client-modern-card {
-          flex: 0 0 240px;
-          height: 320px;
+          flex: 0 0 200px;
+          height: 260px;
         }
-        .nav-btn {
+        .client-nav-btn {
           display: none;
         }
       }
@@ -280,12 +291,8 @@
             <li>
               <a
                 href="career.html"
-                style="
-                  font-weight: 600;
-                  margin-left: 0px;
-                  color: var(--primary);
-                "
-                >Karir</a
+                style="font-weight: 600; color: var(--primary)"
+                >Lowongan</a
               >
             </li>
             <li>
@@ -314,7 +321,7 @@
       <div class="container">
         <h4
           style="
-            color: var(--accent);
+            color: #e23535;
             font-weight: 700;
             animation: fadeInUp 1s ease-out;
           "
@@ -330,18 +337,16 @@
       </div>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding" style="background: #fff">
       <div class="container">
         <div class="hero-wrapper">
           <div class="hero-content reveal">
-            <h2 style="color: var(--primary); margin-bottom: 20px">
-              Jasa Konstruksi
-            </h2>
-            <p style="margin-bottom: 20px">
+            <h2 style="color: #003366; margin-bottom: 20px">Jasa Konstruksi</h2>
+            <p style="margin-bottom: 20px; color: #555">
               Kami menyediakan layanan teknis end-to-end untuk memastikan
-              bangunan dan infrastruktur Anda berdiri kokoh, aman, dan estetis.
+              bangunan dan infrastruktur Anda berdiri kokoh.
             </p>
-            <ul style="list-style: none; padding: 0">
+            <ul style="list-style: none; padding: 0; color: #555">
               <li
                 style="
                   margin-bottom: 15px;
@@ -350,8 +355,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-check-circle" style="color: var(--accent)"></i>
-                <strong>Perencanaan Arsitektur</strong>
+                <i class="fas fa-check-circle" style="color: #e23535"></i
+                ><strong>Perencanaan Arsitektur</strong>
               </li>
               <li
                 style="
@@ -361,8 +366,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-check-circle" style="color: var(--accent)"></i>
-                <strong>Perencanaan Rekayasa (Engineering)</strong>
+                <i class="fas fa-check-circle" style="color: #e23535"></i
+                ><strong>Perencanaan Rekayasa (Engineering)</strong>
               </li>
               <li
                 style="
@@ -372,8 +377,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-check-circle" style="color: var(--accent)"></i>
-                <strong>Manajemen Konstruksi (MK)</strong>
+                <i class="fas fa-check-circle" style="color: #e23535"></i
+                ><strong>Manajemen Konstruksi (MK)</strong>
               </li>
               <li
                 style="
@@ -383,8 +388,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-check-circle" style="color: var(--accent)"></i>
-                <strong>Pengawasan Berkala</strong>
+                <i class="fas fa-check-circle" style="color: #e23535"></i
+                ><strong>Pengawasan Berkala</strong>
               </li>
             </ul>
           </div>
@@ -402,14 +407,14 @@
       <div class="container">
         <div class="hero-wrapper" style="direction: rtl">
           <div class="hero-content reveal" style="direction: ltr">
-            <h2 style="color: var(--primary); margin-bottom: 20px">
+            <h2 style="color: #003366; margin-bottom: 20px">
               Jasa Non-Konstruksi
             </h2>
-            <p style="margin-bottom: 20px">
+            <p style="margin-bottom: 20px; color: #555">
               Selain fisik, kami ahli dalam studi kelayakan, manajemen, dan
               pengembangan wilayah.
             </p>
-            <ul style="list-style: none; padding: 0">
+            <ul style="list-style: none; padding: 0; color: #555">
               <li
                 style="
                   margin-bottom: 15px;
@@ -418,8 +423,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-briefcase" style="color: var(--primary)"></i>
-                <strong>Manajemen Destinasi Pariwisata</strong>
+                <i class="fas fa-briefcase" style="color: #003366"></i
+                ><strong>Manajemen Destinasi Pariwisata</strong>
               </li>
               <li
                 style="
@@ -429,8 +434,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-briefcase" style="color: var(--primary)"></i>
-                <strong>Studi Penelitian & Bantuan Teknis</strong>
+                <i class="fas fa-briefcase" style="color: #003366"></i
+                ><strong>Studi Penelitian & Bantuan Teknis</strong>
               </li>
               <li
                 style="
@@ -440,8 +445,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-briefcase" style="color: var(--primary)"></i>
-                <strong>Survey & Pemetaan</strong>
+                <i class="fas fa-briefcase" style="color: #003366"></i
+                ><strong>Survey & Pemetaan</strong>
               </li>
               <li
                 style="
@@ -451,8 +456,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-briefcase" style="color: var(--primary)"></i>
-                <strong>Pengembangan Pertanian Pedesaan</strong>
+                <i class="fas fa-briefcase" style="color: #003366"></i
+                ><strong>Pengembangan Pertanian Pedesaan</strong>
               </li>
               <li
                 style="
@@ -462,8 +467,8 @@
                   gap: 10px;
                 "
               >
-                <i class="fas fa-briefcase" style="color: var(--primary)"></i>
-                <strong>Transportasi & Perdagangan</strong>
+                <i class="fas fa-briefcase" style="color: #003366"></i
+                ><strong>Transportasi & Perdagangan</strong>
               </li>
             </ul>
           </div>
@@ -481,32 +486,39 @@
       <div class="container" style="position: relative; z-index: 2">
         <div class="text-center reveal" style="margin-bottom: 50px">
           <h4
-            style="color: var(--accent); font-weight: 700; letter-spacing: 1px"
+            style="
+              color: #e23535;
+              font-weight: 700;
+              letter-spacing: 2px;
+              font-size: 0.9rem;
+            "
           >
             KLIEN KAMI
           </h4>
-          <h2 style="color: #ffffff">Dipercaya Oleh Berbagai Instansi</h2>
+          <h2 style="color: #ffffff; font-size: 2.2rem">
+            Dipercaya Oleh Berbagai Instansi
+          </h2>
           <div
             style="
               width: 60px;
               height: 4px;
-              background: var(--accent);
-              margin: 10px auto;
+              background: #e23535;
+              margin: 15px auto;
             "
           ></div>
         </div>
 
         <div class="carousel-wrapper reveal">
-          <button class="nav-btn prev" onclick="scrollClients(-320)">
+          <button class="client-nav-btn prev" onclick="scrollClients(-300)">
             <i class="fas fa-chevron-left"></i>
           </button>
-          <button class="nav-btn next" onclick="scrollClients(320)">
+          <button class="client-nav-btn next" onclick="scrollClients(300)">
             <i class="fas fa-chevron-right"></i>
           </button>
 
           <div class="card-track" id="cardTrack">
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pupr.png"
                   alt="Logo Kementerian PUPR"
@@ -517,7 +529,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kejaksaan.png"
                   alt="Logo Kejaksaan Agung"
@@ -528,7 +540,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kemhan.png"
                   alt="Logo Kemhan"
@@ -539,7 +551,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kominfo.png"
                   alt="Logo Kominfo"
@@ -550,7 +562,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kemendikbud.png"
                   alt="Logo Kemendikbud"
@@ -561,7 +573,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kkp.png"
                   alt="Logo KKP"
@@ -572,7 +584,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kemenag.png"
                   alt="Logo Kemenag"
@@ -583,7 +595,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kemenkeu.png"
                   alt="Logo Kemenkeu"
@@ -594,7 +606,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kemenkes.png"
                   alt="Logo Kemenkes"
@@ -605,7 +617,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kemenperin.png"
                   alt="Logo Kemenperin"
@@ -616,7 +628,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-kementan.png"
                   alt="Logo Kementan"
@@ -627,20 +639,18 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-polda-sulut.png"
                   alt="Logo Polda Sulut"
                   loading="lazy"
                 />
               </div>
-              <div class="client-modern-name">
-                Kepolisian Daerah Sulawesi Utara
-              </div>
+              <div class="client-modern-name">Polda Sulawesi Utara</div>
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-iain-pontianak.png"
                   alt="Logo IAIN Pontianak"
@@ -651,7 +661,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-iain-palopo.png"
                   alt="Logo IAIN Palopo"
@@ -662,7 +672,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-ipb.png"
                   alt="Logo IPB"
@@ -673,7 +683,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-rsj-soeharto.png"
                   alt="Logo RSJ Soeharto"
@@ -684,7 +694,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-rskd-durensawit.png"
                   alt="Logo RSKD Duren Sawit"
@@ -695,7 +705,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-rsud-mimika.png"
                   alt="Logo RSUD Mimika"
@@ -706,7 +716,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemkot-manado.png"
                   alt="Logo Pemkot Manado"
@@ -717,7 +727,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-dki.png"
                   alt="Logo Pemprov DKI"
@@ -728,7 +738,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-sulut.png"
                   alt="Logo Pemprov Sulut"
@@ -739,7 +749,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-sulteng.png"
                   alt="Logo Pemprov Sulteng"
@@ -750,7 +760,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-sultra.png"
                   alt="Logo Pemprov Sultra"
@@ -761,7 +771,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-sulsel.png"
                   alt="Logo Pemprov Sulsel"
@@ -772,7 +782,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-jabar.png"
                   alt="Logo Pemprov Jabar"
@@ -783,7 +793,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-jateng.png"
                   alt="Logo Pemprov Jateng"
@@ -794,7 +804,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-jatim.png"
                   alt="Logo Pemprov Jatim"
@@ -805,7 +815,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-gorontalo.png"
                   alt="Logo Pemprov Gorontalo"
@@ -816,18 +826,18 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-ntt.png"
                   alt="Logo Pemprov NTT"
                   loading="lazy"
                 />
               </div>
-              <div class="client-modern-name">Pemprov Nusa Tenggara Timur</div>
+              <div class="client-modern-name">Pemprov NTT</div>
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-papua.png"
                   alt="Logo Pemprov Papua"
@@ -838,7 +848,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-malut.png"
                   alt="Logo Pemprov Malut"
@@ -849,7 +859,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-kaltara.png"
                   alt="Logo Pemprov Kaltara"
@@ -860,7 +870,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-kalsel.png"
                   alt="Logo Pemprov Kalsel"
@@ -871,7 +881,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-kalbar.png"
                   alt="Logo Pemprov Kalbar"
@@ -882,7 +892,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-kaltim.png"
                   alt="Logo Pemprov Kaltim"
@@ -893,7 +903,7 @@
             </div>
 
             <div class="client-modern-card">
-              <div class="logo-circle">
+              <div class="logo-container">
                 <img
                   src="assets/images/logo-pemprov-bali.png"
                   alt="Logo Pemprov Bali"
