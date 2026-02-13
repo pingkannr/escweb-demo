@@ -34,55 +34,65 @@
         --border-color: #e9ecef;
       }
 
+      /* PAKSA BODY TETAP DI ATAS (IGNORE GOOGLE STYLE) */
       body {
         font-family: "Inter", sans-serif;
         background-color: var(--bg-color);
         color: #333;
+        top: 0px !important;
+        margin-top: 0px !important;
+        position: relative !important;
+        min-height: 100vh;
       }
 
       /* ========================================= */
-      /* CSS ANTI-BANNER GOOGLE (DIPERKUAT)        */
+      /* HIDE GOOGLE BANNER (CSS METHOD)           */
       /* ========================================= */
-      .goog-te-banner-frame.skiptranslate,
-      .goog-te-banner-frame,
-      iframe.goog-te-banner-frame {
+
+      /* Sembunyikan Frame Banner (Top Bar) */
+      .goog-te-banner-frame {
         display: none !important;
         visibility: hidden !important;
         height: 0 !important;
         width: 0 !important;
-        z-index: -9999 !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
       }
+
+      /* Sembunyikan Body Spacer (Jarak yg dibuat google) */
       .skiptranslate {
         display: none !important;
       }
-      body {
-        top: 0px !important;
-        margin-top: 0px !important;
-        position: static !important;
+
+      /* KECUALI Widget Asli (Harus ada tapi hidden) */
+      /* Kita override display:none di atas khusus untuk ID ini */
+      #google_translate_element {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+        overflow: hidden;
+        z-index: -1000;
+        pointer-events: none;
       }
-      #google_translate_element,
-      .goog-te-gadget,
+
+      /* Hilangkan Tooltip/Hover Text */
       .goog-tooltip,
-      #goog-gt-tt {
-        display: none !important;
-        visibility: hidden !important;
-      }
       .goog-text-highlight {
-        background-color: transparent !important;
+        display: none !important;
         box-shadow: none !important;
-        border: none !important;
       }
       font {
         background-color: transparent !important;
         box-shadow: none !important;
       }
+
       header {
         top: 0 !important;
       }
 
-      /* LANGUAGE SWITCHER */
+      /* TOMBOL BAHASA */
       .lang-switch-container {
         display: flex;
         align-items: center;
@@ -126,7 +136,7 @@
         color: white;
       }
 
-      /* INTRO & CTA */
+      /* CSS LAINNYA TETAP SAMA... */
       .intro-grid {
         display: grid;
         grid-template-columns: 1.6fr 1fr;
@@ -166,8 +176,6 @@
         color: var(--primary-dark);
         transform: translateY(-2px);
       }
-
-      /* JOB LIST */
       .section-header-simple {
         display: flex;
         justify-content: space-between;
@@ -181,7 +189,6 @@
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         gap: 30px;
       }
-
       .project-card {
         background: #fff;
         border: 1px solid #f0f0f0;
@@ -225,7 +232,6 @@
         align-items: center;
         gap: 8px;
       }
-
       .positions-container {
         display: flex;
         flex-wrap: wrap;
@@ -253,8 +259,6 @@
         justify-content: space-between;
         align-items: center;
       }
-
-      /* FORM STYLES */
       .form-section-wrapper {
         margin-top: 80px;
         background: var(--card-bg);
@@ -273,7 +277,6 @@
         grid-template-columns: 1fr 1fr;
         gap: 30px;
       }
-
       .form-group {
         margin-bottom: 20px;
       }
@@ -301,8 +304,6 @@
         border-color: var(--primary-dark);
         background: #fff;
       }
-
-      /* Input Group Row (Kontak & Domisili) */
       .input-group-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -315,8 +316,6 @@
         margin-bottom: 5px;
         font-weight: 500;
       }
-
-      /* Select styling */
       select.form-control {
         cursor: pointer;
         appearance: none;
@@ -325,8 +324,6 @@
         background-position: right 16px center;
         padding-right: 40px;
       }
-
-      /* Buttons & Alerts */
       .btn-primary-form {
         background: var(--primary-dark);
         color: #fff;
@@ -347,7 +344,6 @@
         background: #ccc;
         cursor: not-allowed;
       }
-
       .alert-box {
         padding: 15px;
         border-radius: 6px;
@@ -365,8 +361,6 @@
         color: #721c24;
         border: 1px solid #f5c6cb;
       }
-
-      /* Modal */
       .modal-backdrop {
         position: fixed;
         top: 0;
@@ -428,7 +422,7 @@
     </style>
   </head>
   <body>
-    <div id="google_translate_element" style="display: none"></div>
+    <div id="google_translate_element"></div>
 
     <header>
       <div class="container">
@@ -456,16 +450,16 @@
             <li>
               <div class="lang-switch-container">
                 <span
-                  class="lang-option"
+                  class="lang-option active"
                   id="lang-id"
-                  onclick="setLanguage('id')"
+                  onclick="changeLanguage('id')"
                   >ID</span
                 >
                 <span class="lang-separator">|</span>
                 <span
                   class="lang-option"
                   id="lang-en"
-                  onclick="setLanguage('en')"
+                  onclick="changeLanguage('en')"
                   >EN</span
                 >
               </div>
@@ -523,9 +517,9 @@
               Posisi yang sesuai kualifikasi Anda belum tersedia? Bergabunglah
               dengan jaringan talenta kami.
             </p>
-            <a href="#talent-pool-section" class="btn-glass">
-              Gabung Talent Pool <i class="fas fa-arrow-down"></i>
-            </a>
+            <a href="#talent-pool-section" class="btn-glass"
+              >Gabung Talent Pool <i class="fas fa-arrow-down"></i
+            ></a>
           </div>
         </div>
 
@@ -544,7 +538,6 @@
               Aktif
             </div>
           </div>
-
           <div id="project-list-container" class="job-grid">
             <div
               style="
@@ -568,34 +561,29 @@
               (Non-Proyek Spesifik).
             </p>
           </div>
-
           <form
             id="talentPoolForm"
             onsubmit="submitForm(event, 'talentPoolForm')"
           >
             <input type="hidden" name="Project" value="Talent Pool (Umum)" />
-
             <div class="form-grid">
               <div>
                 <div class="form-group">
                   <label
                     >Nama Lengkap (Sesuai KTP)
                     <span style="color: red">*</span></label
-                  >
-                  <input
+                  ><input
                     type="text"
                     name="Nama"
                     class="form-control"
                     required
                   />
                 </div>
-
                 <div class="form-group">
                   <label
                     >Melamar Untuk Posisi:
                     <span style="color: red">*</span></label
-                  >
-                  <select name="Posisi_Dilamar" class="form-control" required>
+                  ><select name="Posisi_Dilamar" class="form-control" required>
                     <option value="" disabled selected>
                       -- Pilih Bidang --
                     </option>
@@ -611,13 +599,12 @@
                     <option value="Lainnya">Lainnya</option>
                   </select>
                 </div>
-
                 <div class="form-group">
                   <label>Kontak Pelamar</label>
                   <div class="input-group-row">
                     <div>
-                      <span class="sub-label">No. WA (Opsional)</span>
-                      <input
+                      <span class="sub-label">No. WA (Opsional)</span
+                      ><input
                         type="text"
                         name="No_WA"
                         class="form-control"
@@ -625,8 +612,8 @@
                       />
                     </div>
                     <div>
-                      <span class="sub-label">Email (Opsional)</span>
-                      <input
+                      <span class="sub-label">Email (Opsional)</span
+                      ><input
                         type="email"
                         name="Email"
                         class="form-control"
@@ -636,7 +623,6 @@
                   </div>
                 </div>
               </div>
-
               <div>
                 <div class="form-group">
                   <label
@@ -644,8 +630,8 @@
                   >
                   <div class="input-group-row">
                     <div>
-                      <span class="sub-label">Provinsi</span>
-                      <select
+                      <span class="sub-label">Provinsi</span
+                      ><select
                         name="Provinsi"
                         id="provinsi-main"
                         class="form-control"
@@ -657,8 +643,8 @@
                       </select>
                     </div>
                     <div>
-                      <span class="sub-label">Kota/Kabupaten</span>
-                      <select
+                      <span class="sub-label">Kota/Kabupaten</span
+                      ><select
                         name="Kota"
                         id="kota-main"
                         class="form-control"
@@ -670,20 +656,17 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label
                     >Tautan CV & Portofolio (GDrive)
                     <span style="color: red">*</span></label
-                  >
-                  <input
+                  ><input
                     type="url"
                     name="Link_CV"
                     class="form-control"
                     placeholder="https://..."
                     required
-                  />
-                  <small
+                  /><small
                     style="
                       color: #777;
                       font-size: 0.8rem;
@@ -694,13 +677,15 @@
                     link".</small
                   >
                 </div>
-
                 <div class="form-group">
                   <label
                     >Preferensi Lokasi Penugasan
                     <span style="color: red">*</span></label
+                  ><select
+                    name="Kesediaan_Lokasi"
+                    class="form-control"
+                    required
                   >
-                  <select name="Kesediaan_Lokasi" class="form-control" required>
                     <option value="" disabled selected>
                       -- Pilih Wilayah --
                     </option>
@@ -724,11 +709,10 @@
                   </select>
                 </div>
               </div>
-
               <div style="grid-column: 1 / -1">
                 <div class="form-group">
-                  <label>Ringkasan Profil (Opsional)</label>
-                  <textarea
+                  <label>Ringkasan Profil (Opsional)</label
+                  ><textarea
                     name="Pesan"
                     class="form-control"
                     rows="1"
@@ -737,7 +721,6 @@
                 </div>
               </div>
             </div>
-
             <div style="margin-top: 30px; text-align: center">
               <button
                 type="submit"
@@ -772,7 +755,6 @@
               >Nama Proyek</strong
             >
           </p>
-
           <form id="projectForm" onsubmit="submitForm(event, 'projectForm')">
             <input type="hidden" name="Project" id="inputProjectName" />
             <input
@@ -780,27 +762,23 @@
               name="Kesediaan_Lokasi"
               value="Sesuai Lokasi Proyek"
             />
-
             <div class="form-group">
-              <label>Nama Lengkap <span style="color: red">*</span></label>
-              <input type="text" name="Nama" class="form-control" required />
+              <label>Nama Lengkap <span style="color: red">*</span></label
+              ><input type="text" name="Nama" class="form-control" required />
             </div>
-
             <div class="form-group">
               <label
                 >Melamar Untuk Posisi: <span style="color: red">*</span></label
-              >
-              <select name="Posisi_Dilamar" class="form-control" required>
+              ><select name="Posisi_Dilamar" class="form-control" required>
                 <option value="" disabled selected>-- Pilih Posisi --</option>
               </select>
             </div>
-
             <div class="form-group">
               <label>Kontak Pelamar</label>
               <div class="input-group-row">
                 <div>
-                  <span class="sub-label">No. WA (Opsional)</span>
-                  <input
+                  <span class="sub-label">No. WA (Opsional)</span
+                  ><input
                     type="text"
                     name="No_WA"
                     class="form-control"
@@ -808,8 +786,8 @@
                   />
                 </div>
                 <div>
-                  <span class="sub-label">Email (Opsional)</span>
-                  <input
+                  <span class="sub-label">Email (Opsional)</span
+                  ><input
                     type="email"
                     name="Email"
                     class="form-control"
@@ -818,13 +796,12 @@
                 </div>
               </div>
             </div>
-
             <div class="form-group">
               <label>Domisili Pelamar <span style="color: red">*</span></label>
               <div class="input-group-row">
                 <div>
-                  <span class="sub-label">Provinsi</span>
-                  <select
+                  <span class="sub-label">Provinsi</span
+                  ><select
                     name="Provinsi"
                     id="provinsi-modal"
                     class="form-control"
@@ -836,8 +813,8 @@
                   </select>
                 </div>
                 <div>
-                  <span class="sub-label">Kota/Kabupaten</span>
-                  <select
+                  <span class="sub-label">Kota/Kabupaten</span
+                  ><select
                     name="Kota"
                     id="kota-modal"
                     class="form-control"
@@ -849,14 +826,10 @@
                 </div>
               </div>
             </div>
-
             <div class="form-group">
-              <label
-                >Tautan CV (GDrive) <span style="color: red">*</span></label
-              >
-              <input type="url" name="Link_CV" class="form-control" required />
+              <label>Tautan CV (GDrive) <span style="color: red">*</span></label
+              ><input type="url" name="Link_CV" class="form-control" required />
             </div>
-
             <div style="margin-top: 25px">
               <button type="submit" class="btn-primary-form">
                 Kirim Lamaran
@@ -876,13 +849,12 @@
           style="grid-template-columns: 1.5fr 1fr 1fr; gap: 50px"
         >
           <div class="footer-info">
-            <a href="index.html">
-              <img
+            <a href="index.html"
+              ><img
                 src="assets/images/logo.png"
                 alt="Logo ESC White"
                 class="footer-logo-img"
-              />
-            </a>
+            /></a>
             <p>STUDY, PLANNING, SUPERVISION, CONSTRUCTION MANAGEMENT</p>
           </div>
           <div class="footer-info notranslate">
@@ -926,13 +898,7 @@
 
     <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
-    <script
-      type="text/javascript"
-      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    ></script>
-    <script src="assets/js/main.js"></script>
-
-    <script>
+    <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement(
           {
@@ -944,10 +910,42 @@
           "google_translate_element",
         );
       }
+    </script>
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+    <script src="assets/js/main.js"></script>
 
-      // ============================================
-      // CONFIG SHEET (PENTING: METODE FETCH)
-      // ============================================
+    <script>
+      // 1. FUNGSI TRANSLATE REVISI (PAKE COOKIE + RELOAD)
+      function changeLanguage(lang) {
+        document.cookie =
+          "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie =
+          "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" +
+          window.location.hostname;
+        document.cookie = "googtrans=/id/" + lang + "; path=/;";
+        document.cookie =
+          "googtrans=/id/" +
+          lang +
+          "; path=/; domain=" +
+          window.location.hostname;
+
+        var select = document.querySelector("select.goog-te-combo");
+        if (select) {
+          select.value = lang;
+          select.dispatchEvent(new Event("change"));
+        } else {
+          location.reload();
+        }
+        document
+          .querySelectorAll(".lang-option")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById("lang-" + lang).classList.add("active");
+      }
+
+      // 2. CONFIG SHEET (DATA)
       const READ_CSV_URL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsep9elL2HOd38PXNnfpyzbSyQ2trMMT4p15b_RtV2AdgjtoXjlOXpZAFTPwNppB7wo_-Z6brP8BRX/pub?gid=0&single=true&output=csv";
       const SUBMIT_SCRIPT_URL =
@@ -957,8 +955,13 @@
       document.addEventListener("DOMContentLoaded", function () {
         fetchProjects();
         loadAllProvinces();
+        if (document.cookie.indexOf("googtrans=/id/en") >= 0) {
+          document.getElementById("lang-en").classList.add("active");
+          document.getElementById("lang-id").classList.remove("active");
+        }
       });
 
+      // API WILAYAH
       const API_BASE_URL = "https://www.emsifa.com/api-wilayah-indonesia/api";
       function loadAllProvinces() {
         fetch(`${API_BASE_URL}/provinces.json`)
@@ -989,13 +992,11 @@
           citySelect.disabled = false;
           return;
         }
-
         const provSelect = document.getElementById(
           targetCityId === "kota-main" ? "provinsi-main" : "provinsi-modal",
         );
         const provId =
           provSelect.options[provSelect.selectedIndex].getAttribute("data-id");
-
         fetch(`${API_BASE_URL}/regencies/${provId}.json`)
           .then((r) => r.json())
           .then((regencies) => {
@@ -1008,20 +1009,12 @@
           });
       }
 
-      // =========================================================================
-      // SOLUSI DELAY: CACHE BUSTING AGRESIF
-      // Menggunakan timestamp unik + Header no-cache untuk memaksa browser ambil data baru
-      // =========================================================================
+      // FETCH DATA (Anti Cache)
       function fetchProjects() {
-        // Timestamp unik setiap milidetik agar URL dianggap "baru" terus oleh browser
         const cacheBuster = "&t=" + Date.now() + Math.random();
-
-        fetch(READ_CSV_URL + cacheBuster, {
-          // cache: "no-store", // Jangan gunakan ini untuk fetch google sheet (sering CORS)
-          // headers dihapus agar tidak kena CORS Preflight
-        })
+        fetch(READ_CSV_URL + cacheBuster)
           .then((res) => {
-            if (!res.ok) throw new Error("Gagal mengambil data");
+            if (!res.ok) throw new Error("Gagal");
             return res.text();
           })
           .then((csv) => {
@@ -1030,7 +1023,7 @@
           .catch((err) => {
             console.error(err);
             document.getElementById("project-list-container").innerHTML =
-              `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#e23535;background:#fff;border-radius:12px;">Gagal memuat data. Mohon periksa koneksi.</div>`;
+              `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#e23535;background:#fff;">Gagal memuat data.</div>`;
           });
       }
 
@@ -1038,18 +1031,16 @@
         const rows = [];
         const lines = text.split(/\r?\n/);
         for (let i = 1; i < lines.length; i++) {
-          // Regex untuk split koma CSV standar
           const cols = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
           const clean = cols.map((c) =>
             c ? c.replace(/^"|"$/g, "").trim() : "",
           );
-          // Validasi kolom minimal
           if (clean.length > 6) {
             rows.push({
               posisi: clean[0],
               lokasi: clean[1],
-              status: clean[5], // Kolom F (Status)
-              project: clean[6] || "General", // Kolom G (Project Name)
+              status: clean[5],
+              project: clean[6] || "General",
             });
           }
         }
@@ -1060,54 +1051,32 @@
         const container = document.getElementById("project-list-container");
         container.innerHTML = "";
         const uniqueProjects = {};
-
         data.forEach((item) => {
-          // LOGIKA PENTING: Hanya ambil yang statusnya OPEN
           if (item.status && item.status.toUpperCase() === "OPEN") {
-            if (!uniqueProjects[item.project]) {
+            if (!uniqueProjects[item.project])
               uniqueProjects[item.project] = {
                 name: item.project,
                 location: item.lokasi,
                 positions: [],
               };
-            }
-            // Mencegah duplikasi posisi di satu proyek
-            if (!uniqueProjects[item.project].positions.includes(item.posisi)) {
+            if (!uniqueProjects[item.project].positions.includes(item.posisi))
               uniqueProjects[item.project].positions.push(item.posisi);
-            }
           }
         });
-
-        projectDatabase = uniqueProjects;
         const projectsArray = Object.values(uniqueProjects);
-
         if (projectsArray.length === 0) {
-          container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;background:#fff;border-radius:12px;">Saat ini belum ada lowongan proyek dibuka.<br>Silakan daftar di Talent Pool.</div>`;
+          container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;background:#fff;">Belum ada lowongan dibuka.<br>Silakan daftar di Talent Pool.</div>`;
           return;
         }
-
         projectsArray.forEach((proj) => {
-          // Render jika punya minimal 1 posisi OPEN
           if (proj.positions.length > 0) {
             const card = document.createElement("div");
             card.className = "project-card";
             card.onclick = () => openModal(proj.name);
-
             const badges = proj.positions
               .map((p) => `<span class="position-badge">${p}</span>`)
               .join("");
-
-            card.innerHTML = `
-                <div>
-                    <span class="status-pill">REKRUTMEN DIBUKA</span>
-                    <h3>${proj.name}</h3>
-                    <div class="project-location"><i class="fas fa-map-marker-alt"></i> ${proj.location}</div>
-                    <div class="positions-label">Posisi Dibuka:</div>
-                    <div class="positions-container">${badges}</div>
-                </div>
-                <div class="card-footer">
-                    <span>Klik untuk melamar</span> <i class="fas fa-arrow-right"></i>
-                </div>`;
+            card.innerHTML = `<div><span class="status-pill">REKRUTMEN DIBUKA</span><h3>${proj.name}</h3><div class="project-location"><i class="fas fa-map-marker-alt"></i> ${proj.location}</div><div class="positions-label">Posisi Dibuka:</div><div class="positions-container">${badges}</div></div><div class="card-footer"><span>Klik untuk melamar</span> <i class="fas fa-arrow-right"></i></div>`;
             container.appendChild(card);
           }
         });
@@ -1117,7 +1086,6 @@
         const modal = document.getElementById("projectModal");
         document.getElementById("modalProjectName").innerText = name;
         document.getElementById("inputProjectName").value = name;
-
         const select = document.querySelector(
           '#projectForm select[name="Posisi_Dilamar"]',
         );
@@ -1149,21 +1117,17 @@
         const btn = form.querySelector('button[type="submit"]');
         const success = form.querySelector(".alert-success");
         const error = form.querySelector(".alert-error");
-
         const originalText = btn.innerHTML;
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
         success.style.display = "none";
         error.style.display = "none";
-
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-
         if (data.Posisi_Dilamar) {
           data.Posisi_Harapan = data.Posisi_Dilamar;
           data.Posisi = data.Posisi_Dilamar;
         }
-
         fetch(SUBMIT_SCRIPT_URL, {
           method: "POST",
           body: JSON.stringify(data),
@@ -1188,17 +1152,17 @@
           });
       }
 
-      // SCRIPT AGGRESIF HAPUS BANNER GOOGLE TRANSLATE (DIPERKUAT)
+      // ANTI BANNER JS (DIJAMIN HILANG)
       setInterval(function () {
         var banner = document.querySelector(".goog-te-banner-frame");
+        // Hapus elemen banner dari DOM (Paling Efektif)
         if (banner) {
           banner.remove();
         }
-        if (document.body.style.top && document.body.style.top !== "0px") {
-          document.body.style.setProperty("top", "0px", "important");
-          document.body.style.setProperty("position", "static", "important");
-        }
-        // Tambahan: Hapus elemen gadget jika muncul
+        // Paksa reset body style
+        document.body.style.top = "0px";
+        document.body.style.marginTop = "0px";
+        // Sembunyikan elemen sisa
         var gadget = document.querySelector(".goog-te-gadget-simple");
         if (gadget) gadget.style.display = "none";
       }, 50);
