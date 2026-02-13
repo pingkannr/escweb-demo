@@ -124,18 +124,6 @@
         font-size: 0.8rem;
       }
 
-      /* HERO SECTION */
-      .hero-mini {
-        background-image:
-          linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 30, 60, 0.9)),
-          url("assets/images/bg4.jpg");
-        background-size: cover;
-        background-position: center;
-        padding: 100px 0;
-        text-align: center;
-        color: white;
-      }
-
       /* CSS LAINNYA TETAP SAMA... */
       .intro-grid {
         display: grid;
@@ -471,11 +459,20 @@
 
     <section class="hero-mini">
       <div class="container">
-        <h4 style="color: var(--accent); font-weight: 700; letter-spacing: 2px">
+        <h4
+          style="
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out;
+          "
+        >
           LOWONGAN KERJA
         </h4>
-        <h1>Bergabung Dengan Tim Ahli</h1>
-        <p>
+        <h1 style="animation: fadeInUp 1s ease-out 0.2s backwards">
+          Bergabung Dengan Tim Ahli
+        </h1>
+        <p style="animation: fadeInUp 1s ease-out 0.2s backwards">
           Wujudkan infrastruktur masa depan Indonesia dengan integritas dan
           profesionalisme.
         </p>
