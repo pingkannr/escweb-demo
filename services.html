@@ -25,22 +25,36 @@
     <style>
       body {
         font-family: "Inter", sans-serif;
-        background-color: #f8f9fa;
+        background-color: #ffffff;
       }
 
       /* ========================================= */
-      /* CSS ANTI-BANNER GOOGLE (DIPERKUAT)        */
+      /* STYLE BARU BACKGROUND (LEBIH JELAS)       */
+      /* ========================================= */
+      .bg-soft-variation {
+        /* 1. Base color abu-biru muda yang jelas berbeda dari putih */
+        background-color: #f2f6fa;
+
+        /* 2. Pattern Dot Halus (Premium Look) */
+        /* Membuat tekstur titik kecil samar agar tidak terlihat "flat" */
+        background-image: radial-gradient(
+          rgba(50, 70, 90, 0.07) 1.5px,
+          transparent 1.5px
+        );
+        background-size: 28px 28px; /* Jarak antar titik */
+
+        /* Border pemisah atas bawah */
+        border-top: 1px solid #e1e6eb;
+        border-bottom: 1px solid #e1e6eb;
+      }
+
+      /* ========================================= */
+      /* CSS ANTI-BANNER GOOGLE                    */
       /* ========================================= */
       .goog-te-banner-frame.skiptranslate,
       .goog-te-banner-frame,
       iframe.goog-te-banner-frame {
         display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        width: 0 !important;
-        z-index: -9999 !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
       }
       .skiptranslate {
         display: none !important;
@@ -137,106 +151,69 @@
       }
 
       /* ========================================= */
-      /* NEW 3D CLIENT SLIDER (SWIPER JS)          */
+      /* CLIENT SLIDER (CLEAN 3D)                  */
       /* ========================================= */
       .modern-client-section {
-        padding: 80px 0 100px 0;
-        /* Background Biru Tua Gradient */
-        background: linear-gradient(135deg, #021a30 0%, #003366 100%);
+        padding: 80px 0 120px 0;
+        background: #ffffff;
         position: relative;
         overflow: hidden;
       }
 
-      /* Pattern Dot Halus Background */
-      .modern-client-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(
-          rgba(255, 255, 255, 0.1) 1px,
-          transparent 1px
-        );
-        background-size: 30px 30px;
-        opacity: 0.5;
-        pointer-events: none;
-      }
-
-      /* Swiper Container Styles */
       .swiper {
         width: 100%;
-        padding-top: 50px;
-        padding-bottom: 50px;
+        padding-top: 60px;
+        padding-bottom: 60px;
       }
 
-      /* Style untuk Kartu Slider */
       .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        width: 300px; /* Lebar Kartu Desktop */
-        height: 380px; /* Tinggi Kartu Desktop */
-        background: #fff;
-        border-radius: 24px;
-        /* Shadow lembut */
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        width: 260px;
+        height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: 20px;
-        transition: 0.3s;
-        /* Default state (saat tidak di tengah) */
-        opacity: 0.4;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        justify-content: flex-start;
+        transition: all 0.4s ease;
+        opacity: 0.3;
+        transform: scale(0.8);
       }
 
-      /* State saat kartu berada di tengah (Active) */
       .swiper-slide-active {
         opacity: 1;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5); /* Shadow lebih menonjol */
         z-index: 10;
-        background: #fff;
+        transform: scale(1.15);
       }
 
-      /* Logo di dalam kartu */
       .client-logo-img {
-        width: 140px;
-        height: 140px;
+        width: 150px;
+        height: 150px;
         object-fit: contain;
-        margin-bottom: 30px;
-        filter: grayscale(100%); /* Default Hitam Putih */
+        margin-bottom: 25px;
+        filter: grayscale(100%);
         transition: 0.5s;
-        opacity: 0.7;
       }
 
-      /* Logo saat aktif berwarna */
       .swiper-slide-active .client-logo-img {
         filter: grayscale(0%);
-        opacity: 1;
-        transform: scale(1.1);
       }
 
-      /* Nama Klien */
       .client-name {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 700;
         color: #333;
         text-align: center;
         font-family: "Inter", sans-serif;
         line-height: 1.4;
+        padding: 0 10px;
       }
 
-      /* Custom Navigation Buttons (Panah Merah) */
       .swiper-button-prev,
       .swiper-button-next {
-        background-color: #fff;
+        background-color: #f0f0f0;
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        color: #e23535; /* Panah Merah */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        color: #e23535;
         transition: 0.3s;
       }
 
@@ -248,34 +225,36 @@
 
       .swiper-button-prev:hover,
       .swiper-button-next:hover {
-        background-color: #f0f0f0;
-        transform: scale(1.1);
-        color: #c01a1a;
+        background-color: #e23535;
+        color: #fff;
+        box-shadow: 0 5px 15px rgba(226, 53, 53, 0.4);
       }
 
-      /* Pagination (Dots di bawah) */
       .swiper-pagination-bullet {
-        background: #fff;
-        opacity: 0.3;
+        background: #ccc;
+        opacity: 0.6;
         width: 10px;
         height: 10px;
+        margin: 0 6px !important;
       }
       .swiper-pagination-bullet-active {
         background: #e23535;
         opacity: 1;
-        width: 25px;
+        width: 30px;
         border-radius: 5px;
         transition: 0.3s;
       }
 
       @media (max-width: 768px) {
         .swiper-slide {
-          width: 240px;
-          height: 320px;
+          width: 200px;
         }
         .client-logo-img {
-          width: 100px;
-          height: 100px;
+          width: 110px;
+          height: 110px;
+        }
+        .client-name {
+          font-size: 0.95rem;
         }
       }
     </style>
@@ -414,7 +393,7 @@
       </div>
     </section>
 
-    <section class="section-padding" style="background: #f8fafc">
+    <section class="section-padding bg-soft-variation">
       <div class="container">
         <div class="hero-wrapper" style="direction: rtl">
           <div class="hero-content reveal" style="direction: ltr">
@@ -495,7 +474,7 @@
 
     <section class="modern-client-section">
       <div class="container" style="position: relative; z-index: 2">
-        <div class="text-center reveal" style="margin-bottom: 40px">
+        <div class="text-center reveal" style="margin-bottom: 50px">
           <h4
             style="
               color: #e23535;
@@ -506,7 +485,7 @@
           >
             KLIEN KAMI
           </h4>
-          <h2 style="color: #ffffff; font-size: 2.2rem">
+          <h2 style="color: #003366; font-size: 2.2rem">
             Dipercaya Oleh Berbagai Instansi
           </h2>
           <div
@@ -937,7 +916,7 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-      // Initialize Swiper (3D Coverflow Effect)
+      // Initialize Swiper (3D Coverflow Effect - Adjusted for no cards)
       var swiper = new Swiper(".mySwiper", {
         effect: "coverflow",
         grabCursor: true,
@@ -946,13 +925,13 @@
         coverflowEffect: {
           rotate: 0,
           stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-          slideShadows: false,
+          depth: 150, // Depth ditambah agar efek 3D lebih terasa tanpa kartu
+          modifier: 2,
+          slideShadows: false, // Shadow dimatikan agar bersih
         },
         loop: true,
         autoplay: {
-          delay: 2500,
+          delay: 1000,
           disableOnInteraction: false,
         },
         pagination: {
