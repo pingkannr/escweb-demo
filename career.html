@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lowongan & Peluang | PT. Elsadai Servo Cons</title>
+    <title>Karir & Peluang | PT. Elsadai Servo Cons</title>
 
     <meta
       http-equiv="Cache-Control"
@@ -40,7 +40,49 @@
         color: #333;
       }
 
-      /* 1. TOMBOL BAHASA */
+      /* ========================================= */
+      /* CSS ANTI-BANNER GOOGLE (DIPERKUAT)        */
+      /* ========================================= */
+      .goog-te-banner-frame.skiptranslate,
+      .goog-te-banner-frame,
+      iframe.goog-te-banner-frame {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        z-index: -9999 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      .skiptranslate {
+        display: none !important;
+      }
+      body {
+        top: 0px !important;
+        margin-top: 0px !important;
+        position: static !important;
+      }
+      #google_translate_element,
+      .goog-te-gadget,
+      .goog-tooltip,
+      #goog-gt-tt {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      .goog-text-highlight {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      font {
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+      header {
+        top: 0 !important;
+      }
+
+      /* LANGUAGE SWITCHER */
       .lang-switch-container {
         display: flex;
         align-items: center;
@@ -72,25 +114,19 @@
         font-size: 0.8rem;
       }
 
-      /* 2. ANTI-BANNER GOOGLE */
-      .goog-te-banner-frame.skiptranslate,
-      .goog-te-banner-frame {
-        display: none !important;
-      }
-      body {
-        top: 0px !important;
-        position: static !important;
-      }
-      header {
-        top: 0 !important;
-      }
-      .goog-tooltip,
-      .goog-text-highlight {
-        display: none !important;
-        background: transparent !important;
+      /* HERO SECTION */
+      .hero-mini {
+        background-image:
+          linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 30, 60, 0.9)),
+          url("assets/images/bg4.jpg");
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
       }
 
-      /* 3. HERO & INTRO */
+      /* INTRO & CTA */
       .intro-grid {
         display: grid;
         grid-template-columns: 1.6fr 1fr;
@@ -98,18 +134,6 @@
         margin-bottom: 50px;
         align-items: center;
       }
-      .news-content h2 {
-        font-size: 2rem;
-        color: var(--primary-dark);
-        margin-bottom: 15px;
-        font-weight: 700;
-      }
-      .news-content p {
-        color: var(--text-grey);
-        line-height: 1.7;
-        margin-bottom: 25px;
-      }
-
       .cta-card {
         background: linear-gradient(
           135deg,
@@ -123,16 +147,6 @@
         position: relative;
         overflow: hidden;
       }
-      .cta-card::after {
-        content: "";
-        position: absolute;
-        bottom: -40px;
-        right: -40px;
-        width: 180px;
-        height: 180px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 50%;
-      }
       .btn-glass {
         background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(5px);
@@ -141,12 +155,11 @@
         padding: 12px 24px;
         border-radius: 6px;
         font-weight: 600;
-        cursor: pointer;
-        transition: 0.3s;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
         gap: 10px;
+        transition: 0.3s;
       }
       .btn-glass:hover {
         background: #fff;
@@ -154,7 +167,7 @@
         transform: translateY(-2px);
       }
 
-      /* 4. JOB CARDS */
+      /* JOB LIST */
       .section-header-simple {
         display: flex;
         justify-content: space-between;
@@ -168,6 +181,7 @@
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         gap: 30px;
       }
+
       .project-card {
         background: #fff;
         border: 1px solid #f0f0f0;
@@ -179,6 +193,7 @@
         flex-direction: column;
         min-height: 280px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        position: relative;
       }
       .project-card:hover {
         transform: translateY(-8px);
@@ -210,12 +225,7 @@
         align-items: center;
         gap: 8px;
       }
-      .positions-label {
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: #999;
-        margin-bottom: 10px;
-      }
+
       .positions-container {
         display: flex;
         flex-wrap: wrap;
@@ -241,9 +251,10 @@
         color: var(--accent-color);
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
 
-      /* 5. IMPROVED FORM STYLING */
+      /* FORM STYLES */
       .form-section-wrapper {
         margin-top: 80px;
         background: var(--card-bg);
@@ -257,23 +268,16 @@
         max-width: 700px;
         margin: 0 auto 40px auto;
       }
-
       .form-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;
       }
 
-      .input-group-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-      }
-
       .form-group {
         margin-bottom: 20px;
       }
-      .form-group > label {
+      .form-group label {
         display: block;
         font-size: 0.85rem;
         font-weight: 700;
@@ -282,16 +286,6 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
       }
-
-      /* Sub-Label yang lebih rapi */
-      .sub-label {
-        display: block;
-        font-size: 0.75rem;
-        color: #666;
-        margin-bottom: 5px;
-        font-weight: 500;
-      }
-
       .form-control {
         width: 100%;
         padding: 12px 16px;
@@ -308,21 +302,28 @@
         background: #fff;
       }
 
+      /* Input Group Row (Kontak & Domisili) */
+      .input-group-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .sub-label {
+        display: block;
+        font-size: 0.75rem;
+        color: #666;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+
+      /* Select styling */
       select.form-control {
         cursor: pointer;
         appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
         background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23003366' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
         background-repeat: no-repeat;
         background-position: right 16px center;
-        background-size: 16px;
         padding-right: 40px;
-      }
-      select.form-control:disabled {
-        background-color: #e9ecef;
-        cursor: not-allowed;
-        opacity: 0.7;
       }
 
       /* Buttons & Alerts */
@@ -423,11 +424,6 @@
         .form-section-wrapper {
           padding: 30px;
         }
-        .lang-switch-container {
-          width: 100%;
-          justify-content: center;
-          margin: 10px 0;
-        }
       }
     </style>
   </head>
@@ -454,7 +450,7 @@
               <a
                 href="career.html"
                 style="font-weight: 600; color: var(--primary)"
-                >Lowongan</a
+                >Karir</a
               >
             </li>
             <li>
@@ -479,14 +475,7 @@
       </div>
     </header>
 
-    <section
-      class="hero-mini"
-      style="
-        background-image:
-          linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 30, 60, 0.9)),
-          url(&quot;assets/images/bg4.jpg&quot;);
-      "
-    >
+    <section class="hero-mini">
       <div class="container">
         <h4 style="color: var(--accent); font-weight: 700; letter-spacing: 2px">
           LOWONGAN KERJA
@@ -627,7 +616,7 @@
                   <label>Kontak Pelamar</label>
                   <div class="input-group-row">
                     <div>
-                      <span class="sub-label">No. WA</span>
+                      <span class="sub-label">No. WA (Opsional)</span>
                       <input
                         type="text"
                         name="No_WA"
@@ -636,7 +625,7 @@
                       />
                     </div>
                     <div>
-                      <span class="sub-label">Email</span>
+                      <span class="sub-label">Email (Opsional)</span>
                       <input
                         type="email"
                         name="Email"
@@ -890,15 +879,15 @@
             <a href="index.html">
               <img
                 src="assets/images/logo.png"
-                alt="Logo PT. Elsadai"
+                alt="Logo ESC White"
                 class="footer-logo-img"
               />
             </a>
             <p>STUDY, PLANNING, SUPERVISION, CONSTRUCTION MANAGEMENT</p>
           </div>
-          <div class="footer-info">
+          <div class="footer-info notranslate">
             <h4>Hubungi Kami</h4>
-            <ul class="notranslate">
+            <ul>
               <li>
                 <i class="fas fa-map-marker-alt"></i> Lorong Anugerah No. 9A,
                 Manado
@@ -906,7 +895,7 @@
               <li><i class="fab fa-whatsapp"></i>+62 896-1878-8227</li>
               <li><i class="fab fa-whatsapp"></i>+62 851-2618-6465</li>
               <li>
-                <i class="fas fa-envelope"></i>ptelsadaiservocons@gmail.com
+                <i class="fas fa-envelope"></i> ptelsadaiservocons@gmail.com
               </li>
             </ul>
           </div>
@@ -924,18 +913,13 @@
                   text-decoration: none;
                   border-bottom: 1px dotted #fff;
                 "
-              >
-                Gabung Tim Kami
-                <i
-                  class="fas fa-arrow-right"
-                  style="font-size: 0.8rem; margin-left: 5px"
-                ></i>
-              </a>
+                >Gabung Tim Kami <i class="fas fa-arrow-right"></i
+              ></a>
             </p>
           </div>
         </div>
         <div class="footer-bottom">
-          &copy; 2026 PT. Elsadai Servo Cons. All Rights Reserved.
+          © 2026 PT. Elsadai Servo Cons. All Rights Reserved.
         </div>
       </div>
     </footer>
@@ -961,6 +945,9 @@
         );
       }
 
+      // ============================================
+      // CONFIG SHEET (PENTING: METODE FETCH)
+      // ============================================
       const READ_CSV_URL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsep9elL2HOd38PXNnfpyzbSyQ2trMMT4p15b_RtV2AdgjtoXjlOXpZAFTPwNppB7wo_-Z6brP8BRX/pub?gid=0&single=true&output=csv";
       const SUBMIT_SCRIPT_URL =
@@ -1021,20 +1008,29 @@
           });
       }
 
+      // =========================================================================
+      // SOLUSI DELAY: CACHE BUSTING AGRESIF
+      // Menggunakan timestamp unik + Header no-cache untuk memaksa browser ambil data baru
+      // =========================================================================
       function fetchProjects() {
-        const bust = "&t=" + Date.now() + Math.random();
-        fetch(READ_CSV_URL + bust, {
-          cache: "no-store",
-          headers: { "Cache-Control": "no-cache" },
+        // Timestamp unik setiap milidetik agar URL dianggap "baru" terus oleh browser
+        const cacheBuster = "&t=" + Date.now() + Math.random();
+
+        fetch(READ_CSV_URL + cacheBuster, {
+          // cache: "no-store", // Jangan gunakan ini untuk fetch google sheet (sering CORS)
+          // headers dihapus agar tidak kena CORS Preflight
         })
-          .then((res) => res.text())
+          .then((res) => {
+            if (!res.ok) throw new Error("Gagal mengambil data");
+            return res.text();
+          })
           .then((csv) => {
             renderProjects(parseCSV(csv));
           })
           .catch((err) => {
             console.error(err);
             document.getElementById("project-list-container").innerHTML =
-              `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#e23535;">Gagal memuat data.</div>`;
+              `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#e23535;background:#fff;border-radius:12px;">Gagal memuat data. Mohon periksa koneksi.</div>`;
           });
       }
 
@@ -1042,17 +1038,20 @@
         const rows = [];
         const lines = text.split(/\r?\n/);
         for (let i = 1; i < lines.length; i++) {
+          // Regex untuk split koma CSV standar
           const cols = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
           const clean = cols.map((c) =>
             c ? c.replace(/^"|"$/g, "").trim() : "",
           );
-          if (clean.length > 6)
+          // Validasi kolom minimal
+          if (clean.length > 6) {
             rows.push({
               posisi: clean[0],
               lokasi: clean[1],
-              status: clean[5],
-              project: clean[6] || "General",
+              status: clean[5], // Kolom F (Status)
+              project: clean[6] || "General", // Kolom G (Project Name)
             });
+          }
         }
         return rows;
       }
@@ -1063,6 +1062,7 @@
         const uniqueProjects = {};
 
         data.forEach((item) => {
+          // LOGIKA PENTING: Hanya ambil yang statusnya OPEN
           if (item.status && item.status.toUpperCase() === "OPEN") {
             if (!uniqueProjects[item.project]) {
               uniqueProjects[item.project] = {
@@ -1071,6 +1071,7 @@
                 positions: [],
               };
             }
+            // Mencegah duplikasi posisi di satu proyek
             if (!uniqueProjects[item.project].positions.includes(item.posisi)) {
               uniqueProjects[item.project].positions.push(item.posisi);
             }
@@ -1081,19 +1082,32 @@
         const projectsArray = Object.values(uniqueProjects);
 
         if (projectsArray.length === 0) {
-          container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;">Belum ada lowongan dibuka.<br>Silakan daftar di Talent Pool.</div>`;
+          container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;background:#fff;border-radius:12px;">Saat ini belum ada lowongan proyek dibuka.<br>Silakan daftar di Talent Pool.</div>`;
           return;
         }
 
         projectsArray.forEach((proj) => {
+          // Render jika punya minimal 1 posisi OPEN
           if (proj.positions.length > 0) {
             const card = document.createElement("div");
             card.className = "project-card";
             card.onclick = () => openModal(proj.name);
+
             const badges = proj.positions
               .map((p) => `<span class="position-badge">${p}</span>`)
               .join("");
-            card.innerHTML = `<div><span class="status-pill">REKRUTMEN DIBUKA</span><h3>${proj.name}</h3><div class="project-location"><i class="fas fa-map-marker-alt"></i> ${proj.location}</div><div class="positions-label">Posisi Dibuka:</div><div class="positions-container">${badges}</div></div><div class="card-footer"><span>Klik untuk melamar</span> <i class="fas fa-arrow-right"></i></div>`;
+
+            card.innerHTML = `
+                <div>
+                    <span class="status-pill">REKRUTMEN DIBUKA</span>
+                    <h3>${proj.name}</h3>
+                    <div class="project-location"><i class="fas fa-map-marker-alt"></i> ${proj.location}</div>
+                    <div class="positions-label">Posisi Dibuka:</div>
+                    <div class="positions-container">${badges}</div>
+                </div>
+                <div class="card-footer">
+                    <span>Klik untuk melamar</span> <i class="fas fa-arrow-right"></i>
+                </div>`;
             container.appendChild(card);
           }
         });
@@ -1174,13 +1188,19 @@
           });
       }
 
-      setInterval(() => {
-        const b = document.querySelector(".goog-te-banner-frame");
-        if (b) b.remove();
+      // SCRIPT AGGRESIF HAPUS BANNER GOOGLE TRANSLATE (DIPERKUAT)
+      setInterval(function () {
+        var banner = document.querySelector(".goog-te-banner-frame");
+        if (banner) {
+          banner.remove();
+        }
         if (document.body.style.top && document.body.style.top !== "0px") {
           document.body.style.setProperty("top", "0px", "important");
           document.body.style.setProperty("position", "static", "important");
         }
+        // Tambahan: Hapus elemen gadget jika muncul
+        var gadget = document.querySelector(".goog-te-gadget-simple");
+        if (gadget) gadget.style.display = "none";
       }, 50);
     </script>
   </body>
