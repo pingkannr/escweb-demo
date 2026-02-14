@@ -70,24 +70,43 @@
         color: #ccc;
         font-size: 0.8rem;
       }
-      /* Contact Specific */
+
+      /* ========================================= */
+      /* PERBAIKAN UKURAN KOTAK KONTAK & FONTNYA   */
+      /* ========================================= */
+      .services-grid .service-card {
+        padding: 30px 20px; /* Padding sedikit dikurangi agar lega */
+      }
+      .services-grid .service-card h3 {
+        font-size: 1.15rem !important; /* Kunci ukuran judul agar tidak raksasa */
+        margin-bottom: 10px;
+        line-height: 1.4;
+      }
+      .services-grid .service-card p {
+        font-size: 0.85rem !important; /* Kunci ukuran teks deskripsi */
+        line-height: 1.5;
+        margin-bottom: 8px;
+        color: #555;
+      }
       .contact-icon {
-        width: 60px;
-        height: 60px;
+        width: 50px; /* Ikon diperkecil agar proporsional */
+        height: 50px;
         background: rgba(0, 51, 102, 0.1);
         color: var(--primary);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
-        margin: 0 auto 20px;
+        font-size: 1.2rem;
+        margin: 0 auto 15px;
         transition: 0.3s;
       }
       .service-card:hover .contact-icon {
         background: var(--accent);
         color: #fff;
       }
+
+      /* Contact Form Setup */
       .contact-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -163,7 +182,7 @@
             <li><a href="about.html">Tentang Kami</a></li>
             <li><a href="services.html">Layanan</a></li>
             <li><a href="portfolio.html">Proyek</a></li>
-            <li><a href="contact.html" class="nav-btn active">Kontak</a></li>
+            <li><a href="contact.html" class="active">Kontak</a></li>
             <li>
               <a
                 href="career.html"
@@ -219,7 +238,7 @@
               cursor: pointer;
             "
           >
-            <div class="contact-icon" style="margin: 0 auto 20px">
+            <div class="contact-icon">
               <i class="fas fa-map-marker-alt"></i>
             </div>
             <h3>Kantor Pusat (Head Office)</h3>
@@ -239,19 +258,18 @@
               cursor: pointer;
             "
           >
-            <div class="contact-icon" style="margin: 0 auto 20px">
+            <div class="contact-icon">
               <i class="fas fa-building"></i>
             </div>
             <h3>Representative Office - Jakarta</h3>
             <p class="notranslate">
               Jl. K.H. Mas Mansyur No.98, RT.7/RW.17, Kb. Melati, Kecamatan
-              Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta
-              10230
+              Tanah Abang, Kota Jakarta Pusat, DKI Jakarta 10230
             </p>
           </a>
 
           <div class="service-card text-center">
-            <div class="contact-icon" style="margin: 0 auto 20px">
+            <div class="contact-icon">
               <i class="fas fa-phone-volume"></i>
             </div>
             <h3>Telepon & Email</h3>
@@ -259,9 +277,8 @@
               <p
                 style="
                   color: rgb(119, 123, 139);
-                  text-decoration: none;
                   font-weight: 700;
-                  margin-bottom: 5px;
+                  margin-bottom: 5px !important;
                 "
               >
                 <i class="fab fa-whatsapp" style="margin-right: 5px"></i> +62
@@ -271,18 +288,21 @@
               <p
                 style="
                   color: rgb(119, 123, 139);
-                  text-decoration: none;
                   font-weight: 700;
-                  margin-bottom: 15px;
+                  margin-bottom: 15px !important;
                 "
               >
                 <i class="fab fa-whatsapp" style="margin-right: 5px"></i> +62
                 851-2618-6465
               </p>
 
-              <p>ptelsadaiservocons@gmail.com</p>
-              <p>elsadaiservocons@yahoo.co.id</p>
-              <p style="margin-top: 7px">hrd.elsadaiservocons@gmail.com</p>
+              <p style="margin-bottom: 2px !important">
+                ptelsadaiservocons@gmail.com
+              </p>
+              <p style="margin-bottom: 2px !important">
+                elsadaiservocons@yahoo.co.id
+              </p>
+              <p>hrd.elsadaiservocons@gmail.com</p>
             </div>
           </div>
         </div>
@@ -522,7 +542,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          &copy; 2026 PT. Elsadai Servo Cons. All Rights Reserved.
+          © 2026 PT. Elsadai Servo Cons. All Rights Reserved.
         </div>
       </div>
     </footer>

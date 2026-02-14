@@ -9,7 +9,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -23,64 +22,6 @@
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #ffffff;
-      }
-
-      /* ========================================= */
-      /* STYLE BARU BACKGROUND (LEBIH JELAS)       */
-      /* ========================================= */
-      .bg-soft-variation {
-        /* 1. Base color abu-biru muda yang jelas berbeda dari putih */
-        background-color: #f2f6fa;
-
-        /* 2. Pattern Dot Halus (Premium Look) */
-        /* Membuat tekstur titik kecil samar agar tidak terlihat "flat" */
-        background-image: radial-gradient(
-          rgba(50, 70, 90, 0.07) 1.5px,
-          transparent 1.5px
-        );
-        background-size: 28px 28px; /* Jarak antar titik */
-
-        /* Border pemisah atas bawah */
-        border-top: 1px solid #e1e6eb;
-        border-bottom: 1px solid #e1e6eb;
-      }
-
-      /* ========================================= */
-      /* CSS ANTI-BANNER GOOGLE                    */
-      /* ========================================= */
-      .goog-te-banner-frame.skiptranslate,
-      .goog-te-banner-frame,
-      iframe.goog-te-banner-frame {
-        display: none !important;
-      }
-      .skiptranslate {
-        display: none !important;
-      }
-      body {
-        top: 0px !important;
-        margin-top: 0px !important;
-        position: static !important;
-      }
-      #google_translate_element,
-      .goog-te-gadget,
-      .goog-tooltip,
-      #goog-gt-tt {
-        display: none !important;
-        visibility: hidden !important;
-      }
-      .goog-text-highlight {
-        background-color: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-      }
-      font {
-        background-color: transparent !important;
-        box-shadow: none !important;
-      }
-
       /* --- TOMBOL BAHASA --- */
       .lang-switch-container {
         display: flex;
@@ -113,41 +54,20 @@
         font-size: 0.8rem;
       }
 
-      header {
-        top: 0 !important;
-        position: sticky;
-        z-index: 1000;
-        background-color: #fff !important;
-        width: 100%;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
+      /* ========================================= */
+      /* STYLE KHUSUS HALAMAN LAYANAN SAJA         */
+      /* ========================================= */
 
-      /* --- RESPONSIVE FIXES --- */
-      @media (max-width: 992px) {
-        .hero-wrapper {
-          grid-template-columns: 1fr !important;
-          text-align: center;
-        }
-        .hero-image {
-          display: none;
-        }
-        .hero-content ul {
-          text-align: left;
-          display: inline-block;
-        }
-      }
-
-      /* --- HERO SECTION --- */
-      .hero-mini {
-        background-image:
-          linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 30, 60, 0.9)),
-          url("assets/images/bg2.jpg");
-        background-size: cover;
-        background-position: center;
-        color: white;
-        padding: 100px 0;
-        text-align: center;
-        margin-top: 0;
+      /* Background Pola Titik */
+      .bg-soft-variation {
+        background-color: #f2f6fa;
+        background-image: radial-gradient(
+          rgba(50, 70, 90, 0.07) 1.5px,
+          transparent 1.5px
+        );
+        background-size: 28px 28px;
+        border-top: 1px solid #e1e6eb;
+        border-bottom: 1px solid #e1e6eb;
       }
 
       /* ========================================= */
@@ -230,31 +150,46 @@
         box-shadow: 0 5px 15px rgba(226, 53, 53, 0.4);
       }
 
+      /* Perbaikan Pagination Bullets */
       .swiper-pagination-bullet {
         background: #ccc;
         opacity: 0.6;
         width: 10px;
         height: 10px;
-        margin: 0 6px !important;
+        margin: 0 4px !important;
       }
       .swiper-pagination-bullet-active {
         background: #e23535;
         opacity: 1;
-        width: 30px;
+        width: 25px;
         border-radius: 5px;
         transition: 0.3s;
       }
+      .swiper-pagination {
+        bottom: 10px !important;
+      }
 
+      /* --- PERBAIKAN MOBILE UNTUK SLIDER --- */
       @media (max-width: 768px) {
+        .swiper {
+          padding-top: 40px;
+          padding-bottom: 70px; /* Ruang lega untuk titik pagination */
+        }
         .swiper-slide {
-          width: 200px;
+          width: 220px;
         }
         .client-logo-img {
-          width: 110px;
-          height: 110px;
+          width: 100px;
+          height: 100px;
+          margin-bottom: 15px;
         }
         .client-name {
-          font-size: 0.95rem;
+          font-size: 0.9rem;
+        }
+        /* Sembunyikan panah di HP, agar tidak menghalangi logo */
+        .swiper-button-prev,
+        .swiper-button-next {
+          display: none !important;
         }
       }
     </style>
@@ -269,40 +204,34 @@
             <img src="assets/images/logo.png" alt="Logo ESC" />
             PT. ELSADAI SERVO CONS
           </a>
-          <div class="hamburger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-          </div>
           <ul class="nav-links">
             <li><a href="index.html">Beranda</a></li>
             <li><a href="about.html">Tentang Kami</a></li>
             <li><a href="services.html" class="active">Layanan</a></li>
             <li><a href="portfolio.html">Proyek</a></li>
-            <li><a href="contact.html" class="nav-btn">Kontak</a></li>
-            <li>
-              <a
-                href="career.html"
-                style="font-weight: 600; color: var(--primary)"
-                >Lowongan</a
-              >
-            </li>
+            <li><a href="contact.html">Kontak</a></li>
+            <li><a href="career.html">Lowongan</a></li>
             <li>
               <div class="lang-switch-container">
                 <span
-                  class="lang-option"
+                  class="lang-option active"
                   id="lang-id"
-                  onclick="setLanguage('id')"
+                  onclick="changeLanguage('id')"
                   >ID</span
                 >
                 <span class="lang-separator">|</span>
                 <span
                   class="lang-option"
                   id="lang-en"
-                  onclick="setLanguage('en')"
+                  onclick="changeLanguage('en')"
                   >EN</span
                 >
               </div>
             </li>
           </ul>
+          <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+          </div>
         </nav>
       </div>
     </header>
@@ -911,12 +840,11 @@
       type="text/javascript"
       src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
     ></script>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
 
     <script>
-      // Initialize Swiper (3D Coverflow Effect - Adjusted for no cards)
+      // Initialize Swiper (3D Coverflow Effect with Dynamic Bullets for Mobile)
       var swiper = new Swiper(".mySwiper", {
         effect: "coverflow",
         grabCursor: true,
@@ -925,18 +853,16 @@
         coverflowEffect: {
           rotate: 0,
           stretch: 0,
-          depth: 150, // Depth ditambah agar efek 3D lebih terasa tanpa kartu
+          depth: 150,
           modifier: 2,
-          slideShadows: false, // Shadow dimatikan agar bersih
+          slideShadows: false,
         },
         loop: true,
-        autoplay: {
-          delay: 1000,
-          disableOnInteraction: false,
-        },
+        autoplay: { delay: 1500, disableOnInteraction: false },
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
+          dynamicBullets: true /* SOLUSI: Titik tidak akan menumpuk di HP */,
         },
         navigation: {
           nextEl: ".swiper-button-next",
@@ -944,12 +870,58 @@
         },
       });
 
-      // Anti Banner Google Translate
+      // Fungsi Ganti Bahasa & Cookie
+      function changeLanguage(lang) {
+        document.cookie =
+          "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie =
+          "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" +
+          window.location.hostname;
+        document.cookie = "googtrans=/id/" + lang + "; path=/;";
+        document.cookie =
+          "googtrans=/id/" +
+          lang +
+          "; path=/; domain=" +
+          window.location.hostname;
+
+        var select = document.querySelector("select.goog-te-combo");
+        if (select) {
+          select.value = lang;
+          select.dispatchEvent(new Event("change"));
+        } else {
+          location.reload();
+        }
+        document
+          .querySelectorAll(".lang-option")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById("lang-" + lang).classList.add("active");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        if (document.cookie.indexOf("googtrans=/id/en") >= 0) {
+          document.getElementById("lang-en").classList.add("active");
+          document.getElementById("lang-id").classList.remove("active");
+        }
+      });
+
+      // Fungsi Hamburger Menu (Bila tidak ada di main.js)
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("active");
+        const icon = document.querySelector(".hamburger i");
+        if (navLinks.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
+      }
+
+      // Anti Banner Google Translate (Safe Mode)
       setInterval(function () {
         var banner = document.querySelector(".goog-te-banner-frame");
-        if (banner) {
-          banner.remove();
-        }
+        if (banner) banner.remove();
         if (document.body.style.top && document.body.style.top !== "0px") {
           document.body.style.setProperty("top", "0px", "important");
           document.body.style.setProperty("position", "static", "important");
