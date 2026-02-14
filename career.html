@@ -932,6 +932,8 @@
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsep9elL2HOd38PXNnfpyzbSyQ2trMMT4p15b_RtV2AdgjtoXjlOXpZAFTPwNppB7wo_-Z6brP8BRX/pub?gid=0&single=true&output=csv";
       const SUBMIT_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbyFiHYZzaqxjQbHfvh3FWZz31d5JuAOzoR-dgXMnt4UvQ5X9ud-j5_S0RnbZQHKiOj1/exec";
+
+      // KUNCI PERBAIKAN: Variabel global projectDatabase
       let projectDatabase = {};
 
       document.addEventListener("DOMContentLoaded", function () {
@@ -1033,6 +1035,7 @@
         const container = document.getElementById("project-list-container");
         container.innerHTML = "";
         const uniqueProjects = {};
+
         data.forEach((item) => {
           if (item.status && item.status.toUpperCase() === "OPEN") {
             if (!uniqueProjects[item.project])
@@ -1045,6 +1048,10 @@
               uniqueProjects[item.project].positions.push(item.posisi);
           }
         });
+
+        // KUNCI PERBAIKAN: Menyimpan data yang sudah diproses ke variabel global
+        projectDatabase = uniqueProjects;
+
         const projectsArray = Object.values(uniqueProjects);
         if (projectsArray.length === 0) {
           container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;background:#fff;">Belum ada lowongan dibuka.<br>Silakan daftar di Talent Pool.</div>`;
@@ -1073,7 +1080,9 @@
         );
         select.innerHTML =
           '<option value="" disabled selected>-- Pilih Posisi --</option>';
-        if (projectDatabase[name]) {
+
+        // KUNCI PERBAIKAN: Mengisi dropdown dari variabel global yang sudah terisi
+        if (projectDatabase[name] && projectDatabase[name].positions) {
           projectDatabase[name].positions.forEach((pos) => {
             const opt = document.createElement("option");
             opt.value = pos;
@@ -1081,6 +1090,7 @@
             select.appendChild(opt);
           });
         }
+
         modal.classList.add("show");
         document.body.style.overflow = "hidden";
       }
