@@ -48,22 +48,15 @@
       /* ========================================= */
       /* HIDE GOOGLE BANNER (CSS METHOD)           */
       /* ========================================= */
-
-      /* Sembunyikan Frame Banner (Top Bar) */
       .goog-te-banner-frame {
         display: none !important;
         visibility: hidden !important;
         height: 0 !important;
         width: 0 !important;
       }
-
-      /* Sembunyikan Body Spacer (Jarak yg dibuat google) */
       .skiptranslate {
         display: none !important;
       }
-
-      /* KECUALI Widget Asli (Harus ada tapi hidden) */
-      /* Kita override display:none di atas khusus untuk ID ini */
       #google_translate_element {
         display: block !important;
         position: absolute;
@@ -76,8 +69,6 @@
         z-index: -1000;
         pointer-events: none;
       }
-
-      /* Hilangkan Tooltip/Hover Text */
       .goog-tooltip,
       .goog-text-highlight {
         display: none !important;
@@ -124,7 +115,38 @@
         font-size: 0.8rem;
       }
 
-      /* CSS LAINNYA TETAP SAMA... */
+      /* KOTAK KUALIFIKASI KHUSUS MODAL */
+      .qualification-box {
+        margin-top: 10px;
+        padding: 12px 15px;
+        background: #f0f4f8;
+        border-left: 4px solid var(--primary-dark);
+        border-radius: 4px;
+        font-size: 0.85rem;
+        color: #333;
+        display: none;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .qualification-box strong {
+        display: block;
+        color: var(--primary-dark);
+        margin-bottom: 5px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* CSS LAINNYA... */
       .intro-grid {
         display: grid;
         grid-template-columns: 1.6fr 1fr;
@@ -349,6 +371,7 @@
         color: #721c24;
         border: 1px solid #f5c6cb;
       }
+
       .modal-backdrop {
         position: fixed;
         top: 0;
@@ -554,7 +577,8 @@
                   <label
                     >Nama Lengkap (Sesuai KTP)
                     <span style="color: red">*</span></label
-                  ><input
+                  >
+                  <input
                     type="text"
                     name="Nama"
                     class="form-control"
@@ -565,7 +589,8 @@
                   <label
                     >Melamar Untuk Posisi:
                     <span style="color: red">*</span></label
-                  ><select name="Posisi_Dilamar" class="form-control" required>
+                  >
+                  <select name="Posisi_Dilamar" class="form-control" required>
                     <option value="" disabled selected>
                       -- Pilih Bidang --
                     </option>
@@ -585,8 +610,8 @@
                   <label>Kontak Pelamar</label>
                   <div class="input-group-row">
                     <div>
-                      <span class="sub-label">No. WA (Opsional)</span
-                      ><input
+                      <span class="sub-label">No. WA (Opsional)</span>
+                      <input
                         type="text"
                         name="No_WA"
                         class="form-control"
@@ -594,8 +619,8 @@
                       />
                     </div>
                     <div>
-                      <span class="sub-label">Email (Opsional)</span
-                      ><input
+                      <span class="sub-label">Email (Opsional)</span>
+                      <input
                         type="email"
                         name="Email"
                         class="form-control"
@@ -612,8 +637,8 @@
                   >
                   <div class="input-group-row">
                     <div>
-                      <span class="sub-label">Provinsi</span
-                      ><select
+                      <span class="sub-label">Provinsi</span>
+                      <select
                         name="Provinsi"
                         id="provinsi-main"
                         class="form-control"
@@ -625,8 +650,8 @@
                       </select>
                     </div>
                     <div>
-                      <span class="sub-label">Kota/Kabupaten</span
-                      ><select
+                      <span class="sub-label">Kota/Kabupaten</span>
+                      <select
                         name="Kota"
                         id="kota-main"
                         class="form-control"
@@ -642,13 +667,15 @@
                   <label
                     >Tautan CV & Portofolio (GDrive)
                     <span style="color: red">*</span></label
-                  ><input
+                  >
+                  <input
                     type="url"
                     name="Link_CV"
                     class="form-control"
                     placeholder="https://..."
                     required
-                  /><small
+                  />
+                  <small
                     style="
                       color: #777;
                       font-size: 0.8rem;
@@ -663,11 +690,8 @@
                   <label
                     >Preferensi Lokasi Penugasan
                     <span style="color: red">*</span></label
-                  ><select
-                    name="Kesediaan_Lokasi"
-                    class="form-control"
-                    required
                   >
+                  <select name="Kesediaan_Lokasi" class="form-control" required>
                     <option value="" disabled selected>
                       -- Pilih Wilayah --
                     </option>
@@ -693,8 +717,8 @@
               </div>
               <div style="grid-column: 1 / -1">
                 <div class="form-group">
-                  <label>Ringkasan Profil (Opsional)</label
-                  ><textarea
+                  <label>Ringkasan Profil (Opsional)</label>
+                  <textarea
                     name="Pesan"
                     class="form-control"
                     rows="1"
@@ -745,22 +769,36 @@
               value="Sesuai Lokasi Proyek"
             />
             <div class="form-group">
-              <label>Nama Lengkap <span style="color: red">*</span></label
-              ><input type="text" name="Nama" class="form-control" required />
+              <label>Nama Lengkap <span style="color: red">*</span></label>
+              <input type="text" name="Nama" class="form-control" required />
             </div>
+
             <div class="form-group">
               <label
                 >Melamar Untuk Posisi: <span style="color: red">*</span></label
-              ><select name="Posisi_Dilamar" class="form-control" required>
+              >
+              <select
+                name="Posisi_Dilamar"
+                id="modalPosisiSelect"
+                class="form-control"
+                required
+                onchange="showQualification()"
+              >
                 <option value="" disabled selected>-- Pilih Posisi --</option>
               </select>
+
+              <div id="qualificationBox" class="qualification-box">
+                <strong>Syarat & Kualifikasi Posisi:</strong>
+                <span id="qualificationText"></span>
+              </div>
             </div>
+
             <div class="form-group">
               <label>Kontak Pelamar</label>
               <div class="input-group-row">
                 <div>
-                  <span class="sub-label">No. WA (Opsional)</span
-                  ><input
+                  <span class="sub-label">No. WA (Opsional)</span>
+                  <input
                     type="text"
                     name="No_WA"
                     class="form-control"
@@ -768,8 +806,8 @@
                   />
                 </div>
                 <div>
-                  <span class="sub-label">Email (Opsional)</span
-                  ><input
+                  <span class="sub-label">Email (Opsional)</span>
+                  <input
                     type="email"
                     name="Email"
                     class="form-control"
@@ -782,8 +820,8 @@
               <label>Domisili Pelamar <span style="color: red">*</span></label>
               <div class="input-group-row">
                 <div>
-                  <span class="sub-label">Provinsi</span
-                  ><select
+                  <span class="sub-label">Provinsi</span>
+                  <select
                     name="Provinsi"
                     id="provinsi-modal"
                     class="form-control"
@@ -795,8 +833,8 @@
                   </select>
                 </div>
                 <div>
-                  <span class="sub-label">Kota/Kabupaten</span
-                  ><select
+                  <span class="sub-label">Kota/Kabupaten</span>
+                  <select
                     name="Kota"
                     id="kota-modal"
                     class="form-control"
@@ -809,8 +847,10 @@
               </div>
             </div>
             <div class="form-group">
-              <label>Tautan CV (GDrive) <span style="color: red">*</span></label
-              ><input type="url" name="Link_CV" class="form-control" required />
+              <label
+                >Tautan CV (GDrive) <span style="color: red">*</span></label
+              >
+              <input type="url" name="Link_CV" class="form-control" required />
             </div>
             <div style="margin-top: 25px">
               <button type="submit" class="btn-primary-form">
@@ -900,7 +940,6 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-      // 1. FUNGSI TRANSLATE REVISI (PAKE COOKIE + RELOAD)
       function changeLanguage(lang) {
         document.cookie =
           "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -927,13 +966,11 @@
         document.getElementById("lang-" + lang).classList.add("active");
       }
 
-      // 2. CONFIG SHEET (DATA)
       const READ_CSV_URL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsep9elL2HOd38PXNnfpyzbSyQ2trMMT4p15b_RtV2AdgjtoXjlOXpZAFTPwNppB7wo_-Z6brP8BRX/pub?gid=0&single=true&output=csv";
       const SUBMIT_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbyFiHYZzaqxjQbHfvh3FWZz31d5JuAOzoR-dgXMnt4UvQ5X9ud-j5_S0RnbZQHKiOj1/exec";
 
-      // KUNCI PERBAIKAN: Variabel global projectDatabase
       let projectDatabase = {};
 
       document.addEventListener("DOMContentLoaded", function () {
@@ -945,7 +982,6 @@
         }
       });
 
-      // API WILAYAH
       const API_BASE_URL = "https://www.emsifa.com/api-wilayah-indonesia/api";
       function loadAllProvinces() {
         fetch(`${API_BASE_URL}/provinces.json`)
@@ -993,10 +1029,22 @@
           });
       }
 
-      // FETCH DATA (Anti Cache)
+      // FETCH DATA (Sistem Anti-Cache Super Kuat)
       function fetchProjects() {
-        const cacheBuster = "&t=" + Date.now() + Math.random();
-        fetch(READ_CSV_URL + cacheBuster)
+        const timestamp = new Date().getTime();
+        const baseCsvUrl =
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsep9elL2HOd38PXNnfpyzbSyQ2trMMT4p15b_RtV2AdgjtoXjlOXpZAFTPwNppB7wo_-Z6brP8BRX/pub?gid=0&single=true&output=csv";
+        const uniqueUrl = baseCsvUrl + "&nocache=" + timestamp;
+
+        fetch(uniqueUrl, {
+          method: "GET",
+          cache: "no-store", // Paksa browser tidak menggunakan cache lokal
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        })
           .then((res) => {
             if (!res.ok) throw new Error("Gagal");
             return res.text();
@@ -1005,9 +1053,9 @@
             renderProjects(parseCSV(csv));
           })
           .catch((err) => {
-            console.error(err);
+            console.error("Fetch Error: ", err);
             document.getElementById("project-list-container").innerHTML =
-              `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#e23535;background:#fff;">Gagal memuat data.</div>`;
+              `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#e23535;background:#fff;">Gagal memuat data dari server. Silakan muat ulang halaman.</div>`;
           });
       }
 
@@ -1019,10 +1067,12 @@
           const clean = cols.map((c) =>
             c ? c.replace(/^"|"$/g, "").trim() : "",
           );
+          // Ambil juga kolom kualifikasi (index 4 / Kolom E)
           if (clean.length > 6) {
             rows.push({
               posisi: clean[0],
               lokasi: clean[1],
+              kualifikasi: clean[4],
               status: clean[5],
               project: clean[6] || "General",
             });
@@ -1038,18 +1088,23 @@
 
         data.forEach((item) => {
           if (item.status && item.status.toUpperCase() === "OPEN") {
-            if (!uniqueProjects[item.project])
+            if (!uniqueProjects[item.project]) {
               uniqueProjects[item.project] = {
                 name: item.project,
                 location: item.lokasi,
                 positions: [],
+                qualifications: {}, // Simpan data kualifikasi per posisi
               };
-            if (!uniqueProjects[item.project].positions.includes(item.posisi))
+            }
+            if (!uniqueProjects[item.project].positions.includes(item.posisi)) {
               uniqueProjects[item.project].positions.push(item.posisi);
+              uniqueProjects[item.project].qualifications[item.posisi] =
+                item.kualifikasi ||
+                "Belum ada detail kualifikasi spesifik dicantumkan.";
+            }
           }
         });
 
-        // KUNCI PERBAIKAN: Menyimpan data yang sudah diproses ke variabel global
         projectDatabase = uniqueProjects;
 
         const projectsArray = Object.values(uniqueProjects);
@@ -1075,18 +1130,22 @@
         const modal = document.getElementById("projectModal");
         document.getElementById("modalProjectName").innerText = name;
         document.getElementById("inputProjectName").value = name;
-        const select = document.querySelector(
-          '#projectForm select[name="Posisi_Dilamar"]',
-        );
+        const select = document.getElementById("modalPosisiSelect");
+
         select.innerHTML =
           '<option value="" disabled selected>-- Pilih Posisi --</option>';
+        document.getElementById("qualificationBox").style.display = "none"; // Sembunyikan box kualifikasi dulu
 
-        // KUNCI PERBAIKAN: Mengisi dropdown dari variabel global yang sudah terisi
         if (projectDatabase[name] && projectDatabase[name].positions) {
           projectDatabase[name].positions.forEach((pos) => {
             const opt = document.createElement("option");
             opt.value = pos;
             opt.textContent = pos;
+            // Titipkan data kualifikasi di dalam atribut HTML element option ini
+            opt.setAttribute(
+              "data-kualifikasi",
+              projectDatabase[name].qualifications[pos],
+            );
             select.appendChild(opt);
           });
         }
@@ -1095,10 +1154,28 @@
         document.body.style.overflow = "hidden";
       }
 
+      // FUNGSI BARU: Untuk menampilkan Kualifikasi saat posisi dipilih
+      function showQualification() {
+        const select = document.getElementById("modalPosisiSelect");
+        const selectedOpt = select.options[select.selectedIndex];
+        const qualText = selectedOpt.getAttribute("data-kualifikasi");
+        const qualBox = document.getElementById("qualificationBox");
+        const qualSpan = document.getElementById("qualificationText");
+
+        if (qualText && qualText.trim() !== "") {
+          qualSpan.textContent = qualText;
+          qualBox.style.display = "block"; // Munculkan kotaknya
+        } else {
+          qualBox.style.display = "none"; // Sembunyikan kalau kosong
+        }
+      }
+
       function closeModal() {
         document.getElementById("projectModal").classList.remove("show");
         document.body.style.overflow = "auto";
+        document.getElementById("qualificationBox").style.display = "none"; // Reset kualifikasi box
       }
+
       window.onclick = function (e) {
         if (e.target == document.getElementById("projectModal")) closeModal();
       };
@@ -1114,12 +1191,14 @@
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
         success.style.display = "none";
         error.style.display = "none";
+
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         if (data.Posisi_Dilamar) {
           data.Posisi_Harapan = data.Posisi_Dilamar;
           data.Posisi = data.Posisi_Dilamar;
         }
+
         fetch(SUBMIT_SCRIPT_URL, {
           method: "POST",
           body: JSON.stringify(data),
@@ -1144,17 +1223,11 @@
           });
       }
 
-      // ANTI BANNER JS (DIJAMIN HILANG)
       setInterval(function () {
         var banner = document.querySelector(".goog-te-banner-frame");
-        // Hapus elemen banner dari DOM (Paling Efektif)
-        if (banner) {
-          banner.remove();
-        }
-        // Paksa reset body style
+        if (banner) banner.remove();
         document.body.style.top = "0px";
         document.body.style.marginTop = "0px";
-        // Sembunyikan elemen sisa
         var gadget = document.querySelector(".goog-te-gadget-simple");
         if (gadget) gadget.style.display = "none";
       }, 50);
