@@ -4,6 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Karir & Peluang | PT. Elsadai Servo Cons</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicon-16x16.png"
+    />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+
+    <link rel="manifest" href="assets/images/site.webmanifest" />
+
+    <meta name="theme-color" content="#003366" />
 
     <meta
       http-equiv="Cache-Control"
@@ -1029,24 +1052,19 @@
           });
       }
 
-      // FETCH DATA (Sistem Anti-Cache Super Kuat)
+      // FETCH DATA (Aman dari CORS Block, Tetap Anti-Cache Browser)
       function fetchProjects() {
         const timestamp = new Date().getTime();
         const baseCsvUrl =
           "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsep9elL2HOd38PXNnfpyzbSyQ2trMMT4p15b_RtV2AdgjtoXjlOXpZAFTPwNppB7wo_-Z6brP8BRX/pub?gid=0&single=true&output=csv";
+
+        // Trik parameter URL unik untuk mencegah cache browser
         const uniqueUrl = baseCsvUrl + "&nocache=" + timestamp;
 
-        fetch(uniqueUrl, {
-          method: "GET",
-          cache: "no-store", // Paksa browser tidak menggunakan cache lokal
-          headers: {
-            "Cache-Control": "no-cache, no-store, must-revalidate",
-            Pragma: "no-cache",
-            Expires: "0",
-          },
-        })
+        // Menggunakan fetch sederhana (tanpa custom headers) agar tidak diblokir Google
+        fetch(uniqueUrl, { cache: "no-store" })
           .then((res) => {
-            if (!res.ok) throw new Error("Gagal");
+            if (!res.ok) throw new Error("Gagal mengambil data");
             return res.text();
           })
           .then((csv) => {
